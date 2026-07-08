@@ -1,0 +1,15 @@
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\bin\Debug\net6.0\OSSECSTANDALONE.DataAccess.deps.json
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\bin\Debug\net6.0\OSSECSTANDALONE.DataAccess.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\bin\Debug\net6.0\OSSECSTANDALONE.DataAccess.pdb
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\bin\Debug\net6.0\OSSECSTANDALONE.Shared.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\bin\Debug\net6.0\OSSECSTANDALONE.Shared.pdb
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\obj\Debug\net6.0\OSSECSTANDALONE.DataAccess.csproj.AssemblyReference.cache
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\obj\Debug\net6.0\OSSECSTANDALONE.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\obj\Debug\net6.0\OSSECSTANDALONE.DataAccess.AssemblyInfoInputs.cache
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\obj\Debug\net6.0\OSSECSTANDALONE.DataAccess.AssemblyInfo.cs
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\obj\Debug\net6.0\OSSECSTANDALONE.DataAccess.csproj.CoreCompileInputs.cache
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\obj\Debug\net6.0\OSSECSTANDALONE.DataAccess.csproj.CopyComplete
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\obj\Debug\net6.0\OSSECSTANDALONE.DataAccess.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\obj\Debug\net6.0\refint\OSSECSTANDALONE.DataAccess.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\obj\Debug\net6.0\OSSECSTANDALONE.DataAccess.pdb
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.DataAccess\obj\Debug\net6.0\ref\OSSECSTANDALONE.DataAccess.dll

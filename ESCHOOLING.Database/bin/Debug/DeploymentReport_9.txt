@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be recreated with data migrated
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[TblAttendance] (Table)
+       [dbo].[TblBehaviour] (Table)
+       [dbo].[TblEvents] (Table)
+       [dbo].[TblStudentMarks] (Table)
+       [dbo].[TblUserRegistration] (Table)
+       Foreign Key: unnamed constraint on [dbo].[TblAttendance] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[TblBehaviour] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[TblStudentMarks] (Foreign Key)
+
+** Supporting actions

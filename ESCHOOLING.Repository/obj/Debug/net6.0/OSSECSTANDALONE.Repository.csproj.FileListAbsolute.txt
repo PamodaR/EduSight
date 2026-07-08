@@ -1,0 +1,17 @@
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\bin\Debug\net6.0\OSSECSTANDALONE.Repository.deps.json
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\bin\Debug\net6.0\OSSECSTANDALONE.Repository.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\bin\Debug\net6.0\OSSECSTANDALONE.Repository.pdb
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\bin\Debug\net6.0\OSSECSTANDALONE.DataAccess.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\bin\Debug\net6.0\OSSECSTANDALONE.Shared.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\bin\Debug\net6.0\OSSECSTANDALONE.DataAccess.pdb
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\bin\Debug\net6.0\OSSECSTANDALONE.Shared.pdb
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\obj\Debug\net6.0\OSSECSTANDALONE.Repository.csproj.AssemblyReference.cache
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\obj\Debug\net6.0\OSSECSTANDALONE.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\obj\Debug\net6.0\OSSECSTANDALONE.Repository.AssemblyInfoInputs.cache
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\obj\Debug\net6.0\OSSECSTANDALONE.Repository.AssemblyInfo.cs
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\obj\Debug\net6.0\OSSECSTANDALONE.Repository.csproj.CoreCompileInputs.cache
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\obj\Debug\net6.0\OSSECSTANDALONE.Repository.csproj.CopyComplete
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\obj\Debug\net6.0\OSSECSTANDALONE.Repository.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\obj\Debug\net6.0\refint\OSSECSTANDALONE.Repository.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\obj\Debug\net6.0\OSSECSTANDALONE.Repository.pdb
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Repository\obj\Debug\net6.0\ref\OSSECSTANDALONE.Repository.dll

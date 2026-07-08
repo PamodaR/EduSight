@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "OSSECSTANDALONE.DataAccess/1.0.0": {
+        "dependencies": {
+          "OSSECSTANDALONE.Shared": "1.0.0"
+        },
+        "runtime": {
+          "OSSECSTANDALONE.DataAccess.dll": {}
+        }
+      },
+      "OSSECSTANDALONE.Shared/1.0.0": {
+        "runtime": {
+          "OSSECSTANDALONE.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OSSECSTANDALONE.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OSSECSTANDALONE.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,16 @@
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Database\bin\Debug\ESCHOOLING.Database.dacpac
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Database\bin\Debug\ESCHOOLING.Database.dll
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Database\bin\Debug\ESCHOOLING.Database.pdb
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.sqlproj.AssemblyReference.cache
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.dll
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.pdb
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Database\obj\Debug\Model.xml
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Database\obj\Debug\refactor.xml
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Database\obj\Debug\postdeploy.sql
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Database\obj\Debug\predeploy.sql
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Database\bin\Debug\ESCHOOLING.Database.dacpac
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Database\bin\Debug\ESCHOOLING.Database.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Database\bin\Debug\ESCHOOLING.Database.pdb
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.sqlproj.AssemblyReference.cache
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.pdb

@@ -1,0 +1,24 @@
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\bin\Debug\net6.0\OSSECSTANDALONE.Shared.deps.json
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\bin\Debug\net6.0\OSSECSTANDALONE.Shared.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\bin\Debug\net6.0\OSSECSTANDALONE.Shared.pdb
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.csproj.AssemblyReference.cache
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.AssemblyInfoInputs.cache
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.AssemblyInfo.cs
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.csproj.CoreCompileInputs.cache
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\obj\Debug\net6.0\refint\OSSECSTANDALONE.Shared.dll
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.pdb
+D:\OSSEC\OSSEC Standalone Project\OSSECSTANDALONE\OSSECSTANDALONE.Shared\obj\Debug\net6.0\ref\OSSECSTANDALONE.Shared.dll
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\bin\Debug\net6.0\OSSECSTANDALONE.Shared.deps.json
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\bin\Debug\net6.0\OSSECSTANDALONE.Shared.dll
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\bin\Debug\net6.0\OSSECSTANDALONE.Shared.pdb
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.csproj.AssemblyReference.cache
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.AssemblyInfoInputs.cache
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.AssemblyInfo.cs
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.csproj.CoreCompileInputs.cache
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.dll
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\obj\Debug\net6.0\refint\OSSECSTANDALONE.Shared.dll
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\obj\Debug\net6.0\OSSECSTANDALONE.Shared.pdb
+D:\My Project\Saranga's friend Project\ECOMSYSTEM\ECOMSYSTEM.Shared\obj\Debug\net6.0\ref\OSSECSTANDALONE.Shared.dll

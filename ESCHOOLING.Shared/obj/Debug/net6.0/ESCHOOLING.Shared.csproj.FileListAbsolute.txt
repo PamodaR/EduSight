@@ -1,0 +1,38 @@
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\bin\Debug\net6.0\ESCHOOLING.Shared.deps.json
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\bin\Debug\net6.0\ESCHOOLING.Shared.dll
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\bin\Debug\net6.0\ESCHOOLING.Shared.pdb
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.csproj.AssemblyReference.cache
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.AssemblyInfoInputs.cache
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.AssemblyInfo.cs
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.csproj.CoreCompileInputs.cache
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.dll
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\refint\ESCHOOLING.Shared.dll
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.pdb
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ref\ESCHOOLING.Shared.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\bin\Debug\net6.0\ESCHOOLING.Shared.deps.json
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\bin\Debug\net6.0\ESCHOOLING.Shared.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\bin\Debug\net6.0\ESCHOOLING.Shared.pdb
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.csproj.AssemblyReference.cache
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.AssemblyInfoInputs.cache
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.AssemblyInfo.cs
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.csproj.CoreCompileInputs.cache
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.sourcelink.json
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\refint\ESCHOOLING.Shared.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.pdb
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Shared\obj\Debug\net6.0\ref\ESCHOOLING.Shared.dll
+E:\EduSight\EduSight\ESCHOOLING.Shared\bin\Debug\net6.0\ESCHOOLING.Shared.deps.json
+E:\EduSight\EduSight\ESCHOOLING.Shared\bin\Debug\net6.0\ESCHOOLING.Shared.dll
+E:\EduSight\EduSight\ESCHOOLING.Shared\bin\Debug\net6.0\ESCHOOLING.Shared.pdb
+E:\EduSight\EduSight\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.csproj.AssemblyReference.cache
+E:\EduSight\EduSight\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\EduSight\EduSight\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.AssemblyInfoInputs.cache
+E:\EduSight\EduSight\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.AssemblyInfo.cs
+E:\EduSight\EduSight\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.csproj.CoreCompileInputs.cache
+E:\EduSight\EduSight\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.sourcelink.json
+E:\EduSight\EduSight\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.dll
+E:\EduSight\EduSight\ESCHOOLING.Shared\obj\Debug\net6.0\refint\ESCHOOLING.Shared.dll
+E:\EduSight\EduSight\ESCHOOLING.Shared\obj\Debug\net6.0\ESCHOOLING.Shared.pdb
+E:\EduSight\EduSight\ESCHOOLING.Shared\obj\Debug\net6.0\ref\ESCHOOLING.Shared.dll

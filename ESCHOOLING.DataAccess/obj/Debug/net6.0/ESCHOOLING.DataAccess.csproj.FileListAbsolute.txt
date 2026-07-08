@@ -1,0 +1,53 @@
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.deps.json
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.runtimeconfig.json
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.dll
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.pdb
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.Shared.dll
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.Shared.pdb
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.csproj.AssemblyReference.cache
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.AssemblyInfoInputs.cache
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.AssemblyInfo.cs
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.csproj.CoreCompileInputs.cache
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.csproj.CopyComplete
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.dll
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\refint\ESCHOOLING.DataAccess.dll
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.pdb
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.genruntimeconfig.cache
+D:\My Project\E-Schooling\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ref\ESCHOOLING.DataAccess.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.deps.json
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.runtimeconfig.json
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.pdb
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.Shared.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.Shared.pdb
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.csproj.AssemblyReference.cache
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.AssemblyInfoInputs.cache
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.AssemblyInfo.cs
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.csproj.CoreCompileInputs.cache
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.sourcelink.json
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLI.5F705D4A.Up2Date
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\refint\ESCHOOLING.DataAccess.dll
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.pdb
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.genruntimeconfig.cache
+E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.DataAccess\obj\Debug\net6.0\ref\ESCHOOLING.DataAccess.dll
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.deps.json
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.runtimeconfig.json
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.dll
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.DataAccess.pdb
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.Shared.dll
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\bin\Debug\net6.0\ESCHOOLING.Shared.pdb
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.csproj.AssemblyReference.cache
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.AssemblyInfoInputs.cache
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.AssemblyInfo.cs
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.csproj.CoreCompileInputs.cache
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.sourcelink.json
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLI.5F705D4A.Up2Date
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.dll
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\refint\ESCHOOLING.DataAccess.dll
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.pdb
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.genruntimeconfig.cache
+E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ref\ESCHOOLING.DataAccess.dll
