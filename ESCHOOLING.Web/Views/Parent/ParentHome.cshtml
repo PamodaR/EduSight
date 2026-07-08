@@ -1,0 +1,67 @@
+@{
+    Layout = "_TeacherLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard </title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet" />
+    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet" />
+    <link href="../../dist-assets/css/plugins/perfect-scrollbar.min.css" rel="stylesheet" />
+</head>
+
+<body class="text-left">
+
+    <!-- ============ Body content start ============= -->
+    <div class="main-content">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="">Dashboard</a></li>
+                <li>Parent</li>
+            </ul>
+        </div>
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <a href="@Url.Action("ViewAttendanceDetails", "Parent")" class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                        <div class="card-body text-center">
+                            <i class="i-Checked-User"></i>
+                            <div class="content">
+                                <p class="text-muted mt-2 mb-0">Child's Attendance</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <a href="@Url.Action("ViewEvents", "Parent")" class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                        <div class="card-body text-center">
+                            <i class="i-Calendar"></i>
+                            <div class="content">
+                                <p class="text-muted mt-2 mb-0">School Events</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <a href="@Url.Action("ViewMarks", "Parent")" class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                        <div class="card-body text-center">
+                            <i class="i-Graph-Bar"></i>
+                            <div class="content">
+                                <p class="text-muted mt-2 mb-0">Child's Marks</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end of main-content -->
+    </div>
+
+</body>
+
+</html>

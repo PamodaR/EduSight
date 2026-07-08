@@ -53,7 +53,7 @@ namespace ECOMSYSTEM.Web.Controllers
         [HttpPost]
         public IActionResult Register(ApplicationUser applicationUser)
         {
-            applicationUser.CreatedDate = DateTime.Now;
+             applicationUser.CreatedDate = DateTime.Now;
 
             var user = _applicationUserService.RegisterUser(applicationUser);
 

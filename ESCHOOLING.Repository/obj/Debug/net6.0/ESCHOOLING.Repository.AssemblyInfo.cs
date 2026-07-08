@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ESCHOOLING.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7986be7088d5f9cdac7f35821bd7c4df97acf18")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c773e4c61f90a47e77ca8ad65b690c9f7af34030")]
 [assembly: System.Reflection.AssemblyProductAttribute("ESCHOOLING.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ESCHOOLING.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

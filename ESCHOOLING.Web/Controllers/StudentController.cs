@@ -43,6 +43,11 @@ namespace ESCHOOLING.Web.Controllers
             return View();
         }
 
+        public IActionResult StudentHome()
+        {
+            return View();
+        }
+
         public IActionResult ViewAttendanceDetails()
         {
             return View();
