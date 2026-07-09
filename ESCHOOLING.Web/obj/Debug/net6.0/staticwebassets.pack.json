@@ -5,64 +5,8 @@
       "PackagePath": "staticwebassets\\ESCHOOLING.Web.bundle.scp.css"
     },
     {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\1147-20230529110836-pd.png",
-      "PackagePath": "staticwebassets\\Image\\1147-20230529110836-pd.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\1398-20230502125856-1502.png",
-      "PackagePath": "staticwebassets\\Image\\1398-20230502125856-1502.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\1698-20230610083640-34116.png",
-      "PackagePath": "staticwebassets\\Image\\1698-20230610083640-34116.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\2189-20230524105839-Graphite Grey.png",
-      "PackagePath": "staticwebassets\\Image\\2189-20230524105839-Graphite Grey.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\2239-1938-20210510145631-ROG Z11-3D-2.png",
-      "PackagePath": "staticwebassets\\Image\\2239-1938-20210510145631-ROG Z11-3D-2.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\2274-20230511064259-ROG-Hyperion-Scenario_1-scaled.png",
-      "PackagePath": "staticwebassets\\Image\\2274-20230511064259-ROG-Hyperion-Scenario_1-scaled.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\2288-20220618072215-1024 (4) (1).png",
-      "PackagePath": "staticwebassets\\Image\\2288-20220618072215-1024 (4) (1).png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\2338-20230511055655-1826-20230124081951-205.png",
-      "PackagePath": "staticwebassets\\Image\\2338-20230511055655-1826-20230124081951-205.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\969-20230502125914-1502.png",
-      "PackagePath": "staticwebassets\\Image\\969-20230502125914-1502.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\AuthCover.jpg",
-      "PackagePath": "staticwebassets\\Image\\AuthCover.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\AuthCover3.jpg",
-      "PackagePath": "staticwebassets\\Image\\AuthCover3.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\Item1.png",
-      "PackagePath": "staticwebassets\\Image\\Item1.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\Item4.png",
-      "PackagePath": "staticwebassets\\Image\\Item4.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\Item6.png",
-      "PackagePath": "staticwebassets\\Image\\Item6.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\Item7.png",
-      "PackagePath": "staticwebassets\\Image\\Item7.png"
+      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\Image\\login-bg.jpg",
+      "PackagePath": "staticwebassets\\Image\\login-bg.jpg"
     },
     {
       "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\css\\site.css",
@@ -1417,336 +1361,24 @@
       "PackagePath": "staticwebassets\\dist-assets\\fonts\\iconsmind\\iconsmind.woff"
     },
     {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Angular_Icon.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Angular_Icon.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\AuthCover.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\AuthCover.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\AuthCover2.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\AuthCover2.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\AuthCover3.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\AuthCover3.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Cart.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Cart.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Html_Icon.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Html_Icon.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Item1.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Item1.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Item2.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Item2.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Item3.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Item3.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Item4.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Item4.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Item6.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Item6.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Item7.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Item7.png"
+      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\LoginBackground.png",
+      "PackagePath": "staticwebassets\\dist-assets\\images\\LoginBackground.png"
     },
     {
       "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\LoginLogo.jpg",
       "PackagePath": "staticwebassets\\dist-assets\\images\\LoginLogo.jpg"
     },
     {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Product.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Product.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\Sass_icon.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\Sass_icon.png"
-    },
-    {
       "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\User.png",
       "PackagePath": "staticwebassets\\dist-assets\\images\\User.png"
     },
     {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\bg-1.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\bg-1.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\bootstrap-logo.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\bootstrap-logo.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\checkmark.svg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\checkmark.svg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\close.svg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\close.svg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\danger.svg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\danger.svg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\1.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\1.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\10.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\10.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\12.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\12.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\13.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\13.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\15.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\15.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\16.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\16.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\17.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\17.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\2.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\2.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\3.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\3.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\4.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\4.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\5.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\5.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\faces\\9.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\faces\\9.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\gull-large-sidebar.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\gull-large-sidebar.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\info.svg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\info.svg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\laravel-logo.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\laravel-logo.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\logo-text.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\logo-text.png"
+      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\login-bg.jpg",
+      "PackagePath": "staticwebassets\\dist-assets\\images\\login-bg.jpg"
     },
     {
       "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\logo.png",
       "PackagePath": "staticwebassets\\dist-assets\\images\\logo.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\mac_book.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\mac_book.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\master-card.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\master-card.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\order-list-64.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\order-list-64.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\page-bg-bottom.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\page-bg-bottom.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\paypal.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\paypal.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\photo-long-1.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\photo-long-1.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\photo-long-2.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\photo-long-2.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\photo-long-3.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\photo-long-3.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\photo-long-4.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\photo-long-4.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\photo-wide-1.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\photo-wide-1.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\photo-wide-2.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\photo-wide-2.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\photo-wide-3.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\photo-wide-3.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\photo-wide-4.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\photo-wide-4.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\photo-wide-5.jpeg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\photo-wide-5.jpeg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\cloud-346710_1280.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\cloud-346710_1280.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\headphone-1.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\headphone-1.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\headphone-2.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\headphone-2.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\headphone-3.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\headphone-3.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\headphone-4.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\headphone-4.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\iphone-1.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\iphone-1.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\iphone-2.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\iphone-2.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\speaker-1.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\speaker-1.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\speaker-2.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\speaker-2.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\watch-1.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\watch-1.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\watch-2.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\watch-2.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\weather-2.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\weather-2.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\products\\weather.jpg",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\products\\weather.jpg"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\ps.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\ps.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\dashboard.v1.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\dashboard.v1.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\dashboard.v2.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\dashboard.v2.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\gull-classic-sidebar.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\gull-classic-sidebar.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\gull-compact-sidebar.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\gull-compact-sidebar.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\gull-horizontal-nav.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\gull-horizontal-nav.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\gull-large-sidebar.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\gull-large-sidebar.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\localhost_3000_html_layout2_dashboard1.html.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\localhost_3000_html_layout2_dashboard1.html.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\localhost_3000_html_layout3_dashboard1.html.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\localhost_3000_html_layout3_dashboard1.html.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\localhost_3000_html_layout4_dashboard1.html.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\localhost_3000_html_layout4_dashboard1.html.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\tinified.zip",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\tinified.zip"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\tinified\\dashboard.v1.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\tinified\\dashboard.v1.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\tinified\\dashboard.v2.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\tinified\\dashboard.v2.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\tinified\\gull-classic-sidebar.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\tinified\\gull-classic-sidebar.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\tinified\\gull-compact-sidebar.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\tinified\\gull-compact-sidebar.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\tinified\\gull-horizontal-nav.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\tinified\\gull-horizontal-nav.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\screenshots\\tinified\\gull-large-sidebar.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\screenshots\\tinified\\gull-large-sidebar.png"
-    },
-    {
-      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\images\\visa.png",
-      "PackagePath": "staticwebassets\\dist-assets\\images\\visa.png"
     },
     {
       "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\dist-assets\\js\\app.js",
@@ -2391,6 +2023,10 @@
     {
       "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\js\\ExportToExcel.js",
       "PackagePath": "staticwebassets\\js\\ExportToExcel.js"
+    },
+    {
+      "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\js\\MarkPrediction.js",
+      "PackagePath": "staticwebassets\\js\\MarkPrediction.js"
     },
     {
       "Id": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\wwwroot\\js\\RegisterDoc.js",

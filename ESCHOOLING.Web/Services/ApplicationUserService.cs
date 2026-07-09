@@ -1,4 +1,4 @@
-﻿using ECOMSYSTEM.Repository.ApplicationUsers;
+using ECOMSYSTEM.Repository.ApplicationUsers;
 using ECOMSYSTEM.Shared;
 using ECOMSYSTEM.Shared.Models;
 using ESCHOOLING.Shared.Models;
@@ -23,11 +23,11 @@ namespace ECOMSYSTEM.Web.Services
         /// </summary>
         /// <param name="userObject">The user object.</param>
         /// <returns></returns>
-        public ApplicationUser RegisterUser(ApplicationUser userObject)
+        public async Task<ApplicationUser> RegisterUserAsync(ApplicationUser userObject)
         {
             try
             {
-                var result = _applicationUserRepository.AddUser(userObject);
+                var result = await _applicationUserRepository.AddUserAsync(userObject);
                 return result;
             }
             catch (Exception eX)
@@ -41,11 +41,11 @@ namespace ECOMSYSTEM.Web.Services
         /// </summary>
         /// <param name="userObject">The user object.</param>
         /// <returns></returns>
-        public ApplicationUser LoginUser(ApplicationUser userObject)
+        public async Task<ApplicationUser> LoginUserAsync(ApplicationUser userObject)
         {
             try
             {
-                var result = _applicationUserRepository.AuthUser(userObject);
+                var result = await _applicationUserRepository.AuthUserAsync(userObject);
                 return result;
             }
             catch (Exception)
@@ -58,80 +58,43 @@ namespace ECOMSYSTEM.Web.Services
         /// Gets all users.
         /// </summary>
         /// <returns></returns>
-        public List<ApplicationUser> GetAllUsers()
+        public async Task<List<ApplicationUser>> GetAllUsersAsync()
         {
             try
             {
-                var result = _applicationUserRepository.GetAllUsers();
+                var result = await _applicationUserRepository.GetAllUsersAsync();
                 return result;
             }
             catch (Exception)
             {
                 return new List<ApplicationUser>();
-            }
-        }
-
-        public List<ApplicationUser> Search(int grade)
-        {
-            try
-            {
-                var result = _applicationUserRepository.Search(grade);
-                return result;
-            }
-            catch (Exception)
-            {
-                return new List<ApplicationUser>();
-            }
-        }
-
-        public List<ApplicationUser> SearchById(long id)
-        {
-            try
-            {
-                var result = _applicationUserRepository.SearchById(id);
-                return result;
-            }
-            catch (Exception)
-            {
-                return new List<ApplicationUser>();
-            }
-        }
-
-        public List<Attendance> GetAttendanceList(long id, string searchDate)
-        {
-            try
-            {
-                var result = _applicationUserRepository.GetAttendanceList(id, searchDate);
-                return result;
-            }
-            catch (Exception)
-            {
-                return new List<Attendance>();
-            }
-        }
-
-        public List<Attendance> SearchForMonth(string searchDate)
-        {
-            try
-            {
-                var result = _applicationUserRepository.SearchForMonth(searchDate);
-                return result;
-            }
-            catch (Exception)
-            {
-                return new List<Attendance>();
             }
         }
 
         /// <summary>
-        /// Gets all products.
+        /// Gets user counts grouped by UserType, aggregated in SQL.
         /// </summary>
-        /// <returns></returns>
-        public List<ApplicationUser> GetAllProducts()
+        public async Task<Dictionary<int, int>> GetUserCountsByTypeAsync()
         {
             try
             {
-                var result = _applicationUserRepository.GetAllUsers();
+                var result = await _applicationUserRepository.GetUserCountsByTypeAsync();
+                return result;
+            }
+            catch (Exception)
+            {
+                return new Dictionary<int, int>();
+            }
+        }
+
+        /// <summary>
+        /// Gets users whose UserType is not one of the excluded types, filtered in SQL.
+        /// </summary>
+        public async Task<List<ApplicationUser>> GetUsersExcludingTypesAsync(params int[] excludedUserTypes)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.GetUsersExcludingTypesAsync(excludedUserTypes);
                 return result;
             }
             catch (Exception)
@@ -140,16 +103,132 @@ namespace ECOMSYSTEM.Web.Services
             }
         }
 
-        public Attendance UpdateAttendance(Attendance attendanceObj)
+        public async Task<List<ApplicationUser>> SearchAsync(int grade)
         {
             try
             {
-                var result = _applicationUserRepository.UpdateAttendance(attendanceObj);
+                var result = await _applicationUserRepository.SearchAsync(grade);
+                return result;
+            }
+            catch (Exception)
+            {
+                return new List<ApplicationUser>();
+            }
+        }
+
+        public async Task<List<ApplicationUser>> SearchByIdAsync(long id)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.SearchByIdAsync(id);
+                return result;
+            }
+            catch (Exception)
+            {
+                return new List<ApplicationUser>();
+            }
+        }
+
+        public async Task<List<Attendance>> GetAttendanceListAsync(long id, string searchDate)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.GetAttendanceListAsync(id, searchDate);
+                return result;
+            }
+            catch (Exception)
+            {
+                return new List<Attendance>();
+            }
+        }
+
+        public async Task<List<Attendance>> SearchForMonthAsync(string searchDate)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.SearchForMonthAsync(searchDate);
+                return result;
+            }
+            catch (Exception)
+            {
+                return new List<Attendance>();
+            }
+        }
+
+        public async Task<Attendance> UpdateAttendanceAsync(Attendance attendanceObj)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.UpdateAttendanceAsync(attendanceObj);
                 return result;
             }
             catch (Exception)
             {
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Gets a single user by id.
+        /// </summary>
+        public async Task<ApplicationUser> GetUserByIdAsync(long id)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.GetUserByIdAsync(id);
+                return result;
+            }
+            catch (Exception)
+            {
+                return new ApplicationUser();
+            }
+        }
+
+        /// <summary>
+        /// Gets users of a specific UserType, filtered in SQL.
+        /// </summary>
+        public async Task<List<ApplicationUser>> GetUsersByTypeAsync(int userType)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.GetUsersByTypeAsync(userType);
+                return result;
+            }
+            catch (Exception)
+            {
+                return new List<ApplicationUser>();
+            }
+        }
+
+        /// <summary>
+        /// Updates an existing user's details.
+        /// </summary>
+        public async Task<ApplicationUser> UpdateUserAsync(ApplicationUser userObject)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.UpdateUserAsync(userObject);
+                return result;
+            }
+            catch (Exception)
+            {
+                return new ApplicationUser();
+            }
+        }
+
+        /// <summary>
+        /// Soft-deletes a user by setting IsActive to false.
+        /// </summary>
+        public async Task<bool> DeactivateUserAsync(long userId)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.DeactivateUserAsync(userId);
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

@@ -37,41 +37,6 @@ namespace ECOMSYSTEM.Web.Controllers
         }
 
         /// <summary>
-        /// Registers this instance.
-        /// </summary>
-        /// <returns></returns>
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// Registers the specified application user.
-        /// </summary>
-        /// <param name="applicationUser">The application user.</param>
-        /// <returns></returns>
-        [HttpPost]
-        public IActionResult Register(ApplicationUser applicationUser)
-        {
-             applicationUser.CreatedDate = DateTime.Now;
-
-            var user = _applicationUserService.RegisterUser(applicationUser);
-
-            if (user.UserId != 0 && user.Email != null)
-            {
-                return Json(new
-                {
-                    success = true
-                });
-            }
-
-            return Json(new
-            {
-                success = false,
-            });
-        }
-
-        /// <summary>
         /// Logins this instance.
         /// </summary>
         /// <returns></returns>
@@ -86,9 +51,9 @@ namespace ECOMSYSTEM.Web.Controllers
         ///   <br />
         /// </returns>
         [HttpPost]
-        public IActionResult Login(ApplicationUser linfo)
+        public async Task<IActionResult> Login(ApplicationUser linfo)
         {
-            var result = _applicationUserService.LoginUser(linfo);
+            var result = await _applicationUserService.LoginUserAsync(linfo);
             if (result.Email == null)
             {
                 return Json(new

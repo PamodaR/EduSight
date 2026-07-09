@@ -1,4 +1,13 @@
-﻿
+
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+    var action = ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+    var isTeacher = controller.Equals("Teacher", StringComparison.OrdinalIgnoreCase);
+    var isStudent = controller.Equals("Student", StringComparison.OrdinalIgnoreCase);
+    var isParent = controller.Equals("Parent", StringComparison.OrdinalIgnoreCase);
+    var isAdmin = controller.Equals("Admin", StringComparison.OrdinalIgnoreCase) || controller.Equals("Counselor", StringComparison.OrdinalIgnoreCase);
+    var userRoleName = isAdmin ? "Administrator" : (isTeacher ? "Teacher" : (isStudent ? "Student" : "Parent"));
+}
 <!DOCTYPE html>
 <html lang="en" dir="">
 
@@ -6,19 +15,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dashboard </title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet" />
+    <title>EduSight | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet" />
     <link href="../../dist-assets/css/plugins/perfect-scrollbar.min.css" rel="stylesheet" />
     @RenderSection("Css", required: false)
-    
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body class="text-left">
     <header>
         <div class="app-admin-wrap layout-sidebar-large">
             <div class="main-header">
                 <div class="logo">
-                    <img src="../../dist-assets/images/logo.png" alt="">
+                    <h3 class="m-0 font-weight-bold text-primary" style="letter-spacing: -0.5px;">EduSight</h3>
                 </div>
                 <div class="menu-toggle">
                     <div></div>
@@ -31,71 +40,123 @@
                 <div class="header-part-right">
                     <!-- Full screen toggle -->
                     <i class="i-Full-Screen header-icon d-none d-sm-inline-block" data-fullscreen></i>
-                    <!-- Grid menu Dropdown -->
-                    <!-- Notificaiton -->
-                    <!-- Notificaiton End -->
+                    
                     <!-- User avatar dropdown -->
                     <div class="dropdown">
                         <div class="user col align-self-end">
                             <img src="../../dist-assets/images/User.png" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                                 <div class="dropdown-header">
-                                    <i class="i-Lock-User mr-1"></i> Timothy Carlson
+                                    <i class="i-Lock-User mr-1"></i> @userRoleName
                                 </div>
-                                @*                            <a class="dropdown-item">Account settings</a>
-                                <a class="dropdown-item">Billing history</a>*@
-                                <a class="dropdown-item" href="https://localhost:7092/Auth/Login">Sign out</a>
+                                <a class="dropdown-item" href="/Auth/Login">Sign out</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div class="side-content-wrap">
                 <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar="" data-suppress-scroll-x="true">
                     <ul class="navigation-left">
-                        <li class="nav-item" data-item="dashboard">
-                            <a class="nav-item-hold" href=""><i class="nav-icon i-Bar-Chart"></i><span class="nav-text">Dashboard</span></a>
+                        <li class="nav-item @(action.EndsWith("Home") ? "active" : "")" data-item="dashboard">
+                            @if (isTeacher) {
+                                <a class="nav-item-hold" href="/Teacher/TeacherHome"><i class="nav-icon i-Bar-Chart"></i><span class="nav-text">Dashboard</span></a>
+                            } else if (isStudent) {
+                                <a class="nav-item-hold" href="/Student/StudentHome"><i class="nav-icon i-Bar-Chart"></i><span class="nav-text">Dashboard</span></a>
+                            } else if (isParent) {
+                                <a class="nav-item-hold" href="/Parent/ParentHome"><i class="nav-icon i-Bar-Chart"></i><span class="nav-text">Dashboard</span></a>
+                            } else {
+                                <a class="nav-item-hold" href="/Admin/AdminHome"><i class="nav-icon i-Bar-Chart"></i><span class="nav-text">Dashboard</span></a>
+                            }
                             <div class="triangle"></div>
                         </li>
-                        <li class="nav-item" data-item="uikits">
-                            <a class="nav-item-hold" href="#"><i class="nav-icon i-Suitcase @*i-Library*@"></i><span class="nav-text">Manage Students </span></a>
-                            <div class="triangle"></div>
-                        </li>
-                        <li class="nav-item" data-item="extrakits">
-                            <a class="nav-item-hold" href="#"><i class="nav-icon i-Suitcase @*i-Suitcase*@"></i><span class="nav-text">Manage Attendance </span></a>
-                            <div class="triangle"></div>
-                        </li>
-                        <li class="nav-item" data-item="apps">
-                            <a class="nav-item-hold" href="#"><i class="nav-icon i-Suitcase @*i-Suitcase*@"></i><span class="nav-text">Manage Behaviours</span></a>
-                            <div class="triangle"></div>
-                        </li>
-                        <li class="nav-item" data-item="widgets">
-                            <a class="nav-item-hold" href="#"><i class="nav-icon i-Suitcase @*i-Suitcase*@"></i><span class="nav-text">Manage Marks</span></a>
-                            <div class="triangle"></div>
-                        </li>
+
+                        @if (isTeacher) {
+                            <li class="nav-item @(action.Contains("Student") ? "active" : "")" data-item="uikits">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Checked-User"></i><span class="nav-text">Students</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action.Contains("Attendance") ? "active" : "")" data-item="extrakits">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Calendar"></i><span class="nav-text">Attendance</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action.Contains("Prediction") ? "active" : "")" data-item="widgets">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Graph-Bar"></i><span class="nav-text">Marks</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                        }
+                        @if (isAdmin) {
+                            <li class="nav-item @((action.Contains("Register") || action == "ManageUsers" || action.EndsWith("List")) ? "active" : "")" data-item="usermgmt">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Add-User"></i><span class="nav-text">Manage Users</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(controller.Equals("Counselor", StringComparison.OrdinalIgnoreCase) ? "active" : "")" data-item="counselors">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Financial"></i><span class="nav-text">Counselors</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                        }
+                        @if (isStudent) {
+                            <li class="nav-item @(action.Contains("Attendance") ? "active" : "")">
+                                <a class="nav-item-hold" href="/Student/ViewAttendanceDetails"><i class="nav-icon i-Checked-User"></i><span class="nav-text">Attendance</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action.Contains("Events") ? "active" : "")">
+                                <a class="nav-item-hold" href="/Student/ViewEvents"><i class="nav-icon i-Calendar"></i><span class="nav-text">Events</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action.Contains("Marks") ? "active" : "")">
+                                <a class="nav-item-hold" href="/Student/ViewMarks"><i class="nav-icon i-Graph-Bar"></i><span class="nav-text">Marks</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                        } else if (isParent) {
+                            <li class="nav-item @(action.Contains("Attendance") ? "active" : "")">
+                                <a class="nav-item-hold" href="/Parent/ViewAttendanceDetails"><i class="nav-icon i-Checked-User"></i><span class="nav-text">Attendance</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action.Contains("Events") ? "active" : "")">
+                                <a class="nav-item-hold" href="/Parent/ViewEvents"><i class="nav-icon i-Calendar"></i><span class="nav-text">Events</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action.Contains("Marks") ? "active" : "")">
+                                <a class="nav-item-hold" href="/Parent/ViewMarks"><i class="nav-icon i-Graph-Bar"></i><span class="nav-text">Marks</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar="" data-suppress-scroll-x="true">
-                    <!-- Submenu Dashboards-->
-                    <ul class="childNav" data-parent="dashboard">
-                        <li class="nav-item"><a href="/Teacher/TeacherHome"><i class="nav-icon i-Medal-2"></i><span class="item-name">Dashboard</span></a></li>
-                    </ul>
-
-                    <ul class="childNav" data-parent="extrakits">
-                        <li class="nav-item"><a href="/Teacher/MarkAttendance"><i class="nav-icon i-Medal-2"></i><span class="item-name">Mark Attendance</span></a></li>
-                        <li class="nav-item"><a href="/Teacher/ViewAttendanceList"><i class="nav-icon i-Belt-3"></i><span class="item-name">View Attendance </span></a></li>
-                    </ul>
-                    <ul class="childNav" data-parent="uikits">
-                        <li class="nav-item"><a href="/Teacher/AddStudent"><i class="nav-icon i-Belt-3"></i><span class="item-name">Add Students</span></a></li>
-                        <li class="nav-item"><a href="/Teacher/ViewStudentList"><i class="nav-icon i-Belt-3"></i><span class="item-name">View Students List</span></a></li>
-                    </ul>
-                    <ul class="childNav" data-parent="apps">
-                        <li class="nav-item"><a href="/Teacher/AddSuppliers"><i class="nav-icon i-Belt-3"></i><span class="item-name">Add Behaviours</span></a></li>
-                        <li class="nav-item"><a href="/Teacher/AddSuppliers"><i class="nav-icon i-Belt-3"></i><span class="item-name">View Behaviours</span></a></li>
-                    </ul>
-                    <ul class="childNav" data-parent="widgets">
-                        <li class="nav-item"><a href="/Teacher/MarkPrediction"><i class="nav-icon i-Belt-3"></i><span class="item-name">Predict Marks</span></a></li>
-                    </ul>
+                    @if (isTeacher || isAdmin) {
+                        <!-- Submenu Dashboards-->
+                        <ul class="childNav" data-parent="dashboard">
+                            <li class="nav-item"><a class="@(action == "TeacherHome" || action == "AdminHome" ? "active" : "")" href="@(isTeacher ? "/Teacher/TeacherHome" : "/Admin/AdminHome")"><i class="nav-icon i-Bar-Chart"></i><span class="item-name">Dashboard</span></a></li>
+                        </ul>
+                    }
+                    @if (isTeacher) {
+                        <ul class="childNav" data-parent="uikits">
+                            <li class="nav-item"><a class="@(action == "AddStudent" ? "active" : "")" href="/Teacher/AddStudent"><i class="nav-icon i-Add-User"></i><span class="item-name">Add Students</span></a></li>
+                            <li class="nav-item"><a class="@(action == "ViewStudentList" ? "active" : "")" href="/Teacher/ViewStudentList"><i class="nav-icon i-Eye"></i><span class="item-name">View Students List</span></a></li>
+                        </ul>
+                        <ul class="childNav" data-parent="extrakits">
+                            <li class="nav-item"><a class="@(action == "MarkAttendance" ? "active" : "")" href="/Teacher/MarkAttendance"><i class="nav-icon i-Pen-2"></i><span class="item-name">Mark Attendance</span></a></li>
+                            <li class="nav-item"><a class="@(action == "ViewAttendanceList" ? "active" : "")" href="/Teacher/ViewAttendanceList"><i class="nav-icon i-Eye"></i><span class="item-name">View Attendance</span></a></li>
+                        </ul>
+                        <ul class="childNav" data-parent="widgets">
+                            <li class="nav-item"><a class="@(action == "MarkPrediction" ? "active" : "")" href="/Teacher/MarkPrediction"><i class="nav-icon i-Bar-Chart"></i><span class="item-name">Predict Marks</span></a></li>
+                        </ul>
+                    }
+                    @if (isAdmin) {
+                        <ul class="childNav" data-parent="usermgmt">
+                            <li class="nav-item"><a class="@(action == "ManageUsers" ? "active" : "")" href="/Admin/ManageUsers"><i class="nav-icon i-Add-User"></i><span class="item-name">Register Users</span></a></li>
+                            <li class="nav-item"><a class="@(action == "TeacherList" ? "active" : "")" href="/Admin/TeacherList"><i class="nav-icon i-Eye"></i><span class="item-name">Teachers</span></a></li>
+                            <li class="nav-item"><a class="@(action == "ParentList" ? "active" : "")" href="/Admin/ParentList"><i class="nav-icon i-Eye"></i><span class="item-name">Parents</span></a></li>
+                            <li class="nav-item"><a class="@(action == "StudentList" ? "active" : "")" href="/Admin/StudentList"><i class="nav-icon i-Eye"></i><span class="item-name">Students</span></a></li>
+                        </ul>
+                        <ul class="childNav" data-parent="counselors">
+                            <li class="nav-item"><a class="@(action == "Create" ? "active" : "")" href="/Counselor/Create"><i class="nav-icon i-Add-User"></i><span class="item-name">Add Counselor</span></a></li>
+                            <li class="nav-item"><a class="@(action == "Index" ? "active" : "")" href="/Counselor/Index"><i class="nav-icon i-Eye"></i><span class="item-name">View Counselors</span></a></li>
+                        </ul>
+                    }
                 </div>
                 <div class="sidebar-overlay"></div>
             </div>
@@ -103,11 +164,22 @@
     </header>
 
     <div class="app-admin-wrap layout-sidebar-large">
-
-        <!-- =============== Left side End ================-->
         <div class="main-content-wrap sidenav-open d-flex flex-column">
             @RenderBody()
-
+            
+            <!-- Footer Start -->
+            <div class="app-footer">
+                <div class="footer-bottom d-flex flex-column flex-sm-row align-items-center">
+                    <span class="flex-grow-1"></span>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="m-0">&copy; @DateTime.Now.Year EduSight Portal</p>
+                            <p class="m-0 text-muted">All rights reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer end -->
         </div>
     </div>
 
@@ -117,6 +189,7 @@
 
     <!-- Sweet alert -->
     <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="../../dist-assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../../dist-assets/js/scripts/script.min.js"></script>
@@ -130,3 +203,4 @@
 </body>
 
 </html>
+

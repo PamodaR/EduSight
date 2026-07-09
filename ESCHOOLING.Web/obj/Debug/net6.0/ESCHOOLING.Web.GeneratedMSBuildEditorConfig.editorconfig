@@ -22,12 +22,48 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5Ib21lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Admin/EditParent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFBhcmVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Admin/EditStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFN0dWRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Admin/EditTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFRlYWNoZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Admin/ManageUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Admin/ParentList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUGFyZW50TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Admin/StudentList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3R1ZGVudExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Admin/TeacherList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGVhY2hlckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/EduSight/EduSight/ESCHOOLING.Web/Views/Auth/login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxsb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Auth/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
+[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Counselor/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnNlbG9yXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Counselor/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnNlbG9yXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/EduSight/EduSight/ESCHOOLING.Web/Views/Counselor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnNlbG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/EduSight/EduSight/ESCHOOLING.Web/Views/Parent/ParentHome.cshtml]

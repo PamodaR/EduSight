@@ -18,17 +18,15 @@ namespace ESCHOOLING.DataAccess.EntityModel
 
         public virtual DbSet<TblAttendance> TblAttendances { get; set; } = null!;
         public virtual DbSet<TblBehaviour> TblBehaviours { get; set; } = null!;
+        public virtual DbSet<TblCounselor> TblCounselors { get; set; } = null!;
         public virtual DbSet<TblEvent> TblEvents { get; set; } = null!;
         public virtual DbSet<TblStudentMark> TblStudentMarks { get; set; } = null!;
         public virtual DbSet<TblUserRegistration> TblUserRegistrations { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-VFCVBRF\\SQLEXPRESS;Initial Catalog=ECOM_Web;User ID=sa;Password=pamoda");
-            }
+            // Connection is configured via DI (see Program.cs: AddDbContext), reading
+            // ConnectionStrings:DefaultConnection from appsettings.json.
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -84,6 +82,35 @@ namespace ESCHOOLING.DataAccess.EntityModel
                     .WithMany(p => p.TblBehaviours)
                     .HasForeignKey(d => d.StudentId)
                     .HasConstraintName("FK__TblBehavi__Stude__7D439ABD");
+            });
+
+            modelBuilder.Entity<TblCounselor>(entity =>
+            {
+                entity.HasKey(e => e.CounselorId);
+
+                entity.ToTable("TblCounselor");
+
+                entity.Property(e => e.Address)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MobileNo)
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Specialization)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<TblEvent>(entity =>

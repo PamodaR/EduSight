@@ -1,4 +1,4 @@
-﻿using ECOMSYSTEM.Shared.Models;
+using ECOMSYSTEM.Shared.Models;
 using ESCHOOLING.Shared.Models;
 using System;
 using System.Collections.Generic;
@@ -15,24 +15,55 @@ namespace ECOMSYSTEM.Repository.ApplicationUsers
         /// </summary>
         /// <param name="userObject">The user object.</param>
         /// <returns></returns>
-        ApplicationUser AddUser(ApplicationUser userObject);
+        Task<ApplicationUser> AddUserAsync(ApplicationUser userObject);
 
         /// <summary>
         /// Authentications the user.
         /// </summary>
         /// <param name="userObject">The user object.</param>
         /// <returns></returns>
-        ApplicationUser AuthUser(ApplicationUser userObject);
+        Task<ApplicationUser> AuthUserAsync(ApplicationUser userObject);
 
         /// <summary>
         /// Gets all users.
         /// </summary>
         /// <returns></returns>
-        List<ApplicationUser> GetAllUsers();
-        List<ApplicationUser> Search(int grade);
-        List<ApplicationUser> SearchById(long id);
-        List<Attendance> GetAttendanceList(long id, string searchDate);
-        List<Attendance> SearchForMonth(string searchDate);
-        Attendance UpdateAttendance(Attendance attendanceObj);
+        Task<List<ApplicationUser>> GetAllUsersAsync();
+
+        /// <summary>
+        /// Gets user counts grouped by UserType, aggregated in SQL.
+        /// </summary>
+        Task<Dictionary<int, int>> GetUserCountsByTypeAsync();
+
+        /// <summary>
+        /// Gets users whose UserType is not one of the excluded types, filtered in SQL.
+        /// </summary>
+        Task<List<ApplicationUser>> GetUsersExcludingTypesAsync(params int[] excludedUserTypes);
+
+        Task<List<ApplicationUser>> SearchAsync(int grade);
+        Task<List<ApplicationUser>> SearchByIdAsync(long id);
+        Task<List<Attendance>> GetAttendanceListAsync(long id, string searchDate);
+        Task<List<Attendance>> SearchForMonthAsync(string searchDate);
+        Task<Attendance> UpdateAttendanceAsync(Attendance attendanceObj);
+
+        /// <summary>
+        /// Gets a single user by id.
+        /// </summary>
+        Task<ApplicationUser> GetUserByIdAsync(long id);
+
+        /// <summary>
+        /// Gets users of a specific UserType, filtered in SQL.
+        /// </summary>
+        Task<List<ApplicationUser>> GetUsersByTypeAsync(int userType);
+
+        /// <summary>
+        /// Updates an existing user's details.
+        /// </summary>
+        Task<ApplicationUser> UpdateUserAsync(ApplicationUser userObject);
+
+        /// <summary>
+        /// Soft-deletes a user by setting IsActive to false.
+        /// </summary>
+        Task<bool> DeactivateUserAsync(long userId);
     }
 }

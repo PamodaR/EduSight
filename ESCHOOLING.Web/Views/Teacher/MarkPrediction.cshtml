@@ -19,8 +19,10 @@
 
     <!-- Sweet alert -->
     <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="~/js/RegisterDoc.js"></script>
+    <script src="~/js/MarkPrediction.js"></script>
 
 </head>
 
@@ -36,35 +38,43 @@
                 <li>Teacher</li>
             </ul>
         </div>
-        <div class="col-lg-6">
-
-            <div class="form-group">
-                <label for="Id"> StudentId</label>
-                <input class="form-control form-control-rounded" id="studentId" name="studentId" type="text" required>
+        <div class="col-lg-8">
+            <div class="form-panel">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="Id"> StudentId</label>
+                        <input class="form-control form-control-rounded" id="studentId" name="studentId" type="text" placeholder="e.g. 1024" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="Subject">Subject</label>
+                        <input class="form-control form-control-rounded" id="Subject" name="Subject" type="text" placeholder="e.g. Mathematics" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="Marks">Previously Test Marks 1</label>
+                        <input class="form-control form-control-rounded" id="Mark1" name="Mark1" type="text" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="Marks">Previously Test Marks 2</label>
+                        <input class="form-control form-control-rounded" id="Mark2" name="Mark1" type="text" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="Marks">Previously Test Marks 3</label>
+                        <input class="form-control form-control-rounded" id="Mark3" name="Mark1" type="text" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="PredictedMark">Predicted Mark</label>
+                        <input class="form-control form-control-rounded" id="PredictedMark" name="PredictedMark" type="text" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-rounded" onclick="PredictMarkBtn_Click();"> Predict Mark</button>
+                    <button class="btn btn-outline-secondary btn-rounded" onclick="SaveMarkBtn_Click();"> Save</button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="Subject">Subject</label>
-                <input class="form-control form-control-rounded" id="Subject" name="Subject" type="text" required>
-            </div>
-            <div class="form-group">
-                <label for="Marks">Previously Test Marks 1</label>
-                <input class="form-control form-control-rounded" id="Mark1" name="Mark1" type="text" required>
-            </div>
-            <div class="form-group">
-                <label for="Marks">Previously Test Marks 2</label>
-                <input class="form-control form-control-rounded" id="Mark2" name="Mark1" type="text" required>
-            </div>
-            <div class="form-group">
-                <label for="Marks">Previously Test Marks 3</label>
-                <input class="form-control form-control-rounded" id="Mark3" name="Mark1" type="text" required>
-            </div>
-            <div class="form-group">
-                <label for="PredictedMark">Predicted Mark</label>
-                <input class="form-control form-control-rounded" id="PredictedMark" name="PredictedMark" type="text" required>
-            </div>
-            <button class="btn btn-primary btn-block btn-rounded mt-2 col-lg-3 float-right" onclick=""> Predict Mark</button>
-            &nbsp;&nbsp;
-            <button class="btn btn-primary btn-block btn-rounded mt-2 col-lg-3 float-right" onclick=""> Save</button>
         </div>
         <!-- end of main-content -->
     </div>

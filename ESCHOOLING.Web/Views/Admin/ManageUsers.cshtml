@@ -1,0 +1,143 @@
+@{
+    Layout = "_TeacherLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manage Users | EduSight</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet">
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sweet alert -->
+    <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/RegisterDoc.js"></script>
+</head>
+
+<body class="text-left">
+
+    <div class="main-content">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="">Manage Users</a></li>
+                <li>Admin</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-8">
+            <ul class="nav nav-tabs" id="registerTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="teacher-tab" data-toggle="tab" href="#teacherPane" role="tab">Register Teacher</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="parent-tab" data-toggle="tab" href="#parentPane" role="tab">Register Parent</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="student-tab" data-toggle="tab" href="#studentPane" role="tab">Register Student</a>
+                </li>
+            </ul>
+
+            <div class="tab-content border border-top-0 p-4">
+
+                <!-- Teacher -->
+                <div class="tab-pane fade show active" id="teacherPane" role="tabpanel">
+                    <div class="form-group">
+                        <label for="teacherUserName">Name</label>
+                        <input class="form-control form-control-rounded" id="teacherUserName" name="teacherUserName" type="text" placeholder="e.g. Anusha Perera" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="teacherEmail">Email address</label>
+                            <input class="form-control form-control-rounded" id="teacherEmail" name="teacherEmail" type="email" placeholder="name@school.edu" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="teacherPassword">Password</label>
+                            <input class="form-control form-control-rounded" id="teacherPassword" name="teacherPassword" type="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="teacherMobileNo">Mobile No</label>
+                            <input class="form-control form-control-rounded" id="teacherMobileNo" name="teacherMobileNo" type="text" placeholder="07X XXX XXXX" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="teacherAddress">Address</label>
+                            <input class="form-control form-control-rounded" id="teacherAddress" name="teacherAddress" type="text" placeholder="Street, city" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary btn-rounded" type="button" onclick="RegisterTeacherBtn_Click();">Register Teacher</button>
+                        <button class="btn btn-outline-secondary btn-rounded" type="button" onclick="ClearRoleForm('teacher', false);">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Parent -->
+                <div class="tab-pane fade" id="parentPane" role="tabpanel">
+                    <div class="form-group">
+                        <label for="parentUserName">Name</label>
+                        <input class="form-control form-control-rounded" id="parentUserName" name="parentUserName" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="parentEmail">Email address</label>
+                        <input class="form-control form-control-rounded" id="parentEmail" name="parentEmail" type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="parentPassword">Password</label>
+                        <input class="form-control form-control-rounded" id="parentPassword" name="parentPassword" type="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="parentMobileNo">Mobile No</label>
+                        <input class="form-control form-control-rounded" id="parentMobileNo" name="parentMobileNo" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="parentAddress">Address</label>
+                        <input class="form-control form-control-rounded" id="parentAddress" name="parentAddress" type="text" required>
+                    </div>
+                    <button class="btn btn-primary btn-rounded mt-2" type="button" onclick="RegisterParentBtn_Click();">Register Parent</button>
+                </div>
+
+                <!-- Student -->
+                <div class="tab-pane fade" id="studentPane" role="tabpanel">
+                    <div class="form-group">
+                        <label for="studentUserName">Name</label>
+                        <input class="form-control form-control-rounded" id="studentUserName" name="studentUserName" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentEmail">Email address</label>
+                        <input class="form-control form-control-rounded" id="studentEmail" name="studentEmail" type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentPassword">Password</label>
+                        <input class="form-control form-control-rounded" id="studentPassword" name="studentPassword" type="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentMobileNo">Mobile No</label>
+                        <input class="form-control form-control-rounded" id="studentMobileNo" name="studentMobileNo" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentAddress">Address</label>
+                        <input class="form-control form-control-rounded" id="studentAddress" name="studentAddress" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentGrade">Grade</label>
+                        <input class="form-control form-control-rounded" id="studentGrade" name="studentGrade" type="text" required>
+                    </div>
+                    <button class="btn btn-primary btn-rounded mt-2" type="button" onclick="RegisterStudentBtn_Click();">Register Student</button>
+                </div>
+
+            </div>
+        </div>
+        <!-- end of main-content -->
+    </div>
+
+</body>
+
+</html>

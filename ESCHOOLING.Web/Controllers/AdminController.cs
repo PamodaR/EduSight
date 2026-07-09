@@ -1,6 +1,8 @@
 using ECOMSYSTEM.Shared;
+using ECOMSYSTEM.Shared.Enum;
 using ECOMSYSTEM.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace ESCHOOLING.Web.Controllers
 {
@@ -39,7 +41,7 @@ namespace ESCHOOLING.Web.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public IActionResult AdminHome()
+        public async Task<IActionResult> AdminHome()
         {
             TeacherDashboadModel adminDashboadModel = new TeacherDashboadModel();
             adminDashboadModel.StudentCount = 0;
@@ -47,31 +49,161 @@ namespace ESCHOOLING.Web.Controllers
             adminDashboadModel.AdmintCount = 0;
             adminDashboadModel.TeacherCount = 0;
 
-            var users = _applicationUserService.GetAllUsers();
-            if (users.Count > 0)
-            {
-                foreach (var user in users)
-                {
-                    if (user.UserType == 0)
-                    {
-                        adminDashboadModel.AdmintCount++;
-                    }
-                    else if (user.UserType == 1)
-                    {
-                        adminDashboadModel.TeacherCount++;
-                    }
-                    else if (user.UserType == 2)
-                    {
-                        adminDashboadModel.StudentCount++;
-                    }
-                    else
-                    {
-                        adminDashboadModel.ParentCount++;
-                    }
-                }
-            }
+            var counts = await _applicationUserService.GetUserCountsByTypeAsync();
+            adminDashboadModel.AdmintCount = counts.GetValueOrDefault(0);
+            adminDashboadModel.TeacherCount = counts.GetValueOrDefault(1);
+            adminDashboadModel.StudentCount = counts.GetValueOrDefault(2);
+            adminDashboadModel.ParentCount = counts.Where(c => c.Key != 0 && c.Key != 1 && c.Key != 2).Sum(c => c.Value);
 
             return View(adminDashboadModel);
         }
+
+        #region Register (tabs page)
+
+        /// <summary>
+        /// Admin dashboard tabs page for registering Teachers, Parents, and Students separately.
+        /// </summary>
+        [HttpGet]
+        public IActionResult ManageUsers()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterTeacher(ApplicationUser userInfo)
+        {
+            return await RegisterRoleAsync(userInfo, (int)RoleEnums.Teacher);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterParent(ApplicationUser userInfo)
+        {
+            return await RegisterRoleAsync(userInfo, (int)RoleEnums.Parent);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterStudent(ApplicationUser userInfo)
+        {
+            return await RegisterRoleAsync(userInfo, (int)RoleEnums.Student);
+        }
+
+        private async Task<IActionResult> RegisterRoleAsync(ApplicationUser userInfo, int userType)
+        {
+            userInfo.UserType = userType;
+            userInfo.CreatedDate = DateTime.Now;
+            userInfo.IsActive = true;
+
+            var result = await _applicationUserService.RegisterUserAsync(userInfo);
+
+            if (result.UserId != 0 && result.Email != null)
+            {
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false });
+        }
+
+        #endregion
+
+        #region List
+
+        public async Task<IActionResult> TeacherList()
+        {
+            var results = await _applicationUserService.GetUsersByTypeAsync((int)RoleEnums.Teacher);
+            return View(results);
+        }
+
+        public async Task<IActionResult> ParentList()
+        {
+            var results = await _applicationUserService.GetUsersByTypeAsync((int)RoleEnums.Parent);
+            return View(results);
+        }
+
+        public async Task<IActionResult> StudentList()
+        {
+            var results = await _applicationUserService.GetUsersByTypeAsync((int)RoleEnums.Student);
+            return View(results);
+        }
+
+        #endregion
+
+        #region Edit
+
+        [HttpGet]
+        public async Task<IActionResult> EditTeacher(long id)
+        {
+            var user = await _applicationUserService.GetUserByIdAsync(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditTeacher(ApplicationUser userInfo)
+        {
+            return await UpdateRoleAsync(userInfo, nameof(TeacherList));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditParent(long id)
+        {
+            var user = await _applicationUserService.GetUserByIdAsync(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditParent(ApplicationUser userInfo)
+        {
+            return await UpdateRoleAsync(userInfo, nameof(ParentList));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditStudent(long id)
+        {
+            var user = await _applicationUserService.GetUserByIdAsync(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditStudent(ApplicationUser userInfo)
+        {
+            return await UpdateRoleAsync(userInfo, nameof(StudentList));
+        }
+
+        private async Task<IActionResult> UpdateRoleAsync(ApplicationUser userInfo, string redirectAction)
+        {
+            var result = await _applicationUserService.UpdateUserAsync(userInfo);
+            TempData["Message"] = (result.UserId != 0) ? "Updated successfully." : "Update failed.";
+            return RedirectToAction(redirectAction);
+        }
+
+        #endregion
+
+        #region Delete (soft delete)
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteTeacher(long id)
+        {
+            return await DeactivateRoleAsync(id, nameof(TeacherList));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteParent(long id)
+        {
+            return await DeactivateRoleAsync(id, nameof(ParentList));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteStudent(long id)
+        {
+            return await DeactivateRoleAsync(id, nameof(StudentList));
+        }
+
+        private async Task<IActionResult> DeactivateRoleAsync(long id, string redirectAction)
+        {
+            var result = await _applicationUserService.DeactivateUserAsync(id);
+            TempData["Message"] = result ? "Deactivated successfully." : "Deactivation failed.";
+            return RedirectToAction(redirectAction);
+        }
+
+        #endregion
     }
 }

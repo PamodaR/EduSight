@@ -14,3 +14,9 @@ E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Database\bin\Deb
 E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.sqlproj.AssemblyReference.cache
 E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.dll
 E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.pdb
+E:\EduSight\EduSight\ESCHOOLING.Database\bin\Debug\ESCHOOLING.Database.dacpac
+E:\EduSight\EduSight\ESCHOOLING.Database\bin\Debug\ESCHOOLING.Database.dll
+E:\EduSight\EduSight\ESCHOOLING.Database\bin\Debug\ESCHOOLING.Database.pdb
+E:\EduSight\EduSight\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.sqlproj.AssemblyReference.cache
+E:\EduSight\EduSight\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.dll
+E:\EduSight\EduSight\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.pdb

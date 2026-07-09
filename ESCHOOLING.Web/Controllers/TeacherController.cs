@@ -1,12 +1,13 @@
-﻿using ECOMSYSTEM.Shared;
+using ECOMSYSTEM.Shared;
 using ECOMSYSTEM.Shared.Models;
 using ECOMSYSTEM.Web.Services;
+using ESCHOOLING.Shared;
 using ESCHOOLING.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Linq.Expressions;
-using System.Net.Http.Headers;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ESCHOOLING.Web.Controllers
@@ -33,20 +34,25 @@ namespace ESCHOOLING.Web.Controllers
         /// </value>
         private readonly IWebHostEnvironment _webHostEnvironment;
         /// <summary>
+        /// The marks service
+        /// </summary>
+        private readonly IMarksService _marksService;
+        /// <summary>
         /// Initializes a new instance of the <see cref="AdminController"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="applicatioUserService">The applicatio user service.</param>
         /// <param name="config">The configuration.</param>
-        public TeacherController(ILogger<TeacherController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment)
+        public TeacherController(ILogger<TeacherController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, IMarksService marksService)
         {
             _logger = logger;
             _applicationUserService = applicatioUserService;
             _config = config;
             _webHostEnvironment = webHostEnvironment;
+            _marksService = marksService;
         }
 
-        public IActionResult TeacherHome()
+        public async Task<IActionResult> TeacherHome()
         {
             TeacherDashboadModel teacherDashboadModel = new TeacherDashboadModel();
             teacherDashboadModel.StudentCount = 0;
@@ -54,29 +60,11 @@ namespace ESCHOOLING.Web.Controllers
             teacherDashboadModel.AdmintCount = 0;
             teacherDashboadModel.TeacherCount = 0;
 
-            var users = _applicationUserService.GetAllUsers();
-            if (users.Count > 0)
-            {
-                foreach (var user in users)
-                {
-                    if (user.UserType == 0)
-                    {
-                        teacherDashboadModel.AdmintCount++;
-                    }
-                    else if (user.UserType == 1)
-                    {
-                        teacherDashboadModel.TeacherCount++;
-                    }
-                    else if (user.UserType == 2)
-                    {
-                        teacherDashboadModel.StudentCount++;
-                    }
-                    else
-                    {
-                        teacherDashboadModel.ParentCount++;
-                    }
-                }
-            }
+            var counts = await _applicationUserService.GetUserCountsByTypeAsync();
+            teacherDashboadModel.AdmintCount = counts.GetValueOrDefault(0);
+            teacherDashboadModel.TeacherCount = counts.GetValueOrDefault(1);
+            teacherDashboadModel.StudentCount = counts.GetValueOrDefault(2);
+            teacherDashboadModel.ParentCount = counts.Where(c => c.Key != 0 && c.Key != 1 && c.Key != 2).Sum(c => c.Value);
 
             return View(teacherDashboadModel);
         }
@@ -86,9 +74,9 @@ namespace ESCHOOLING.Web.Controllers
             return View();
         }
 
-        public IActionResult SaveStudent(ApplicationUser studentInfo)
+        public async Task<IActionResult> SaveStudent(ApplicationUser studentInfo)
         {
-            var result = _applicationUserService.RegisterUser(studentInfo);
+            var result = await _applicationUserService.RegisterUserAsync(studentInfo);
 
             if (result.UserId != 0 && result.Email != null)
             {
@@ -108,10 +96,9 @@ namespace ESCHOOLING.Web.Controllers
         /// Views the user list.
         /// </summary>
         /// <returns></returns>
-        public IActionResult ViewStudentList()
+        public async Task<IActionResult> ViewStudentList()
         {
-            var results = _applicationUserService.GetAllUsers();
-            results.RemoveAll(user => user.UserType == 0 || user.UserType == 1 || user.UserType == 3);
+            var results = await _applicationUserService.GetUsersExcludingTypesAsync(0, 1, 3);
             return View(results);
         }
 
@@ -119,28 +106,27 @@ namespace ESCHOOLING.Web.Controllers
         /// Views the user list.
         /// </summary>
         /// <returns></returns>
-        public IActionResult MarkAttendance()
+        public async Task<IActionResult> MarkAttendance()
         {
-            var results = _applicationUserService.GetAllUsers();
-            results.RemoveAll(user => user.UserType == 0 || user.UserType == 1 || user.UserType == 3);
+            var results = await _applicationUserService.GetUsersExcludingTypesAsync(0, 1, 3);
             return View(results);
         }
 
-        public IActionResult SearchForAttendance(int grade)
+        public async Task<IActionResult> SearchForAttendance(int grade)
         {
-            var results = _applicationUserService.Search(grade);
+            var results = await _applicationUserService.SearchAsync(grade);
             return View("MarkAttendance", results);
         }
 
-        public IActionResult SearchForStudents(int grade)
+        public async Task<IActionResult> SearchForStudents(int grade)
         {
-            var results = _applicationUserService.Search(grade);
+            var results = await _applicationUserService.SearchAsync(grade);
             return View("ViewStudentList", results);
         }
 
-        public IActionResult UpdateAttendance(Attendance attendanceObj)
+        public async Task<IActionResult> UpdateAttendance(Attendance attendanceObj)
         {
-            var result = _applicationUserService.UpdateAttendance(attendanceObj);
+            var result = await _applicationUserService.UpdateAttendanceAsync(attendanceObj);
             if(result != null)
             {
                 return Json(new
@@ -155,33 +141,32 @@ namespace ESCHOOLING.Web.Controllers
             });
         }
 
-        public IActionResult ViewAttendanceList()
+        public async Task<IActionResult> ViewAttendanceList()
         {
-            var results = _applicationUserService.GetAllUsers();
-            results.RemoveAll(user => user.UserType == 0 || user.UserType == 1 || user.UserType == 3);
+            var results = await _applicationUserService.GetUsersExcludingTypesAsync(0, 1, 3);
             return View(results);
         }
 
-        public IActionResult SearchForStudentsId(long id)
+        public async Task<IActionResult> SearchForStudentsId(long id)
         {
-            var results = _applicationUserService.SearchById(id);
+            var results = await _applicationUserService.SearchByIdAsync(id);
             return View("ViewAttendanceList", results);
         }
 
-        public IActionResult SearchForMonth(string date)
+        public async Task<IActionResult> SearchForMonth(string date)
         {
-            var results = _applicationUserService.SearchForMonth(date);
+            var results = await _applicationUserService.SearchForMonthAsync(date);
             return View("ViewAttendanceDetails", results);
         }
 
-        public IActionResult ViewAttendanceDetails(long id, string date = null)
+        public async Task<IActionResult> ViewAttendanceDetails(long id, string date = null)
         {
             if(date == null)
             {
                 date = DateTime.Today.ToString(("yyyy-MM"));
             }
-             
-            var results = _applicationUserService.GetAttendanceList(id, date);
+
+            var results = await _applicationUserService.GetAttendanceListAsync(id, date);
             return View("ViewAttendanceDetails", results);
         }
 
@@ -190,24 +175,42 @@ namespace ESCHOOLING.Web.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Placeholder prediction endpoint. Returns the average of the three prior test marks
+        /// as a stand-in result until the trained ML model is wired in to replace this.
+        /// </summary>
         [HttpPost]
-        public async Task<IActionResult> PredictMark(int studyHours)
+        public IActionResult PredictMark(long studentId, string subject, double mark1, double mark2, double mark3)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:5000");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var placeholderPrediction = Math.Round((mark1 + mark2 + mark3) / 3, 1);
 
-                var response = await client.PostAsJsonAsync("/predict", new { StudyHours = studyHours });
-                if (response.IsSuccessStatusCode)
-                {
-                    var predictedMark = await response.Content.ReadAsStringAsync();
-                    ViewBag.PredictedMark = predictedMark;
-                }
+            return Json(new
+            {
+                success = true,
+                predictedMark = placeholderPrediction
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveMark(long studentId, string subject, string predictedMark)
+        {
+            var markObject = new Marks
+            {
+                StudentId = studentId,
+                Subject = subject,
+                PredictedMark = predictedMark,
+                IsActive = true,
+                CreatedDate = DateTime.Now
+            };
+
+            var result = await _marksService.SaveMarkAsync(markObject);
+
+            if (result.Id != 0)
+            {
+                return Json(new { success = true });
             }
 
-            return View("MarkPrediction");
+            return Json(new { success = false });
         }
     }
 }

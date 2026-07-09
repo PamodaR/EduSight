@@ -1,0 +1,63 @@
+@model ECOMSYSTEM.Shared.Models.Counselor
+@{
+    Layout = "_TeacherLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Counselor | EduSight</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet">
+</head>
+
+<body class="text-left">
+
+    <div class="main-content">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="">Add Counselor</a></li>
+                <li>Admin</li>
+            </ul>
+        </div>
+        <div class="col-lg-8">
+            <form asp-action="Create" method="post" class="form-panel">
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input class="form-control form-control-rounded" asp-for="Name" placeholder="e.g. Dilani Fernando" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Email">Email address</label>
+                        <input class="form-control form-control-rounded" asp-for="Email" placeholder="name@school.edu" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label asp-for="MobileNo">Mobile No</label>
+                        <input class="form-control form-control-rounded" asp-for="MobileNo" placeholder="07X XXX XXXX" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Address">Address</label>
+                        <input class="form-control form-control-rounded" asp-for="Address" placeholder="Street, city" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Specialization">Specialization</label>
+                        <input class="form-control form-control-rounded" asp-for="Specialization" placeholder="e.g. Career Guidance">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-rounded" type="submit">Add</button>
+                </div>
+            </form>
+        </div>
+        <!-- end of main-content -->
+    </div>
+
+</body>
+
+</html>

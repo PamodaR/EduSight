@@ -19,6 +19,7 @@
 
     <!-- Sweet alert -->
     <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="~/js/RegisterDoc.js"></script>
 
@@ -36,34 +37,40 @@
                 <li>Teacher</li>
             </ul>
         </div>
-        <div class="col-lg-6">
-
-            <div class="form-group">
-                <label for="username"> name</label>
-                <input class="form-control form-control-rounded" id="userName" name="userName" type="text" required>
+        <div class="col-lg-8">
+            <div class="form-panel">
+                <div class="form-group">
+                    <label for="username"> name</label>
+                    <input class="form-control form-control-rounded" id="userName" name="userName" type="text" placeholder="e.g. Nimal Silva" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="email">Email address</label>
+                        <input class="form-control form-control-rounded" id="email" name="email" type="email" placeholder="name@school.edu" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control form-control-rounded" id="password" name="password" type="password" placeholder="••••••••" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="MobileNo">Mobile No</label>
+                        <input class="form-control form-control-rounded" id="mobileNo" name="mobileNo" type="text" placeholder="07X XXX XXXX" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="Address">Address</label>
+                        <input class="form-control form-control-rounded" id="address" name="address" type="text" placeholder="Street, city" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Address">Grade</label>
+                    <input class="form-control form-control-rounded" id="grade" name="grade" type="text" placeholder="e.g. 10" required>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-rounded" onclick="StudentRegistrationBtn_Click(2);"> Add</button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input class="form-control form-control-rounded" id="email" name="email" type="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input class="form-control form-control-rounded" id="password" name="password" type="password" required>
-            </div>
-            <div class="form-group">
-                <label for="MobileNo">Mobile No</label>
-                <input class="form-control form-control-rounded" id="mobileNo" name="mobileNo" type="text" required>
-            </div>
-            <div class="form-group">
-                <label for="Address">Address</label>
-                <input class="form-control form-control-rounded" id="address" name="address" type="text" required>
-            </div>
-            <div class="form-group">
-                <label for="Address">Grade</label>
-                <input class="form-control form-control-rounded" id="grade" name="grade" type="text" required>
-            </div>
-            <button class="btn btn-primary btn-block btn-rounded mt-2 col-lg-4 float-right" onclick="StudentRegistrationBtn_Click(2);"> Add</button>
-
         </div>
         <!-- end of main-content -->
     </div>
