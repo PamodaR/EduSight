@@ -60,7 +60,10 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="teacherPassword">Password</label>
-                            <input class="form-control form-control-rounded" id="teacherPassword" name="teacherPassword" type="password" placeholder="••••••••" required>
+                            <div class="password-field">
+                                <input class="form-control form-control-rounded" id="teacherPassword" name="teacherPassword" type="password" placeholder="••••••••" required>
+                                <i class="i-Eye password-toggle-icon" title="Show password" onclick="TogglePasswordVisibility('teacherPassword', this);"></i>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -83,54 +86,90 @@
                 <div class="tab-pane fade" id="parentPane" role="tabpanel">
                     <div class="form-group">
                         <label for="parentUserName">Name</label>
-                        <input class="form-control form-control-rounded" id="parentUserName" name="parentUserName" type="text" required>
+                        <input class="form-control form-control-rounded" id="parentUserName" name="parentUserName" type="text" placeholder="e.g. Nimal Silva" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="parentEmail">Email address</label>
+                            <input class="form-control form-control-rounded" id="parentEmail" name="parentEmail" type="email" placeholder="name@school.edu" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="parentPassword">Password</label>
+                            <div class="password-field">
+                                <input class="form-control form-control-rounded" id="parentPassword" name="parentPassword" type="password" placeholder="••••••••" required>
+                                <i class="i-Eye password-toggle-icon" title="Show password" onclick="TogglePasswordVisibility('parentPassword', this);"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="parentMobileNo">Mobile No</label>
+                            <input class="form-control form-control-rounded" id="parentMobileNo" name="parentMobileNo" type="text" placeholder="07X XXX XXXX" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="parentAddress">Address</label>
+                            <input class="form-control form-control-rounded" id="parentAddress" name="parentAddress" type="text" placeholder="Street, city" required>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="parentEmail">Email address</label>
-                        <input class="form-control form-control-rounded" id="parentEmail" name="parentEmail" type="email" required>
+                        <label for="parentChildStudentId">Child (Student)</label>
+                        <select class="form-control form-control-rounded" id="parentChildStudentId" name="parentChildStudentId">
+                            <option value="">-- No child linked yet --</option>
+                            @foreach (var student in (List<ECOMSYSTEM.Shared.Models.ApplicationUser>)ViewBag.Students)
+                            {
+                                <option value="@student.UserId">@student.Username (@student.Email)</option>
+                            }
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="parentPassword">Password</label>
-                        <input class="form-control form-control-rounded" id="parentPassword" name="parentPassword" type="password" required>
+                    <div class="form-actions">
+                        <button class="btn btn-primary btn-rounded" type="button" onclick="RegisterParentBtn_Click();">Register Parent</button>
+                        <button class="btn btn-outline-secondary btn-rounded" type="button" onclick="ClearRoleForm('parent', false);">Cancel</button>
                     </div>
-                    <div class="form-group">
-                        <label for="parentMobileNo">Mobile No</label>
-                        <input class="form-control form-control-rounded" id="parentMobileNo" name="parentMobileNo" type="text" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="parentAddress">Address</label>
-                        <input class="form-control form-control-rounded" id="parentAddress" name="parentAddress" type="text" required>
-                    </div>
-                    <button class="btn btn-primary btn-rounded mt-2" type="button" onclick="RegisterParentBtn_Click();">Register Parent</button>
                 </div>
 
                 <!-- Student -->
                 <div class="tab-pane fade" id="studentPane" role="tabpanel">
                     <div class="form-group">
                         <label for="studentUserName">Name</label>
-                        <input class="form-control form-control-rounded" id="studentUserName" name="studentUserName" type="text" required>
+                        <input class="form-control form-control-rounded" id="studentUserName" name="studentUserName" type="text" placeholder="e.g. Kasun Fernando" required>
                     </div>
-                    <div class="form-group">
-                        <label for="studentEmail">Email address</label>
-                        <input class="form-control form-control-rounded" id="studentEmail" name="studentEmail" type="email" required>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="studentEmail">Email address</label>
+                            <input class="form-control form-control-rounded" id="studentEmail" name="studentEmail" type="email" placeholder="name@school.edu" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="studentPassword">Password</label>
+                            <div class="password-field">
+                                <input class="form-control form-control-rounded" id="studentPassword" name="studentPassword" type="password" placeholder="••••••••" required>
+                                <i class="i-Eye password-toggle-icon" title="Show password" onclick="TogglePasswordVisibility('studentPassword', this);"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="studentPassword">Password</label>
-                        <input class="form-control form-control-rounded" id="studentPassword" name="studentPassword" type="password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="studentMobileNo">Mobile No</label>
-                        <input class="form-control form-control-rounded" id="studentMobileNo" name="studentMobileNo" type="text" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="studentAddress">Address</label>
-                        <input class="form-control form-control-rounded" id="studentAddress" name="studentAddress" type="text" required>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="studentMobileNo">Mobile No</label>
+                            <input class="form-control form-control-rounded" id="studentMobileNo" name="studentMobileNo" type="text" placeholder="07X XXX XXXX" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="studentAddress">Address</label>
+                            <input class="form-control form-control-rounded" id="studentAddress" name="studentAddress" type="text" placeholder="Street, city" required>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="studentGrade">Grade</label>
-                        <input class="form-control form-control-rounded" id="studentGrade" name="studentGrade" type="text" required>
+                        <select class="form-control form-control-rounded" id="studentGrade" name="studentGrade" required>
+                            <option value="" selected disabled>Select grade</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
                     </div>
-                    <button class="btn btn-primary btn-rounded mt-2" type="button" onclick="RegisterStudentBtn_Click();">Register Student</button>
+                    <div class="form-actions">
+                        <button class="btn btn-primary btn-rounded" type="button" onclick="RegisterStudentBtn_Click();">Register Student</button>
+                        <button class="btn btn-outline-secondary btn-rounded" type="button" onclick="ClearRoleForm('student', true);">Cancel</button>
+                    </div>
                 </div>
 
             </div>

@@ -1,4 +1,4 @@
-﻿@model ECOMSYSTEM.Shared.Models.TeacherDashboadModel
+@model ESCHOOLING.Shared.Models.TeacherDashboardModel
 @{
     Layout = "_TeacherLayout";
 }
@@ -21,60 +21,58 @@
     <!-- ============ Body content start ============= -->
     <div class="main-content">
         <div class="breadcrumb">
-            @*<h1 class="mr-2">Version 1</h1>*@
             <ul>
                 <li><a href="">Dashboard</a></li>
-                <li>Admin</li>
+                <li>Teacher</li>
             </ul>
         </div>
         <div class="col-lg-12">
             <div class="row">
                 <!-- ICON BG-->
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
                         <div class="card-body text-center">
-                            <i class="i-Add-User"></i>
+                            <i class="i-Checked-User"></i>
                             <div class="content">
-                                <p class="text-muted mt-2 mb-0">Students</p>
-                                <p class="lead text-primary text-24 mb-2">@Model.StudentCount</p>
+                                <p class="text-muted mt-2 mb-0">Students Managed</p>
+                                <p class="lead text-primary text-24 mb-2">@Model.TotalStudentsManaged</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="card card-icon-bg card-icon-bg-success o-hidden mb-4">
                         <div class="card-body text-center">
-                            <i class="i-Financial"></i>
+                            <i class="i-Calendar-4"></i>
                             <div class="content">
-                                <p class="text-muted mt-2 mb-0">Parents</p>
-                                <p class="lead text-primary text-24 mb-2">@Model.ParentCount</p>
+                                <p class="text-muted mt-2 mb-0">Today's Attendance</p>
+                                <p class="lead text-success text-24 mb-2">@Model.TodayAttendanceRate%</p>
+                                <p class="text-muted mb-0" style="font-size:12px">@Model.TodayPresentCount / @Model.TodayTotalMarkedCount marked present</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <div class="card-body text-center">
-                            <i class="i-Checkout-Basket"></i>
-                            <div class="content">
-                                <p class="text-muted mt-2 mb-0">Teachers</p>
-                                <p class="lead text-primary text-24 mb-2">@Model.TeacherCount</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <div class="card-body text-center">
-                            <i class="i-Money-2"></i>
-                            <div class="content">
-                                <p class="text-muted mt-2 mb-0">Admin</p>
-                                <p class="lead text-primary text-24 mb-2">@Model.AdmintCount</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="card o-hidden mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title">Class Attendance Trend</h4>
+                            <p class="text-muted">Last 6 months</p>
+                            <div id="attendanceTrendChart" style="height:300px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="card o-hidden mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title">Student Marks Distribution</h4>
+                            <p class="text-muted">By grade band</p>
+                            <div id="marksDistributionChart" style="height:300px"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- end of main-content -->
@@ -83,3 +81,59 @@
 </body>
 
 </html>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var attendanceMonths = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AttendanceTrendMonths));
+            var attendanceRates = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AttendanceTrendRates));
+            var marksBuckets = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.MarksDistributionBuckets));
+            var marksCounts = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.MarksDistributionCounts));
+
+            var attendanceEl = document.getElementById('attendanceTrendChart');
+            if (attendanceEl) {
+                var attendanceChart = echarts.init(attendanceEl);
+                attendanceChart.setOption({
+                    color: ['#4caf50'],
+                    grid: { left: '3%', right: '5%', bottom: '3%', top: '10%', containLabel: true },
+                    tooltip: { trigger: 'axis', backgroundColor: 'rgba(0, 0, 0, .8)', valueFormatter: function (value) { return value + '%'; } },
+                    xAxis: { type: 'category', data: attendanceMonths, boundaryGap: false },
+                    yAxis: { type: 'value', min: 0, max: 100, axisLabel: { formatter: '{value}%' } },
+                    series: [{
+                        name: 'Attendance Rate',
+                        type: 'line',
+                        smooth: true,
+                        data: attendanceRates,
+                        areaStyle: { color: 'rgba(76, 175, 80, .2)' },
+                        lineStyle: { color: '#4caf50' },
+                        itemStyle: { color: '#4caf50' }
+                    }]
+                });
+                $(window).on('resize', function () {
+                    setTimeout(function () { attendanceChart.resize(); }, 500);
+                });
+            }
+
+            var marksEl = document.getElementById('marksDistributionChart');
+            if (marksEl) {
+                var marksChart = echarts.init(marksEl);
+                marksChart.setOption({
+                    color: ['#663399'],
+                    grid: { left: '3%', right: '5%', bottom: '3%', top: '10%', containLabel: true },
+                    tooltip: { trigger: 'axis', backgroundColor: 'rgba(0, 0, 0, .8)' },
+                    xAxis: { type: 'category', data: marksBuckets },
+                    yAxis: { type: 'value', minInterval: 1 },
+                    series: [{
+                        name: 'Students',
+                        type: 'bar',
+                        data: marksCounts,
+                        itemStyle: { color: '#663399' }
+                    }]
+                });
+                $(window).on('resize', function () {
+                    setTimeout(function () { marksChart.resize(); }, 500);
+                });
+            }
+        });
+    </script>
+}

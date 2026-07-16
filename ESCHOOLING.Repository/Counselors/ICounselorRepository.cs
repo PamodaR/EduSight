@@ -11,5 +11,10 @@ namespace ECOMSYSTEM.Repository.Counselors
         Task<Counselor> AddCounselorAsync(Counselor counselorObject);
         Task<Counselor> UpdateCounselorAsync(Counselor counselorObject);
         Task<bool> DeleteCounselorAsync(long id);
+
+        /// <summary>
+        /// Gets the count of active counselors.
+        /// </summary>
+        Task<int> GetActiveCounselorCountAsync();
     }
 }

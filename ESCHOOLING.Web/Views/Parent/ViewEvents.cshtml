@@ -22,12 +22,10 @@
 
     <div class="main-content">
         <div class="breadcrumb">
-            @*<h1 class="mr-2">Version 1</h1>*@
             <ul>
                 <li><a href="">View Events List</a></li>
                 <li>Student</li>
                 <li>
-                    <input type="button" class="btn btn-success" value="Export to Excel" onclick="location.href='@Url.Action("ExportToExcel", "Admin")'" />
                 </li>
             </ul>
            
@@ -66,10 +64,6 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Place)
                                     </td>
-        
-                                    @*<td>
-                                <a class="text-success mr-2" href="#"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#"><i class="nav-icon i-Close-Window font-weight-bold"></i></a>
-                                </td>*@
                                 </tr>
                             }
 

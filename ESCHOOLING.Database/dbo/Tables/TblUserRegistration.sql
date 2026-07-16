@@ -11,6 +11,8 @@
     [CreatedDate] DATETIME NULL,
     [Grade] INT NULL,
     [IsPresent] BIT NULL,
+    [ChildStudentId] BIGINT NULL,
     INDEX IX_TblUserRegistration_Email NONCLUSTERED (Email),
-    INDEX IX_TblUserRegistration_UserType_Grade NONCLUSTERED (UserType, Grade)
+    INDEX IX_TblUserRegistration_UserType_Grade NONCLUSTERED (UserType, Grade),
+    FOREIGN KEY (ChildStudentId) REFERENCES TblUserRegistration(UserId)
 )

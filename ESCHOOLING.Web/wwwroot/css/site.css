@@ -280,6 +280,60 @@ select.form-control {
     background-position: right 16px center !important;
     background-size: 16px !important;
     padding-right: 40px !important;
+    height: auto !important;
+    min-height: 44px !important;
+    line-height: 1.5 !important;
+    color: var(--text-main) !important;
+}
+
+/* Breadcrumb search-by dropdowns need room for their label text next to the arrow icon */
+.breadcrumb select.form-control {
+    min-width: 190px !important;
+    width: auto !important;
+}
+
+/* Password visibility toggle */
+.password-field {
+    position: relative !important;
+}
+
+.password-field .form-control {
+    padding-right: 44px !important;
+}
+
+.password-toggle-icon {
+    position: absolute !important;
+    top: 50% !important;
+    right: 16px !important;
+    transform: translateY(-50%) !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    color: #94a3b8 !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    transition: color 0.2s ease-in-out !important;
+}
+
+.password-toggle-icon:hover {
+    color: var(--primary) !important;
+}
+
+/* No dedicated "eye-slash" glyph in the iconsmind set in use, so the visible
+   state is drawn as the same eye icon with a slash overlay. */
+.password-toggle-icon--visible {
+    color: var(--primary) !important;
+}
+
+.password-toggle-icon--visible::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 1px !important;
+    top: 50% !important;
+    width: 18px !important;
+    height: 1.5px !important;
+    background: currentColor !important;
+    transform: translateY(-50%) rotate(-45deg) !important;
+    border-radius: 1px !important;
 }
 
 /* Table modern designs */

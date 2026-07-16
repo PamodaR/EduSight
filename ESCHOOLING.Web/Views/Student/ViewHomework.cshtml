@@ -1,0 +1,67 @@
+@model IEnumerable<ESCHOOLING.Shared.Models.Homework>
+@{
+    Layout = "_TeacherLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>View Homework | EduSight</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet" />
+    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet" />
+    <link href="../../dist-assets/css/plugins/perfect-scrollbar.min.css" rel="stylesheet" />
+</head>
+
+<body class="text-left">
+
+    <div class="main-content">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="">View Homework</a></li>
+                <li>Student</li>
+            </ul>
+        </div>
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Subject</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Due Date</th>
+                                <th scope="col">Posted On</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Subject)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DueDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end of main-content -->
+    </div>
+</body>
+
+</html>

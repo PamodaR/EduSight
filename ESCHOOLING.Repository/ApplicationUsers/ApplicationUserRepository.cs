@@ -152,6 +152,108 @@ namespace ECOMSYSTEM.Repository.ApplicationUsers
         }
 
         /// <summary>
+        /// Gets new-registration counts grouped by month ("yyyy-MM"), for the last N months.
+        /// </summary>
+        public async Task<Dictionary<string, int>> GetRegistrationCountsByMonthAsync(int months)
+        {
+            try
+            {
+                var cutoff = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).AddMonths(-(months - 1));
+
+                var registrationDates = await _dbContext.TblUserRegistrations.AsNoTracking()
+                    .Where(u => u.CreatedDate != null && u.CreatedDate >= cutoff)
+                    .Select(u => u.CreatedDate!.Value)
+                    .ToListAsync();
+
+                return registrationDates
+                    .GroupBy(d => d.ToString("yyyy-MM"))
+                    .ToDictionary(g => g.Key, g => g.Count());
+            }
+            catch (Exception eX)
+            {
+                _logger.LogError(eX, "GetRegistrationCountsByMonthAsync failed for Months={Months}", months);
+                return new Dictionary<string, int>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the school-wide attendance rate (% present) grouped by month ("yyyy-MM"), for the last N months.
+        /// </summary>
+        public async Task<Dictionary<string, double>> GetAttendanceRateByMonthAsync(int months)
+        {
+            try
+            {
+                var monthKeys = Enumerable.Range(0, months)
+                    .Select(i => DateTime.Today.AddMonths(-i).ToString("yyyy-MM"))
+                    .ToList();
+
+                var records = await _dbContext.TblAttendances.AsNoTracking()
+                    .Where(a => a.IsActive == true && a.MonthForSearch != null && monthKeys.Contains(a.MonthForSearch))
+                    .Select(a => new { a.MonthForSearch, a.IsPresent })
+                    .ToListAsync();
+
+                return records
+                    .GroupBy(a => a.MonthForSearch!)
+                    .ToDictionary(g => g.Key, g => Math.Round(g.Count(a => a.IsPresent == true) * 100.0 / g.Count(), 1));
+            }
+            catch (Exception eX)
+            {
+                _logger.LogError(eX, "GetAttendanceRateByMonthAsync failed for Months={Months}", months);
+                return new Dictionary<string, double>();
+            }
+        }
+
+        /// <summary>
+        /// Gets today's school-wide attendance status: how many students have been marked, and how many of those are present.
+        /// </summary>
+        public async Task<(int Present, int TotalMarked)> GetTodayAttendanceStatusAsync()
+        {
+            try
+            {
+                var todayRecords = await _dbContext.TblAttendances.AsNoTracking()
+                    .Where(a => a.IsActive == true && a.Date == DateTime.Today)
+                    .Select(a => a.IsPresent)
+                    .ToListAsync();
+
+                var totalMarked = todayRecords.Count;
+                var present = todayRecords.Count(p => p == true);
+                return (present, totalMarked);
+            }
+            catch (Exception eX)
+            {
+                _logger.LogError(eX, "GetTodayAttendanceStatusAsync failed");
+                return (0, 0);
+            }
+        }
+
+        /// <summary>
+        /// Gets a single student's attendance rate (% present) grouped by month ("yyyy-MM"), for the last N months.
+        /// </summary>
+        public async Task<Dictionary<string, double>> GetAttendanceRateByMonthForStudentAsync(long studentId, int months)
+        {
+            try
+            {
+                var monthKeys = Enumerable.Range(0, months)
+                    .Select(i => DateTime.Today.AddMonths(-i).ToString("yyyy-MM"))
+                    .ToList();
+
+                var records = await _dbContext.TblAttendances.AsNoTracking()
+                    .Where(a => a.IsActive == true && a.StudentId == studentId && a.MonthForSearch != null && monthKeys.Contains(a.MonthForSearch))
+                    .Select(a => new { a.MonthForSearch, a.IsPresent })
+                    .ToListAsync();
+
+                return records
+                    .GroupBy(a => a.MonthForSearch!)
+                    .ToDictionary(g => g.Key, g => Math.Round(g.Count(a => a.IsPresent == true) * 100.0 / g.Count(), 1));
+            }
+            catch (Exception eX)
+            {
+                _logger.LogError(eX, "GetAttendanceRateByMonthForStudentAsync failed for StudentId={StudentId}, Months={Months}", studentId, months);
+                return new Dictionary<string, double>();
+            }
+        }
+
+        /// <summary>
         /// Gets all users.
         /// </summary>
         /// <returns></returns>
@@ -325,6 +427,7 @@ namespace ECOMSYSTEM.Repository.ApplicationUsers
                 result.MobileNo = userObject.MobileNo;
                 result.IsActive = userObject.IsActive;
                 result.Grade = userObject.Grade;
+                result.ChildStudentId = userObject.ChildStudentId;
 
                 await _dbContext.SaveChangesAsync();
 

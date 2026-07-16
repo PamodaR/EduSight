@@ -1,6 +1,7 @@
 using ECOMSYSTEM.Shared;
 using ECOMSYSTEM.Shared.Enum;
 using ECOMSYSTEM.Shared.Models;
+using ESCHOOLING.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -28,34 +29,49 @@ namespace ESCHOOLING.Web.Controllers
         /// </value>
         private readonly IWebHostEnvironment _webHostEnvironment;
         /// <summary>
+        /// The counselor service
+        /// </summary>
+        private readonly ICounselorService _counselorService;
+        /// <summary>
         /// Initializes a new instance of the <see cref="AdminController"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="applicatioUserService">The applicatio user service.</param>
         /// <param name="config">The configuration.</param>
-        public AdminController(ILogger<AdminController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment)
+        public AdminController(ILogger<AdminController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, ICounselorService counselorService)
         {
             _logger = logger;
             _applicationUserService = applicatioUserService;
             _config = config;
             _webHostEnvironment = webHostEnvironment;
+            _counselorService = counselorService;
         }
 
         public async Task<IActionResult> AdminHome()
         {
-            TeacherDashboadModel adminDashboadModel = new TeacherDashboadModel();
-            adminDashboadModel.StudentCount = 0;
-            adminDashboadModel.ParentCount = 0;
-            adminDashboadModel.AdmintCount = 0;
-            adminDashboadModel.TeacherCount = 0;
+            const int months = 6;
+            var model = new AdminDashboardModel();
 
             var counts = await _applicationUserService.GetUserCountsByTypeAsync();
-            adminDashboadModel.AdmintCount = counts.GetValueOrDefault(0);
-            adminDashboadModel.TeacherCount = counts.GetValueOrDefault(1);
-            adminDashboadModel.StudentCount = counts.GetValueOrDefault(2);
-            adminDashboadModel.ParentCount = counts.Where(c => c.Key != 0 && c.Key != 1 && c.Key != 2).Sum(c => c.Value);
+            model.AdminCount = counts.GetValueOrDefault(0);
+            model.TeacherCount = counts.GetValueOrDefault(1);
+            model.StudentCount = counts.GetValueOrDefault(2);
+            model.ParentCount = counts.Where(c => c.Key != 0 && c.Key != 1 && c.Key != 2).Sum(c => c.Value);
+            model.CounselorCount = await _counselorService.GetActiveCounselorCountAsync();
 
-            return View(adminDashboadModel);
+            var registrationCounts = await _applicationUserService.GetRegistrationCountsByMonthAsync(months);
+            var attendanceRates = await _applicationUserService.GetAttendanceRateByMonthAsync(months);
+
+            for (var i = months - 1; i >= 0; i--)
+            {
+                var monthKey = DateTime.Today.AddMonths(-i).ToString("yyyy-MM");
+                model.RegistrationMonths.Add(monthKey);
+                model.RegistrationCounts.Add(registrationCounts.GetValueOrDefault(monthKey));
+                model.AttendanceMonths.Add(monthKey);
+                model.AttendanceRates.Add(attendanceRates.GetValueOrDefault(monthKey));
+            }
+
+            return View(model);
         }
 
         #region Register (tabs page)
@@ -64,8 +80,9 @@ namespace ESCHOOLING.Web.Controllers
         /// Admin dashboard tabs page for registering Teachers, Parents, and Students separately.
         /// </summary>
         [HttpGet]
-        public IActionResult ManageUsers()
+        public async Task<IActionResult> ManageUsers()
         {
+            ViewBag.Students = await _applicationUserService.GetUsersByTypeAsync((int)RoleEnums.Student);
             return View();
         }
 
@@ -146,6 +163,7 @@ namespace ESCHOOLING.Web.Controllers
         public async Task<IActionResult> EditParent(long id)
         {
             var user = await _applicationUserService.GetUserByIdAsync(id);
+            ViewBag.Students = await _applicationUserService.GetUsersByTypeAsync((int)RoleEnums.Student);
             return View(user);
         }
 

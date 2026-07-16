@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\ESCHOOLING.Web.props" />
-</Project>

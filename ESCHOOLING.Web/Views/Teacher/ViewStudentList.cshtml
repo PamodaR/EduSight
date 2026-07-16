@@ -22,13 +22,9 @@
 
     <div class="main-content">
         <div class="breadcrumb">
-            @*<h1 class="mr-2">Version 1</h1>*@
             <ul>
                 <li><a href="">View Student List</a></li>
-                <li>Student</li>
-                <li>
-             @*       <input type="button" class="btn btn-success" value="Export to Excel" onclick="location.href='@Url.Action("ExportToExcel", "Admin")'" />*@
-                </li>
+                <li>Teacher</li>
             </ul>
             <select class="form-control form-control-rounded mt-2 col-lg-2" value="" name="Grade" id="Grade">
                 <option value=0>Search By Grade</option>
@@ -93,13 +89,10 @@
                                         @Html.DisplayFor(modelItem => item.Grade)
                                     </td>
                                     <td>
-                                        <button class="btn btn-success" onclick="EditProductsBtn_Click(@item.UserId,'@item.Username');" type="button"><i class="nav-icon i-Pen-2"></i></button>
-                                        <button class="btn btn-danger" onclick="DeleteProductBtn_Click(@item.UserId,'@item.Username');" type="button"><i class="nav-icon i-Close-Window"></i></button>
+                                        <button class="btn btn-success" onclick="EditStudentBtn_Click(@item.UserId);" type="button"><i class="nav-icon i-Pen-2"></i></button>
+                                        <button class="btn btn-danger" onclick="DeleteStudentBtn_Click(@item.UserId,'@item.Username');" type="button"><i class="nav-icon i-Close-Window"></i></button>
 
                                     </td>
-                                    @*<td>
-                                <a class="text-success mr-2" href="#"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#"><i class="nav-icon i-Close-Window font-weight-bold"></i></a>
-                                </td>*@
                                 </tr>
                             }
 

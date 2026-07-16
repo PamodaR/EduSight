@@ -96,6 +96,21 @@ namespace ECOMSYSTEM.Repository.Counselors
             }
         }
 
+        /// <summary>
+        /// Gets the count of active counselors.
+        /// </summary>
+        public async Task<int> GetActiveCounselorCountAsync()
+        {
+            try
+            {
+                return await _dbContext.TblCounselors.AsNoTracking().CountAsync(c => c.IsActive == true);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
         public async Task<bool> DeleteCounselorAsync(long id)
         {
             try

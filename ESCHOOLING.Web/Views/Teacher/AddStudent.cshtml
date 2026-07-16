@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up | ECOM</title>
+    <title>Add Student | EduSight</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
     <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet">
 
@@ -31,7 +31,6 @@
     <!-- ============ Body content start ============= -->
     <div class="main-content">
         <div class="breadcrumb">
-            @*<h1 class="mr-2">Version 1</h1>*@
             <ul>
                 <li><a href="">Add Students</a></li>
                 <li>Teacher</li>
@@ -40,8 +39,8 @@
         <div class="col-lg-8">
             <div class="form-panel">
                 <div class="form-group">
-                    <label for="username"> name</label>
-                    <input class="form-control form-control-rounded" id="userName" name="userName" type="text" placeholder="e.g. Nimal Silva" required>
+                    <label for="userName">Name</label>
+                    <input class="form-control form-control-rounded" id="userName" name="userName" type="text" placeholder="e.g. Nimal Silva" autocomplete="off" required>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-group">
@@ -50,7 +49,10 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="password">Password</label>
-                        <input class="form-control form-control-rounded" id="password" name="password" type="password" placeholder="••••••••" required>
+                        <div class="password-field">
+                            <input class="form-control form-control-rounded" id="password" name="password" type="password" placeholder="••••••••" required>
+                            <i class="i-Eye password-toggle-icon" title="Show password" onclick="TogglePasswordVisibility('password', this);"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -64,11 +66,18 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Address">Grade</label>
-                    <input class="form-control form-control-rounded" id="grade" name="grade" type="text" placeholder="e.g. 10" required>
+                    <label for="grade">Grade</label>
+                    <select class="form-control form-control-rounded" id="grade" name="grade" required>
+                        <option value="" selected disabled>Select grade</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
                 </div>
                 <div class="form-actions">
-                    <button class="btn btn-primary btn-rounded" onclick="StudentRegistrationBtn_Click(2);"> Add</button>
+                    <button class="btn btn-primary btn-rounded" type="button" onclick="StudentRegistrationBtn_Click(2);">Add</button>
+                    <button class="btn btn-outline-secondary btn-rounded" type="button" onclick="Clear();">Cancel</button>
                 </div>
             </div>
         </div>

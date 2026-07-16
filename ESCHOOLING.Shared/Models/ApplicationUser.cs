@@ -61,6 +61,15 @@ namespace ECOMSYSTEM.Shared.Models
         /// </value>
         public bool? IsActive { get; set; }
         /// <summary>
+        /// Non-nullable view of <see cref="IsActive"/> for checkbox binding — asp-for's CheckBoxTagHelper
+        /// only supports bool/string, not bool?.
+        /// </summary>
+        public bool IsActiveChecked
+        {
+            get => IsActive ?? false;
+            set => IsActive = value;
+        }
+        /// <summary>
         /// Gets or sets the type of the user.
         /// </summary>
         /// <value>
@@ -76,5 +85,9 @@ namespace ECOMSYSTEM.Shared.Models
         public DateTime? CreatedDate { get; set; }
         public int Grade { get; set; }
         public bool? IsPresent { get; set; }
+        /// <summary>
+        /// For Parent-type users only: the linked child's (Student's) UserId.
+        /// </summary>
+        public long? ChildStudentId { get; set; }
     }
 }

@@ -6,7 +6,10 @@ using ECOMSYSTEM.Shared.Models;
 using ECOMSYSTEM.Web;
 using ECOMSYSTEM.Web.Services;
 using ESCHOOLING.DataAccess.EntityModel;
+using ESCHOOLING.Repository.StudentBehaviourEntries;
+using ESCHOOLING.Repository.StudentHomework;
 using ESCHOOLING.Repository.StudentMarks;
+using ESCHOOLING.Repository.StudentMarksEntries;
 using ESCHOOLING.Shared;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,9 +27,25 @@ builder.Services.AddScoped<ICounselorRepository, CounselorRepository>();
 builder.Services.AddScoped<ICounselorService, CounselorService>();
 builder.Services.AddScoped<IMarksRepository, MarksRepository>();
 builder.Services.AddScoped<IMarksService, MarksService>();
+builder.Services.AddScoped<IStudentMarksEntryRepository, StudentMarksEntryRepository>();
+builder.Services.AddScoped<IStudentMarksEntryService, StudentMarksEntryService>();
+builder.Services.AddScoped<IStudentBehaviourEntryRepository, StudentBehaviourEntryRepository>();
+builder.Services.AddScoped<IStudentBehaviourEntryService, StudentBehaviourEntryService>();
+builder.Services.AddScoped<IHomeworkRepository, HomeworkRepository>();
+builder.Services.AddScoped<IHomeworkService, HomeworkService>();
+builder.Services.AddSingleton<IOnnxMarkPredictionService, OnnxMarkPredictionService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
 var app = builder.Build();
+
+// Block startup until the ONNX model has finished loading, so the app doesn't start
+// accepting requests until it's already warm. Without this, the model would still load only
+// once (it's a singleton), but the very first PredictMark request after startup would pay the
+// full cold-load cost — unacceptable for a live demo where that request needs to be fast.
+var onnxMarkPredictionService = app.Services.GetRequiredService<IOnnxMarkPredictionService>();
+await onnxMarkPredictionService.WarmupAsync();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

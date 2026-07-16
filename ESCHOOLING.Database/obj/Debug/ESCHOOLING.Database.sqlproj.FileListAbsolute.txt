@@ -20,3 +20,7 @@ E:\EduSight\EduSight\ESCHOOLING.Database\bin\Debug\ESCHOOLING.Database.pdb
 E:\EduSight\EduSight\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.sqlproj.AssemblyReference.cache
 E:\EduSight\EduSight\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.dll
 E:\EduSight\EduSight\ESCHOOLING.Database\obj\Debug\ESCHOOLING.Database.pdb
+E:\EduSight\EduSight\ESCHOOLING.Database\obj\Debug\Model.xml
+E:\EduSight\EduSight\ESCHOOLING.Database\obj\Debug\refactor.xml
+E:\EduSight\EduSight\ESCHOOLING.Database\obj\Debug\postdeploy.sql
+E:\EduSight\EduSight\ESCHOOLING.Database\obj\Debug\predeploy.sql

@@ -40,6 +40,26 @@ namespace ECOMSYSTEM.Repository.ApplicationUsers
         /// </summary>
         Task<List<ApplicationUser>> GetUsersExcludingTypesAsync(params int[] excludedUserTypes);
 
+        /// <summary>
+        /// Gets new-registration counts grouped by month ("yyyy-MM"), for the last N months.
+        /// </summary>
+        Task<Dictionary<string, int>> GetRegistrationCountsByMonthAsync(int months);
+
+        /// <summary>
+        /// Gets the school-wide attendance rate (% present) grouped by month ("yyyy-MM"), for the last N months.
+        /// </summary>
+        Task<Dictionary<string, double>> GetAttendanceRateByMonthAsync(int months);
+
+        /// <summary>
+        /// Gets today's school-wide attendance status: how many students have been marked, and how many of those are present.
+        /// </summary>
+        Task<(int Present, int TotalMarked)> GetTodayAttendanceStatusAsync();
+
+        /// <summary>
+        /// Gets a single student's attendance rate (% present) grouped by month ("yyyy-MM"), for the last N months.
+        /// </summary>
+        Task<Dictionary<string, double>> GetAttendanceRateByMonthForStudentAsync(long studentId, int months);
+
         Task<List<ApplicationUser>> SearchAsync(int grade);
         Task<List<ApplicationUser>> SearchByIdAsync(long id);
         Task<List<Attendance>> GetAttendanceListAsync(long id, string searchDate);

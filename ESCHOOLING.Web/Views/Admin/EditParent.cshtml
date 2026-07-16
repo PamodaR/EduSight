@@ -38,7 +38,10 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Password">Password</label>
-                    <input class="form-control form-control-rounded" asp-for="Password" required>
+                    <div class="password-field">
+                        <input class="form-control form-control-rounded" asp-for="Password" required>
+                        <i class="i-Eye password-toggle-icon" title="Show password" onclick="TogglePasswordVisibility('Password', this);"></i>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label asp-for="MobileNo">Mobile No</label>
@@ -48,9 +51,19 @@
                     <label asp-for="Address">Address</label>
                     <input class="form-control form-control-rounded" asp-for="Address" required>
                 </div>
+                <div class="form-group">
+                    <label asp-for="ChildStudentId">Child (Student)</label>
+                    <select class="form-control form-control-rounded" asp-for="ChildStudentId">
+                        <option value="">-- No child linked yet --</option>
+                        @foreach (var student in (List<ECOMSYSTEM.Shared.Models.ApplicationUser>)ViewBag.Students)
+                        {
+                            <option value="@student.UserId">@student.Username (@student.Email)</option>
+                        }
+                    </select>
+                </div>
                 <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" asp-for="IsActive">
-                    <label class="form-check-label" asp-for="IsActive">Active</label>
+                    <input type="checkbox" class="form-check-input" asp-for="IsActiveChecked">
+                    <label class="form-check-label" asp-for="IsActiveChecked">Active</label>
                 </div>
                 <button class="btn btn-primary btn-rounded mt-2" type="submit">Save Changes</button>
             </form>

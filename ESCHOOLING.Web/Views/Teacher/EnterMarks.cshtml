@@ -1,0 +1,83 @@
+@{
+    Layout = "_TeacherLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enter Marks | EduSight</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet">
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sweet alert -->
+    <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="~/js/EnterMarks.js"></script>
+
+</head>
+
+
+<body class="text-left">
+
+    <!-- ============ Body content start ============= -->
+    <div class="main-content">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="">Enter Marks</a></li>
+                <li>Teacher</li>
+            </ul>
+        </div>
+        <div class="col-lg-8">
+            <div class="form-panel">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="studentId">Student</label>
+                        <select class="form-control form-control-rounded" id="studentId" name="studentId" required>
+                            <option value="" selected disabled>Select student</option>
+                            @foreach (var student in (List<ECOMSYSTEM.Shared.Models.ApplicationUser>)ViewBag.Students)
+                            {
+                                <option value="@student.UserId">@student.Username (@student.Email)</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="Term">Term</label>
+                        <select class="form-control form-control-rounded" id="Term" name="Term" required>
+                            <option value="" selected disabled>Select term</option>
+                            <option value="Term 1">Term 1</option>
+                            <option value="Term 2">Term 2</option>
+                            <option value="Term 3">Term 3</option>
+                            <option value="Final Exam">Final Exam</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="Subject">Subject</label>
+                        <input class="form-control form-control-rounded" id="Subject" name="Subject" type="text" placeholder="e.g. Mathematics" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="Marks">Marks</label>
+                        <input class="form-control form-control-rounded" id="Marks" name="Marks" type="number" step="0.01" min="0" max="100" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-rounded" onclick="EnterMarksBtn_Click();"> Save Mark</button>
+                </div>
+            </div>
+        </div>
+        <!-- end of main-content -->
+    </div>
+
+</body>
+
+</html>

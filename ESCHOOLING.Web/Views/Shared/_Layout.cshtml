@@ -33,9 +33,6 @@
                 </div>
                 <div style="margin: auto"></div>
                 <div class="header-part-right">
-                    <a class="btn btn-outline-link" onclick="ItemCartClick();" type="button"> <img src="../../dist-assets/images/Cart.png" style="width:35px; height:35px;" alt="Button Image"> </a>
-                    <span></span>
-                    <a class="btn btn-outline-link" onclick="OrderListClick();" type="button"> <img src="../../dist-assets/images/order-list-64.png" style="width:35px; height:35px;" alt="Button Image"> </a>
                     <!-- Full screen toggle -->
                     <i class="i-Full-Screen header-icon d-none d-sm-inline-block" data-fullscreen></i>
 
@@ -60,49 +57,12 @@
                             <a class="nav-item-hold" href="#"><i class="nav-icon i-Bar-Chart"></i><span class="nav-text">Home</span></a>
                             <div class="triangle"></div>
                         </li>
-                        <li class="nav-item" data-item="uikits">
-                            <a class="nav-item-hold" href="#"><i class="nav-icon i-Suitcase @*i-Library*@"></i><span class="nav-text">ASUS </span></a>
-                            <div class="triangle"></div>
-                        </li>
-                        <li class="nav-item" data-item="extrakits">
-                            <a class="nav-item-hold" href="#"><i class="nav-icon i-Suitcase @*i-Suitcase*@"></i><span class="nav-text">DELL </span></a>
-                            <div class="triangle"></div>
-                        </li>
-                        <li class="nav-item" data-item="apps">
-                            <a class="nav-item-hold" href="#"><i class="nav-icon i-Suitcase @*i-Computer-Secure*@"></i><span class="nav-text">ACER</span></a>
-                            <div class="triangle"></div>
-                        </li>
-                        <li class="nav-item" data-item="widgets">
-                            <a class="nav-item-hold" href="#"><i class="nav-icon i-Suitcase @*i-Computer-Secure*@"></i><span class="nav-text">HP</span></a>
-                            <div class="triangle"></div>
-                        </li>
                     </ul>
                 </div>
                 <div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar="" data-suppress-scroll-x="true">
                     <!-- Submenu Dashboards-->
                     <ul class="childNav" data-parent="dashboard">
                         <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "null", subcategory = "null" })"><i class="nav-icon i-Bell1"></i><span class="item-name">Home</span></a></li>
-                    </ul>
-                    <ul class="childNav" data-parent="apps">
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "3", subcategory = "34" })"><i class="nav-icon i-Bell1"></i><span class="item-name">Desktop PC</span></a></li>
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "3", subcategory = "35" })"><i class="nav-icon i-Split-Horizontal-2-Window"></i><span class="item-name">Laptop</span></a></li>
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "3", subcategory = "36" })"><i class="nav-icon i-Medal-2"></i><span class="item-name">Gaming PC</span></a></li>
-                    </ul>
-                    <ul class="childNav" data-parent="widgets">
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "4", subcategory = "44" })"><i class="nav-icon i-Bell1"></i><span class="item-name">Desktop PC</span></a></li>
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "4", subcategory = "45" })"><i class="nav-icon i-Split-Horizontal-2-Window"></i><span class="item-name">Laptop</span></a></li>
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "4", subcategory = "46" })"><i class="nav-icon i-Medal-2"></i><span class="item-name">Gaming PC</span></a></li>
-                    </ul>
-                    <ul class="childNav" data-parent="extrakits">
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "2", subcategory = "24" })"><i class="nav-icon i-Bell1"></i><span class="item-name">Desktop Pc</span></a></li>
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "2", subcategory = "25" })"><i class="nav-icon i-Split-Horizontal-2-Window"></i><span class="item-name">Laptop</span></a></li>
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "2", subcategory = "26" })"><i class="nav-icon i-Medal-2"></i><span class="item-name">Gaming PC</span></a></li>
-
-                    </ul>
-                    <ul class="childNav" data-parent="uikits">
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "1", subcategory = "14" })"><i class="nav-icon i-Bell1"></i><span class="item-name">Desktop Pc</span></a></li>
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "1", subcategory = "15" })"><i class="nav-icon i-Split-Horizontal-2-Window"></i><span class="item-name">Laptop</span></a></li>
-                        <li class="nav-item"><a href="@Url.Action("Index", "Home", new { category = "1", subcategory = "16" })"><i class="nav-icon i-Medal-2"></i><span class="item-name">Gaming PC</span></a></li>
                     </ul>
                 </div>
                 <div class="sidebar-overlay"></div>
@@ -117,20 +77,15 @@
         <div class="app-footer">
             <div class="row">
                 <div class="col-md-9">
-                    @* <p><strong></strong></p>
-                    <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero quis beatae officia saepe perferendis voluptatum minima eveniet voluptates dolorum, temporibus nisi maxime nesciunt totam repudiandae commodi sequi dolor quibusdam
-                    <sunt></sunt>
-                    </p>*@
                 </div>
             </div>
             <div class="footer-bottom border-top pt-3 d-flex flex-column flex-sm-row align-items-center">
                 <a class="btn btn-primary text-white btn-rounded" href="https://themeforest.net/item/gull-bootstrap-laravel-admin-dashboard-template/23101970" target="_blank">About Us</a>
                 <span class="flex-grow-1"></span>
                 <div class="d-flex align-items-center">
-                    <img class="logo" @*src="../../dist-assets/images/logo.png" alt=""*@>
+                    <img class="logo" src="../../dist-assets/images/logo.png" alt="">
                     <div>
-                        <p class="m-0">&copy; 2023 E-COM</p>
+                        <p class="m-0">&copy; 2026 EduSight</p>
                         <p class="m-0">All rights reserved</p>
                     </div>
                 </div>

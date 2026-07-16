@@ -1,0 +1,71 @@
+@{
+    Layout = "_TeacherLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Predict Mark | EduSight</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet">
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sweet alert -->
+    <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="~/js/PredictMarkTrial.js"></script>
+
+</head>
+
+
+<body class="text-left">
+
+    <!-- ============ Body content start ============= -->
+    <div class="main-content">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="">Predict Mark</a></li>
+                <li>Student</li>
+            </ul>
+        </div>
+        <div class="col-lg-8">
+            <div class="form-panel">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="Marks">Previously Test Marks 1</label>
+                        <input class="form-control form-control-rounded" id="Mark1" name="Mark1" type="text" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="Marks">Previously Test Marks 2</label>
+                        <input class="form-control form-control-rounded" id="Mark2" name="Mark2" type="text" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="Marks">Previously Test Marks 3</label>
+                        <input class="form-control form-control-rounded" id="Mark3" name="Mark3" type="text" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="PredictedMark">Predicted Mark</label>
+                        <input class="form-control form-control-rounded" id="PredictedMark" name="PredictedMark" type="text" readonly>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-rounded" onclick="PredictMarkTrialBtn_Click('/Student/PredictMark');"> Predict Mark</button>
+                </div>
+            </div>
+        </div>
+        <!-- end of main-content -->
+    </div>
+
+</body>
+
+</html>

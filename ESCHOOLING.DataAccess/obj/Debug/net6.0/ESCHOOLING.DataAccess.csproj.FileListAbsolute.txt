@@ -51,3 +51,7 @@ E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\refint\ESCHOOLING.Da
 E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.pdb
 E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ESCHOOLING.DataAccess.genruntimeconfig.cache
 E:\EduSight\EduSight\ESCHOOLING.DataAccess\obj\Debug\net6.0\ref\ESCHOOLING.DataAccess.dll
+C:\Users\Pamoda Madushan\AppData\Local\Temp\claude\E--EduSight-EduSight\cb207fd8-6615-4bb9-be5c-f1c352c919c5\scratchpad\webbuild\ESCHOOLING.DataAccess.deps.json
+C:\Users\Pamoda Madushan\AppData\Local\Temp\claude\E--EduSight-EduSight\cb207fd8-6615-4bb9-be5c-f1c352c919c5\scratchpad\webbuild\ESCHOOLING.DataAccess.runtimeconfig.json
+C:\Users\Pamoda Madushan\AppData\Local\Temp\claude\E--EduSight-EduSight\cb207fd8-6615-4bb9-be5c-f1c352c919c5\scratchpad\webbuild\ESCHOOLING.DataAccess.dll
+C:\Users\Pamoda Madushan\AppData\Local\Temp\claude\E--EduSight-EduSight\cb207fd8-6615-4bb9-be5c-f1c352c919c5\scratchpad\webbuild\ESCHOOLING.DataAccess.pdb

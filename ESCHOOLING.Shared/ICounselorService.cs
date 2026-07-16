@@ -11,5 +11,10 @@ namespace ECOMSYSTEM.Shared
         Task<Counselor> CreateAsync(Counselor counselorObject);
         Task<Counselor> UpdateAsync(Counselor counselorObject);
         Task<bool> DeleteAsync(long id);
+
+        /// <summary>
+        /// Gets the count of active counselors.
+        /// </summary>
+        Task<int> GetActiveCounselorCountAsync();
     }
 }

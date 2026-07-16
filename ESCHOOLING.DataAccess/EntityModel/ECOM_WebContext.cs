@@ -20,7 +20,10 @@ namespace ESCHOOLING.DataAccess.EntityModel
         public virtual DbSet<TblBehaviour> TblBehaviours { get; set; } = null!;
         public virtual DbSet<TblCounselor> TblCounselors { get; set; } = null!;
         public virtual DbSet<TblEvent> TblEvents { get; set; } = null!;
+        public virtual DbSet<TblHomework> TblHomeworks { get; set; } = null!;
+        public virtual DbSet<TblStudentBehaviourEntry> TblStudentBehaviourEntries { get; set; } = null!;
         public virtual DbSet<TblStudentMark> TblStudentMarks { get; set; } = null!;
+        public virtual DbSet<TblStudentMarksEntry> TblStudentMarksEntries { get; set; } = null!;
         public virtual DbSet<TblUserRegistration> TblUserRegistrations { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -140,6 +143,60 @@ namespace ESCHOOLING.DataAccess.EntityModel
                     .WithMany(p => p.TblStudentMarks)
                     .HasForeignKey(d => d.StudentId)
                     .HasConstraintName("FK__TblStuden__Stude__7E37BEF6");
+            });
+
+            modelBuilder.Entity<TblStudentBehaviourEntry>(entity =>
+            {
+                entity.ToTable("TblStudentBehaviourEntry");
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.BehaviourType).HasMaxLength(20);
+
+                entity.Property(e => e.Description).HasMaxLength(500);
+
+                entity.Property(e => e.MonthForSearch).HasMaxLength(50);
+
+                entity.HasOne(d => d.Student)
+                    .WithMany(p => p.TblStudentBehaviourEntries)
+                    .HasForeignKey(d => d.StudentId);
+            });
+
+            modelBuilder.Entity<TblStudentMarksEntry>(entity =>
+            {
+                entity.ToTable("TblStudentMarksEntry");
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Term).HasMaxLength(50);
+
+                entity.Property(e => e.Subject).HasMaxLength(50);
+
+                entity.Property(e => e.Marks).HasColumnType("decimal(5, 2)");
+
+                entity.HasOne(d => d.Student)
+                    .WithMany(p => p.TblStudentMarksEntries)
+                    .HasForeignKey(d => d.StudentId);
+            });
+
+            modelBuilder.Entity<TblHomework>(entity =>
+            {
+                entity.ToTable("TblHomework");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.DueDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Subject).HasMaxLength(50);
+
+                entity.Property(e => e.Description).HasMaxLength(500);
+
+                entity.HasOne(d => d.Teacher)
+                    .WithMany(p => p.TblHomeworks)
+                    .HasForeignKey(d => d.TeacherId)
+                    .HasConstraintName("FK__TblHomewo__Teach__4BAC3F29");
             });
 
             modelBuilder.Entity<TblUserRegistration>(entity =>

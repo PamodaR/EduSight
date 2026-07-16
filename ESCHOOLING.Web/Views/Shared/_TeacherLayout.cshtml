@@ -85,6 +85,18 @@
                                 <a class="nav-item-hold" href="#"><i class="nav-icon i-Graph-Bar"></i><span class="nav-text">Marks</span></a>
                                 <div class="triangle"></div>
                             </li>
+                            <li class="nav-item @(action.Contains("Homework") ? "active" : "")" data-item="homeworklinks">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Open-Book"></i><span class="nav-text">Homework</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action.Contains("Behaviour") ? "active" : "")" data-item="behaviourkits">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Speach-Bubble"></i><span class="nav-text">Behaviour</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action == "MonthlyReports" ? "active" : "")" data-item="reportskits">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Statistic"></i><span class="nav-text">Reports</span></a>
+                                <div class="triangle"></div>
+                            </li>
                         }
                         @if (isAdmin) {
                             <li class="nav-item @((action.Contains("Register") || action == "ManageUsers" || action.EndsWith("List")) ? "active" : "")" data-item="usermgmt">
@@ -97,16 +109,20 @@
                             </li>
                         }
                         @if (isStudent) {
-                            <li class="nav-item @(action.Contains("Attendance") ? "active" : "")">
-                                <a class="nav-item-hold" href="/Student/ViewAttendanceDetails"><i class="nav-icon i-Checked-User"></i><span class="nav-text">Attendance</span></a>
+                            <li class="nav-item @(action == "ViewMarks" ? "active" : "")">
+                                <a class="nav-item-hold" href="/Student/ViewMarks"><i class="nav-icon i-Graph-Bar"></i><span class="nav-text">View Test Marks</span></a>
                                 <div class="triangle"></div>
                             </li>
-                            <li class="nav-item @(action.Contains("Events") ? "active" : "")">
-                                <a class="nav-item-hold" href="/Student/ViewEvents"><i class="nav-icon i-Calendar"></i><span class="nav-text">Events</span></a>
+                            <li class="nav-item @(action == "PredictedMarks" ? "active" : "")">
+                                <a class="nav-item-hold" href="/Student/PredictedMarks"><i class="nav-icon i-Bar-Chart"></i><span class="nav-text">Predict Marks</span></a>
                                 <div class="triangle"></div>
                             </li>
-                            <li class="nav-item @(action.Contains("Marks") ? "active" : "")">
-                                <a class="nav-item-hold" href="/Student/ViewMarks"><i class="nav-icon i-Graph-Bar"></i><span class="nav-text">Marks</span></a>
+                            <li class="nav-item @(action == "PredictMark" ? "active" : "")">
+                                <a class="nav-item-hold" href="/Student/PredictMark"><i class="nav-icon i-Bar-Chart"></i><span class="nav-text">Try Predict Mark</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action == "ViewHomework" ? "active" : "")">
+                                <a class="nav-item-hold" href="/Student/ViewHomework"><i class="nav-icon i-Open-Book"></i><span class="nav-text">View Homework</span></a>
                                 <div class="triangle"></div>
                             </li>
                         } else if (isParent) {
@@ -118,8 +134,16 @@
                                 <a class="nav-item-hold" href="/Parent/ViewEvents"><i class="nav-icon i-Calendar"></i><span class="nav-text">Events</span></a>
                                 <div class="triangle"></div>
                             </li>
-                            <li class="nav-item @(action.Contains("Marks") ? "active" : "")">
+                            <li class="nav-item @(action == "ViewMarks" ? "active" : "")">
                                 <a class="nav-item-hold" href="/Parent/ViewMarks"><i class="nav-icon i-Graph-Bar"></i><span class="nav-text">Marks</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action == "PredictMark" ? "active" : "")">
+                                <a class="nav-item-hold" href="/Parent/PredictMark"><i class="nav-icon i-Bar-Chart"></i><span class="nav-text">Try Predict Mark</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action == "ViewBehaviourReport" ? "active" : "")">
+                                <a class="nav-item-hold" href="/Parent/ViewBehaviourReport"><i class="nav-icon i-Speach-Bubble"></i><span class="nav-text">Behaviour Report</span></a>
                                 <div class="triangle"></div>
                             </li>
                         }
@@ -143,6 +167,18 @@
                         </ul>
                         <ul class="childNav" data-parent="widgets">
                             <li class="nav-item"><a class="@(action == "MarkPrediction" ? "active" : "")" href="/Teacher/MarkPrediction"><i class="nav-icon i-Bar-Chart"></i><span class="item-name">Predict Marks</span></a></li>
+                            <li class="nav-item"><a class="@(action == "EnterMarks" ? "active" : "")" href="/Teacher/EnterMarks"><i class="nav-icon i-Pen-2"></i><span class="item-name">Enter Marks</span></a></li>
+                            <li class="nav-item"><a class="@(action == "ViewMarksEntries" ? "active" : "")" href="/Teacher/ViewMarksEntries"><i class="nav-icon i-Eye"></i><span class="item-name">View Marks</span></a></li>
+                        </ul>
+                        <ul class="childNav" data-parent="homeworklinks">
+                            <li class="nav-item"><a class="@(action == "AddHomework" ? "active" : "")" href="/Teacher/AddHomework"><i class="nav-icon i-Open-Book"></i><span class="item-name">Post Homework</span></a></li>
+                        </ul>
+                        <ul class="childNav" data-parent="behaviourkits">
+                            <li class="nav-item"><a class="@(action == "EnterBehaviour" ? "active" : "")" href="/Teacher/EnterBehaviour"><i class="nav-icon i-Pen-2"></i><span class="item-name">Enter Behaviour</span></a></li>
+                            <li class="nav-item"><a class="@(action == "ViewBehaviourEntries" ? "active" : "")" href="/Teacher/ViewBehaviourEntries"><i class="nav-icon i-Eye"></i><span class="item-name">View Behaviour Entries</span></a></li>
+                        </ul>
+                        <ul class="childNav" data-parent="reportskits">
+                            <li class="nav-item"><a class="@(action == "MonthlyReports" ? "active" : "")" href="/Teacher/MonthlyReports"><i class="nav-icon i-Statistic"></i><span class="item-name">Monthly Reports</span></a></li>
                         </ul>
                     }
                     @if (isAdmin) {

@@ -77,5 +77,21 @@ namespace ECOMSYSTEM.Web.Services
                 return false;
             }
         }
+
+        /// <summary>
+        /// Gets the count of active counselors.
+        /// </summary>
+        public async Task<int> GetActiveCounselorCountAsync()
+        {
+            try
+            {
+                var result = await _counselorRepository.GetActiveCounselorCountAsync();
+                return result;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
     }
 }

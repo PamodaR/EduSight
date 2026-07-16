@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\EduSight\\EduSight\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3FFFF78D-C1F2-44B3-8217-DF3E7E783974}|ESCHOOLING.Web\\ESCHOOLING.Web.csproj|e:\\edusight\\edusight\\eschooling.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FFFF78D-C1F2-44B3-8217-DF3E7E783974}|ESCHOOLING.Web\\ESCHOOLING.Web.csproj|solutionrelative:eschooling.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3FFFF78D-C1F2-44B3-8217-DF3E7E783974}|ESCHOOLING.Web\\ESCHOOLING.Web.csproj|e:\\edusight\\edusight\\eschooling.web\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3FFFF78D-C1F2-44B3-8217-DF3E7E783974}|ESCHOOLING.Web\\ESCHOOLING.Web.csproj|solutionrelative:eschooling.web\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFFF78D-C1F2-44B3-8217-DF3E7E783974}|ESCHOOLING.Web\\ESCHOOLING.Web.csproj|e:\\edusight\\edusight\\eschooling.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFFF78D-C1F2-44B3-8217-DF3E7E783974}|ESCHOOLING.Web\\ESCHOOLING.Web.csproj|solutionrelative:eschooling.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3FFFF78D-C1F2-44B3-8217-DF3E7E783974}|ESCHOOLING.Web\\ESCHOOLING.Web.csproj|e:\\edusight\\edusight\\eschooling.web\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,26 +70,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\Program.cs",
               "RelativeDocumentMoniker": "ESCHOOLING.Web\\Program.cs",
               "ToolTip": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\Program.cs",
               "RelativeToolTip": "ESCHOOLING.Web\\Program.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAgwDYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T11:47:32.886Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-08T11:47:32.886Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TeacherController.cs",
               "DocumentMoniker": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\Controllers\\TeacherController.cs",
               "RelativeDocumentMoniker": "ESCHOOLING.Web\\Controllers\\TeacherController.cs",
               "ToolTip": "E:\\EduSight\\EduSight\\ESCHOOLING.Web\\Controllers\\TeacherController.cs",
               "RelativeToolTip": "ESCHOOLING.Web\\Controllers\\TeacherController.cs",
-              "ViewState": "AgIAALsAAAAAAAAAAAAywLUAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAC4CAAAAAAAAAAAkwGQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-03T05:11:10.526Z",
               "EditorCaption": ""

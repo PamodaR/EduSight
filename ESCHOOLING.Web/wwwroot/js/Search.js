@@ -36,6 +36,36 @@ function SearchByStudentsId_Click() {
     window.location.href = url;
 }
 
+function EditStudentBtn_Click(id) {
+    window.location.href = '/Teacher/EditStudent?id=' + id;
+}
+
+function DeleteStudentBtn_Click(id, name) {
+    Swal.fire({
+        title: 'Deactivate ' + name + '?',
+        text: 'This will mark the student as not active.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Deactivate',
+        cancelButtonText: 'Cancel'
+    }).then(function (result) {
+        if (result.isConfirmed) {
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/Teacher/DeleteStudent';
+
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'id';
+            input.value = id;
+
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    });
+}
+
 function SearchByMonth_Click() {
     var regexPattern = /\/(\d+)$/;
     var previousUrl = document.referrer;

@@ -173,9 +173,13 @@ function ClearRoleForm(prefix, includeGrade) {
     if (includeGrade) {
         document.getElementById(prefix + 'Grade').value = "";
     }
+    var childStudentIdField = document.getElementById(prefix + 'ChildStudentId');
+    if (childStudentIdField) {
+        childStudentIdField.value = "";
+    }
 }
 
-function SubmitRoleRegistration(prefix, url, includeGrade) {
+function SubmitRoleRegistration(prefix, url, includeGrade, includeChildStudentId) {
 
     let success = ValidateRoleForm(prefix, includeGrade);
     if (success != true) {
@@ -192,6 +196,10 @@ function SubmitRoleRegistration(prefix, url, includeGrade) {
 
     if (includeGrade) {
         regObj.Grade = $('#' + prefix + 'Grade').val();
+    }
+
+    if (includeChildStudentId) {
+        regObj.ChildStudentId = $('#' + prefix + 'ChildStudentId').val();
     }
 
     $.ajax({
@@ -214,14 +222,14 @@ function SubmitRoleRegistration(prefix, url, includeGrade) {
 }
 
 function RegisterTeacherBtn_Click() {
-    SubmitRoleRegistration('teacher', '/Admin/RegisterTeacher', false);
+    SubmitRoleRegistration('teacher', '/Admin/RegisterTeacher', false, false);
 }
 
 function RegisterParentBtn_Click() {
-    SubmitRoleRegistration('parent', '/Admin/RegisterParent', false);
+    SubmitRoleRegistration('parent', '/Admin/RegisterParent', false, true);
 }
 
 function RegisterStudentBtn_Click() {
-    SubmitRoleRegistration('student', '/Admin/RegisterStudent', true);
+    SubmitRoleRegistration('student', '/Admin/RegisterStudent', true, false);
 }
 

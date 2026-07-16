@@ -1,0 +1,77 @@
+@model ECOMSYSTEM.Shared.Models.ApplicationUser
+@{
+    Layout = "_TeacherLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Student | EduSight</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet">
+</head>
+
+<body class="text-left">
+
+    <div class="main-content">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="">Edit Student</a></li>
+                <li>Teacher</li>
+            </ul>
+        </div>
+        <div class="col-lg-8">
+            <form asp-action="EditStudent" method="post">
+                <input type="hidden" asp-for="UserId" />
+                <input type="hidden" asp-for="UserType" />
+                <div class="form-group">
+                    <label asp-for="Username">Name</label>
+                    <input class="form-control form-control-rounded" asp-for="Username" placeholder="e.g. Nimal Silva" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Email">Email address</label>
+                        <input class="form-control form-control-rounded" asp-for="Email" placeholder="name@school.edu" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Password">Password</label>
+                        <div class="password-field">
+                            <input class="form-control form-control-rounded" asp-for="Password" placeholder="••••••••" required>
+                            <i class="i-Eye password-toggle-icon" title="Show password" onclick="TogglePasswordVisibility('Password', this);"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label asp-for="MobileNo">Mobile No</label>
+                        <input class="form-control form-control-rounded" asp-for="MobileNo" placeholder="07X XXX XXXX" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Address">Address</label>
+                        <input class="form-control form-control-rounded" asp-for="Address" placeholder="Street, city" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Grade">Grade</label>
+                    <input class="form-control form-control-rounded" asp-for="Grade" placeholder="e.g. 10" required>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" asp-for="IsActiveChecked">
+                    <label class="form-check-label" asp-for="IsActiveChecked">Active</label>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-rounded" type="submit">Save Changes</button>
+                    <a class="btn btn-outline-secondary btn-rounded" href="@Url.Action("ViewStudentList", "Teacher")">Cancel</a>
+                </div>
+            </form>
+        </div>
+        <!-- end of main-content -->
+    </div>
+
+</body>
+
+</html>

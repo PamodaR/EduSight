@@ -103,6 +103,70 @@ namespace ECOMSYSTEM.Web.Services
             }
         }
 
+        /// <summary>
+        /// Gets new-registration counts grouped by month ("yyyy-MM"), for the last N months.
+        /// </summary>
+        public async Task<Dictionary<string, int>> GetRegistrationCountsByMonthAsync(int months)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.GetRegistrationCountsByMonthAsync(months);
+                return result;
+            }
+            catch (Exception)
+            {
+                return new Dictionary<string, int>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the school-wide attendance rate (% present) grouped by month ("yyyy-MM"), for the last N months.
+        /// </summary>
+        public async Task<Dictionary<string, double>> GetAttendanceRateByMonthAsync(int months)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.GetAttendanceRateByMonthAsync(months);
+                return result;
+            }
+            catch (Exception)
+            {
+                return new Dictionary<string, double>();
+            }
+        }
+
+        /// <summary>
+        /// Gets today's school-wide attendance status: how many students have been marked, and how many of those are present.
+        /// </summary>
+        public async Task<(int Present, int TotalMarked)> GetTodayAttendanceStatusAsync()
+        {
+            try
+            {
+                var result = await _applicationUserRepository.GetTodayAttendanceStatusAsync();
+                return result;
+            }
+            catch (Exception)
+            {
+                return (0, 0);
+            }
+        }
+
+        /// <summary>
+        /// Gets a single student's attendance rate (% present) grouped by month ("yyyy-MM"), for the last N months.
+        /// </summary>
+        public async Task<Dictionary<string, double>> GetAttendanceRateByMonthForStudentAsync(long studentId, int months)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.GetAttendanceRateByMonthForStudentAsync(studentId, months);
+                return result;
+            }
+            catch (Exception)
+            {
+                return new Dictionary<string, double>();
+            }
+        }
+
         public async Task<List<ApplicationUser>> SearchAsync(int grade)
         {
             try
