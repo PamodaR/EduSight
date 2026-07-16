@@ -1,0 +1,57 @@
+@{
+    Layout = "_TeacherLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Send Note to Teacher | EduSight</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet">
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sweet alert -->
+    <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="~/js/SendNote.js"></script>
+
+</head>
+
+
+<body class="text-left">
+
+    <!-- ============ Body content start ============= -->
+    <div class="main-content">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="">Send Note to Teacher</a></li>
+                <li>Parent</li>
+            </ul>
+        </div>
+        <div class="col-lg-8">
+            <div class="form-panel">
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <label for="NoteText">Note</label>
+                        <textarea class="form-control form-control-rounded" id="NoteText" name="noteText" rows="5" placeholder="Write a note about your child for their teacher" required></textarea>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-rounded" onclick="SendNoteBtn_Click();"> Send Note</button>
+                </div>
+            </div>
+        </div>
+        <!-- end of main-content -->
+    </div>
+
+</body>
+
+</html>

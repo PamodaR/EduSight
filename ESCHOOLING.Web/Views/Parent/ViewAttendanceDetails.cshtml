@@ -1,6 +1,10 @@
 ﻿@model IEnumerable<ESCHOOLING.Shared.Models.Attendance>
 @{
     Layout = "_TeacherLayout";
+    string selectedMonth = ViewBag.Date;
+    var monthOptions = Enumerable.Range(0, 12)
+        .Select(i => DateTime.Today.AddMonths(-i))
+        .Select(d => new { Value = d.ToString("yyyy-MM"), Label = d.ToString("MMMM yyyy") });
 }
 
 <!DOCTYPE html>
@@ -10,13 +14,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dashboard </title>
+    <title>View Child's Attendance | EduSight</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet" />
     <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet" />
     <link href="../../dist-assets/css/plugins/perfect-scrollbar.min.css" rel="stylesheet" />
-
-    <script src="~/js/Search.js"></script>
-    <script src="~/js/Attendance.js"></script>
 </head>
 
 <body class="text-left">
@@ -24,27 +25,17 @@
     <div class="main-content">
         <div class="breadcrumb">
             <ul>
-                <li><a href="">View Attendance Details</a></li>
-                <li>Student</li>
+                <li><a href="">View Child's Attendance</a></li>
+                <li>Parent</li>
             </ul>
-            <select class="form-control form-control-rounded mt-2 col-lg-2" id="searchByAttendance" value="" name="searchByAttendance">
-                <option value=0>Search By month</option>
-                <option value="2023-01">January</option>
-                <option value="2023-02">February</option>
-                <option value="2023-03">Marchn</option>
-                <option value="2023-04">April</option>
-                <option value="2023-05">May</option>
-                <option value="2023-06">June</option>
-                <option value="2023-07">July</option>
-                <option value="2023-08">August</option>
-                <option value="2023-09">September</option>
-                <option value="2023-10">October</option>
-                <option value="2023-11">November</option>
-                <option value="2023-12">December</option>
+            <select class="form-control form-control-rounded mt-2 col-lg-2" id="attendanceMonth" name="attendanceMonth">
+                @foreach (var m in monthOptions)
+                {
+                    <option value="@m.Value" selected="@(m.Value == selectedMonth ? "selected" : null)">@m.Label</option>
+                }
             </select>
             &nbsp;&nbsp;
-
-            <button class="btn btn-primary btn-block btn-rounded mt-2 col-lg-1 float-right" id="SearchForMonth" onclick="SearchByMonth_Click();"> Search</button>
+            <button class="btn btn-primary btn-block btn-rounded mt-2 col-lg-1 float-right" onclick="window.location.href = '/Parent/ViewAttendanceDetails?date=' + document.getElementById('attendanceMonth').value;"> Search</button>
             &nbsp;&nbsp;
         </div>
         <div class="col-lg-12">

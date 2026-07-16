@@ -3,6 +3,7 @@ using ECOMSYSTEM.Shared.Models;
 using ESCHOOLING.Shared;
 using ESCHOOLING.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using System.Linq;
 
 namespace ESCHOOLING.Web.Controllers
@@ -47,12 +48,16 @@ namespace ESCHOOLING.Web.Controllers
         /// </summary>
         private readonly IStudentBehaviourEntryService _studentBehaviourEntryService;
         /// <summary>
+        /// The parent note service.
+        /// </summary>
+        private readonly IParentNoteService _parentNoteService;
+        /// <summary>
         /// Initializes a new instance of the <see cref="AdminController"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="applicatioUserService">The applicatio user service.</param>
         /// <param name="config">The configuration.</param>
-        public ParentController(ILogger<TeacherController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, IMarksService marksService, IOnnxMarkPredictionService onnxMarkPredictionService, IStudentMarksEntryService studentMarksEntryService, IStudentBehaviourEntryService studentBehaviourEntryService)
+        public ParentController(ILogger<TeacherController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, IMarksService marksService, IOnnxMarkPredictionService onnxMarkPredictionService, IStudentMarksEntryService studentMarksEntryService, IStudentBehaviourEntryService studentBehaviourEntryService, IParentNoteService parentNoteService)
         {
             _logger = logger;
             _applicationUserService = applicatioUserService;
@@ -62,6 +67,7 @@ namespace ESCHOOLING.Web.Controllers
             _onnxMarkPredictionService = onnxMarkPredictionService;
             _studentMarksEntryService = studentMarksEntryService;
             _studentBehaviourEntryService = studentBehaviourEntryService;
+            _parentNoteService = parentNoteService;
         }
 
         public IActionResult Index()
@@ -69,14 +75,79 @@ namespace ESCHOOLING.Web.Controllers
             return View();
         }
 
-        public IActionResult ParentHome()
+        public async Task<IActionResult> ParentHome()
         {
-            return View();
+            const int months = 6;
+            var model = new ParentDashboardModel();
+
+            var parentId = ApplicationSession.applicationUserId;
+            var parent = await _applicationUserService.GetUserByIdAsync(parentId);
+
+            if (parent.ChildStudentId == null)
+            {
+                return View(model);
+            }
+
+            var childId = parent.ChildStudentId.Value;
+
+            var attendanceRates = await _applicationUserService.GetAttendanceRateByMonthForStudentAsync(childId, months);
+            for (var i = months - 1; i >= 0; i--)
+            {
+                var monthKey = DateTime.Today.AddMonths(-i).ToString("yyyy-MM");
+                model.AttendanceTrendMonths.Add(monthKey);
+                model.AttendanceTrendRates.Add(attendanceRates.GetValueOrDefault(monthKey));
+            }
+            model.AttendanceRate = model.AttendanceTrendRates.Count > 0 ? model.AttendanceTrendRates[^1] : 0;
+
+            var allMarksEntries = await _studentMarksEntryService.GetAllMarksEntriesAsync();
+            var latestPerSubject = allMarksEntries
+                .Where(m => m.StudentId == childId)
+                .GroupBy(m => m.Subject)
+                .Select(g => g.OrderByDescending(m => m.CreatedDate).First())
+                .ToList();
+
+            foreach (var mark in latestPerSubject)
+            {
+                model.MarksSubjects.Add(mark.Subject ?? "Unknown");
+                model.MarksLatestValues.Add((double)mark.Marks);
+            }
+
+            model.LatestMarksAverageDisplay = latestPerSubject.Count > 0
+                ? Math.Round(latestPerSubject.Average(m => (double)m.Marks), 1).ToString(CultureInfo.InvariantCulture)
+                : "No marks yet";
+
+            var allBehaviourEntries = await _studentBehaviourEntryService.GetAllBehaviourEntriesAsync();
+            var childBehaviourEntries = allBehaviourEntries.Where(b => b.StudentId == childId).ToList();
+            model.BehaviourPositiveCount = childBehaviourEntries.Count(b => string.Equals(b.BehaviourType, "Positive", StringComparison.OrdinalIgnoreCase));
+            model.BehaviourNegativeCount = childBehaviourEntries.Count(b => string.Equals(b.BehaviourType, "Negative", StringComparison.OrdinalIgnoreCase));
+            model.BehaviourNeutralCount = childBehaviourEntries.Count(b => string.Equals(b.BehaviourType, "Neutral", StringComparison.OrdinalIgnoreCase));
+
+            return View(model);
         }
 
-        public IActionResult ViewAttendanceDetails()
+        /// <summary>
+        /// Read-only view of the logged-in parent's linked child's attendance for a given month.
+        /// </summary>
+        public async Task<IActionResult> ViewAttendanceDetails(string date = null)
         {
-            return View();
+            if (date == null)
+            {
+                date = DateTime.Today.ToString("yyyy-MM");
+            }
+
+            ViewBag.Date = date;
+
+            var parentId = ApplicationSession.applicationUserId;
+            var parent = await _applicationUserService.GetUserByIdAsync(parentId);
+
+            if (parent.ChildStudentId == null)
+            {
+                return View(Enumerable.Empty<Attendance>());
+            }
+
+            var childAttendance = await _applicationUserService.GetAttendanceListAsync(parent.ChildStudentId.Value, date);
+
+            return View(childAttendance ?? new List<Attendance>());
         }
 
         public IActionResult ViewEvents()
@@ -127,6 +198,50 @@ namespace ESCHOOLING.Web.Controllers
             var childEntries = monthEntries.Where(e => e.StudentId == parent.ChildStudentId).ToList();
 
             return View(childEntries);
+        }
+
+        public IActionResult SendNote()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendNote(string noteText)
+        {
+            var parentId = ApplicationSession.applicationUserId;
+            var parent = await _applicationUserService.GetUserByIdAsync(parentId);
+
+            if (parent.ChildStudentId == null)
+            {
+                return Json(new { success = false, message = "No child is linked to this parent account. Please contact the school office." });
+            }
+
+            var note = new ParentNote
+            {
+                ParentId = parentId,
+                StudentId = parent.ChildStudentId.Value,
+                NoteText = noteText,
+                IsActive = true,
+                CreatedDate = DateTime.Now
+            };
+
+            try
+            {
+                var result = await _parentNoteService.SaveNoteAsync(note);
+
+                if (result.Id != 0)
+                {
+                    return Json(new { success = true });
+                }
+
+                _logger.LogError("SendNote: save reported no rows affected for parentId {ParentId}", parentId);
+                return Json(new { success = false, message = "Save failed. No rows were written; see server logs for details." });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "SendNote: failed to save note for parentId {ParentId}", parentId);
+                return Json(new { success = false, message = $"Save failed: {ex.Message}" });
+            }
         }
 
         /// <summary>

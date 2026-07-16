@@ -19,8 +19,10 @@ namespace ESCHOOLING.DataAccess.EntityModel
         public virtual DbSet<TblAttendance> TblAttendances { get; set; } = null!;
         public virtual DbSet<TblBehaviour> TblBehaviours { get; set; } = null!;
         public virtual DbSet<TblCounselor> TblCounselors { get; set; } = null!;
+        public virtual DbSet<TblCounsellingReferral> TblCounsellingReferrals { get; set; } = null!;
         public virtual DbSet<TblEvent> TblEvents { get; set; } = null!;
         public virtual DbSet<TblHomework> TblHomeworks { get; set; } = null!;
+        public virtual DbSet<TblParentNote> TblParentNotes { get; set; } = null!;
         public virtual DbSet<TblStudentBehaviourEntry> TblStudentBehaviourEntries { get; set; } = null!;
         public virtual DbSet<TblStudentMark> TblStudentMarks { get; set; } = null!;
         public virtual DbSet<TblStudentMarksEntry> TblStudentMarksEntries { get; set; } = null!;
@@ -116,6 +118,27 @@ namespace ESCHOOLING.DataAccess.EntityModel
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<TblCounsellingReferral>(entity =>
+            {
+                entity.ToTable("TblCounsellingReferral");
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Reason).HasMaxLength(500);
+
+                entity.HasOne(d => d.Student)
+                    .WithMany()
+                    .HasForeignKey(d => d.StudentId);
+
+                entity.HasOne(d => d.Counselor)
+                    .WithMany()
+                    .HasForeignKey(d => d.CounselorId);
+
+                entity.HasOne(d => d.Teacher)
+                    .WithMany()
+                    .HasForeignKey(d => d.TeacherId);
+            });
+
             modelBuilder.Entity<TblEvent>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
@@ -197,6 +220,23 @@ namespace ESCHOOLING.DataAccess.EntityModel
                     .WithMany(p => p.TblHomeworks)
                     .HasForeignKey(d => d.TeacherId)
                     .HasConstraintName("FK__TblHomewo__Teach__4BAC3F29");
+            });
+
+            modelBuilder.Entity<TblParentNote>(entity =>
+            {
+                entity.ToTable("TblParentNote");
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.NoteText).HasMaxLength(1000);
+
+                entity.HasOne(d => d.Parent)
+                    .WithMany()
+                    .HasForeignKey(d => d.ParentId);
+
+                entity.HasOne(d => d.Student)
+                    .WithMany()
+                    .HasForeignKey(d => d.StudentId);
             });
 
             modelBuilder.Entity<TblUserRegistration>(entity =>

@@ -6,6 +6,8 @@ using ECOMSYSTEM.Shared.Models;
 using ECOMSYSTEM.Web;
 using ECOMSYSTEM.Web.Services;
 using ESCHOOLING.DataAccess.EntityModel;
+using ESCHOOLING.Repository.CounsellingReferrals;
+using ESCHOOLING.Repository.ParentNotes;
 using ESCHOOLING.Repository.StudentBehaviourEntries;
 using ESCHOOLING.Repository.StudentHomework;
 using ESCHOOLING.Repository.StudentMarks;
@@ -33,6 +35,11 @@ builder.Services.AddScoped<IStudentBehaviourEntryRepository, StudentBehaviourEnt
 builder.Services.AddScoped<IStudentBehaviourEntryService, StudentBehaviourEntryService>();
 builder.Services.AddScoped<IHomeworkRepository, HomeworkRepository>();
 builder.Services.AddScoped<IHomeworkService, HomeworkService>();
+builder.Services.AddScoped<IParentNoteRepository, ParentNoteRepository>();
+builder.Services.AddScoped<IParentNoteService, ParentNoteService>();
+builder.Services.AddScoped<ICounsellingReferralRepository, CounsellingReferralRepository>();
+builder.Services.AddScoped<ICounsellingReferralService, CounsellingReferralService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddSingleton<IOnnxMarkPredictionService, OnnxMarkPredictionService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -61,12 +61,28 @@ namespace ESCHOOLING.Web.Controllers
         /// </summary>
         private readonly IStudentBehaviourEntryService _studentBehaviourEntryService;
         /// <summary>
+        /// The parent note service.
+        /// </summary>
+        private readonly IParentNoteService _parentNoteService;
+        /// <summary>
+        /// The counselor service (existing Admin-side counselor directory).
+        /// </summary>
+        private readonly ICounselorService _counselorService;
+        /// <summary>
+        /// The counselling referral service.
+        /// </summary>
+        private readonly ICounsellingReferralService _counsellingReferralService;
+        /// <summary>
+        /// The email service, used to best-effort notify a counselor of a new referral.
+        /// </summary>
+        private readonly IEmailService _emailService;
+        /// <summary>
         /// Initializes a new instance of the <see cref="AdminController"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="applicatioUserService">The applicatio user service.</param>
         /// <param name="config">The configuration.</param>
-        public TeacherController(ILogger<TeacherController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, IMarksService marksService, IHomeworkService homeworkService, IOnnxMarkPredictionService onnxMarkPredictionService, IStudentMarksEntryService studentMarksEntryService, IStudentBehaviourEntryService studentBehaviourEntryService)
+        public TeacherController(ILogger<TeacherController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, IMarksService marksService, IHomeworkService homeworkService, IOnnxMarkPredictionService onnxMarkPredictionService, IStudentMarksEntryService studentMarksEntryService, IStudentBehaviourEntryService studentBehaviourEntryService, IParentNoteService parentNoteService, ICounselorService counselorService, ICounsellingReferralService counsellingReferralService, IEmailService emailService)
         {
             _logger = logger;
             _applicationUserService = applicatioUserService;
@@ -77,6 +93,10 @@ namespace ESCHOOLING.Web.Controllers
             _onnxMarkPredictionService = onnxMarkPredictionService;
             _studentMarksEntryService = studentMarksEntryService;
             _studentBehaviourEntryService = studentBehaviourEntryService;
+            _parentNoteService = parentNoteService;
+            _counselorService = counselorService;
+            _counsellingReferralService = counsellingReferralService;
+            _emailService = emailService;
         }
 
         public async Task<IActionResult> TeacherHome()
@@ -545,6 +565,93 @@ namespace ESCHOOLING.Web.Controllers
         {
             var entries = await _studentBehaviourEntryService.GetAllBehaviourEntriesAsync();
             return View(entries);
+        }
+
+        /// <summary>
+        /// Teacher-wide view of every note parents have sent about their children.
+        /// </summary>
+        public async Task<IActionResult> ViewParentNotes()
+        {
+            var notes = await _parentNoteService.GetAllNotesAsync();
+            return View(notes);
+        }
+
+        public async Task<IActionResult> ReferToCounselling()
+        {
+            ViewBag.Students = await _applicationUserService.GetUsersByTypeAsync((int)RoleEnums.Student);
+            ViewBag.Counselors = await _counselorService.GetAllAsync();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ReferToCounselling(long studentId, long counselorId, string reason)
+        {
+            var teacherId = ApplicationSession.applicationUserId;
+
+            var referral = new CounsellingReferral
+            {
+                StudentId = studentId,
+                CounselorId = counselorId,
+                TeacherId = teacherId,
+                Reason = reason,
+                IsActive = true,
+                CreatedDate = DateTime.Now
+            };
+
+            try
+            {
+                var result = await _counsellingReferralService.SaveReferralAsync(referral);
+
+                if (result.Id == 0)
+                {
+                    _logger.LogError("ReferToCounselling: save reported no rows affected for studentId {StudentId}, counselorId {CounselorId}", studentId, counselorId);
+                    return Json(new { success = false, message = "Save failed. No rows were written; see server logs for details." });
+                }
+            }
+            catch (DbUpdateException ex) when (ex.InnerException is SqlException { Number: 547 })
+            {
+                _logger.LogError(ex, "ReferToCounselling: foreign key violation for studentId {StudentId}, counselorId {CounselorId}", studentId, counselorId);
+                return Json(new { success = false, message = "Save failed: selected student or counselor does not exist." });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "ReferToCounselling: failed to save referral for studentId {StudentId}, counselorId {CounselorId}", studentId, counselorId);
+                return Json(new { success = false, message = $"Save failed: {ex.Message}" });
+            }
+
+            // The referral is saved at this point. The email notification is best-effort —
+            // a failure here must not make it look like the referral itself was lost.
+            try
+            {
+                var counselor = await _counselorService.GetByIdAsync(counselorId);
+                var student = await _applicationUserService.GetUserByIdAsync(studentId);
+                var teacher = await _applicationUserService.GetUserByIdAsync(teacherId);
+
+                var subject = $"Student Counselling Referral: {student?.Username}";
+                var body = $"Dear {counselor?.Name},\n\n" +
+                           $"{teacher?.Username} has referred {student?.Username} for counselling.\n\n" +
+                           $"Reason: {reason}\n\n" +
+                           "Please reach out to the school to arrange a session.\n\n" +
+                           "— EduSight";
+
+                await _emailService.SendEmailAsync(counselor!.Email!, counselor.Name!, subject, body);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "ReferToCounselling: referral saved but email notification failed for counselorId {CounselorId}", counselorId);
+                return Json(new { success = true, emailSent = false, message = "Referral saved, but the email notification to the counselor could not be sent." });
+            }
+
+            return Json(new { success = true, emailSent = true });
+        }
+
+        /// <summary>
+        /// Teacher-wide view of every counselling referral recorded so far.
+        /// </summary>
+        public async Task<IActionResult> ViewReferrals()
+        {
+            var referrals = await _counsellingReferralService.GetAllReferralsAsync();
+            return View(referrals);
         }
 
         public IActionResult AddHomework()

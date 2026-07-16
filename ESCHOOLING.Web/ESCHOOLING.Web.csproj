@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>eschooling-web-c1b6f2a4-9d3e-4f7a-9c8e-2b5f6a1d7e3c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

@@ -97,6 +97,14 @@
                                 <a class="nav-item-hold" href="#"><i class="nav-icon i-Statistic"></i><span class="nav-text">Reports</span></a>
                                 <div class="triangle"></div>
                             </li>
+                            <li class="nav-item @(action.Contains("ParentNotes") ? "active" : "")" data-item="parentnoteskits">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Email"></i><span class="nav-text">Parent Notes</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action.Contains("Referrals") || action == "ReferToCounselling" ? "active" : "")" data-item="referralkits">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Support"></i><span class="nav-text">Counselling</span></a>
+                                <div class="triangle"></div>
+                            </li>
                         }
                         @if (isAdmin) {
                             <li class="nav-item @((action.Contains("Register") || action == "ManageUsers" || action.EndsWith("List")) ? "active" : "")" data-item="usermgmt">
@@ -146,6 +154,10 @@
                                 <a class="nav-item-hold" href="/Parent/ViewBehaviourReport"><i class="nav-icon i-Speach-Bubble"></i><span class="nav-text">Behaviour Report</span></a>
                                 <div class="triangle"></div>
                             </li>
+                            <li class="nav-item @(action == "SendNote" ? "active" : "")">
+                                <a class="nav-item-hold" href="/Parent/SendNote"><i class="nav-icon i-Edit"></i><span class="nav-text">Send Note</span></a>
+                                <div class="triangle"></div>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -179,6 +191,13 @@
                         </ul>
                         <ul class="childNav" data-parent="reportskits">
                             <li class="nav-item"><a class="@(action == "MonthlyReports" ? "active" : "")" href="/Teacher/MonthlyReports"><i class="nav-icon i-Statistic"></i><span class="item-name">Monthly Reports</span></a></li>
+                        </ul>
+                        <ul class="childNav" data-parent="parentnoteskits">
+                            <li class="nav-item"><a class="@(action == "ViewParentNotes" ? "active" : "")" href="/Teacher/ViewParentNotes"><i class="nav-icon i-Eye"></i><span class="item-name">View Parent Notes</span></a></li>
+                        </ul>
+                        <ul class="childNav" data-parent="referralkits">
+                            <li class="nav-item"><a class="@(action == "ReferToCounselling" ? "active" : "")" href="/Teacher/ReferToCounselling"><i class="nav-icon i-Pen-2"></i><span class="item-name">Refer to Counselling</span></a></li>
+                            <li class="nav-item"><a class="@(action == "ViewReferrals" ? "active" : "")" href="/Teacher/ViewReferrals"><i class="nav-icon i-Eye"></i><span class="item-name">View Referrals</span></a></li>
                         </ul>
                     }
                     @if (isAdmin) {
