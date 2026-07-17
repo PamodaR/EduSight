@@ -10,9 +10,11 @@ namespace ESCHOOLING.Shared.Models
     {
         public int Id { get; set; }
         public string? EventName { get; set; }
+        public string? Description { get; set; }
         public DateTime? Date { get; set; }
         public string? Place { get; set; }
         public string? Time { get; set; }
+        public int? Grade { get; set; }
         public bool? IsActive { get; set; }
     }
 }

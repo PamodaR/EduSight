@@ -77,12 +77,16 @@ namespace ESCHOOLING.Web.Controllers
         /// </summary>
         private readonly IEmailService _emailService;
         /// <summary>
+        /// The events service.
+        /// </summary>
+        private readonly IEventsService _eventsService;
+        /// <summary>
         /// Initializes a new instance of the <see cref="AdminController"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="applicatioUserService">The applicatio user service.</param>
         /// <param name="config">The configuration.</param>
-        public TeacherController(ILogger<TeacherController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, IMarksService marksService, IHomeworkService homeworkService, IOnnxMarkPredictionService onnxMarkPredictionService, IStudentMarksEntryService studentMarksEntryService, IStudentBehaviourEntryService studentBehaviourEntryService, IParentNoteService parentNoteService, ICounselorService counselorService, ICounsellingReferralService counsellingReferralService, IEmailService emailService)
+        public TeacherController(ILogger<TeacherController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, IMarksService marksService, IHomeworkService homeworkService, IOnnxMarkPredictionService onnxMarkPredictionService, IStudentMarksEntryService studentMarksEntryService, IStudentBehaviourEntryService studentBehaviourEntryService, IParentNoteService parentNoteService, ICounselorService counselorService, ICounsellingReferralService counsellingReferralService, IEmailService emailService, IEventsService eventsService)
         {
             _logger = logger;
             _applicationUserService = applicatioUserService;
@@ -97,6 +101,7 @@ namespace ESCHOOLING.Web.Controllers
             _counselorService = counselorService;
             _counsellingReferralService = counsellingReferralService;
             _emailService = emailService;
+            _eventsService = eventsService;
         }
 
         public async Task<IActionResult> TeacherHome()
@@ -681,6 +686,44 @@ namespace ESCHOOLING.Web.Controllers
             }
 
             return Json(new { success = false });
+        }
+
+        public IActionResult AddEvent()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveEvent(string eventName, string description, DateTime date, string time, string place, int? grade)
+        {
+            var eventObject = new Events
+            {
+                EventName = eventName,
+                Description = description,
+                Date = date,
+                Time = time,
+                Place = place,
+                Grade = grade,
+                IsActive = true
+            };
+
+            try
+            {
+                var result = await _eventsService.SaveEventAsync(eventObject);
+
+                if (result.Id != 0)
+                {
+                    return Json(new { success = true });
+                }
+
+                _logger.LogError("SaveEvent: save reported no rows affected for eventName {EventName}", eventName);
+                return Json(new { success = false, message = "Save failed. No rows were written; see server logs for details." });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "SaveEvent: failed to save event {EventName}", eventName);
+                return Json(new { success = false, message = $"Save failed: {ex.Message}" });
+            }
         }
     }
 }

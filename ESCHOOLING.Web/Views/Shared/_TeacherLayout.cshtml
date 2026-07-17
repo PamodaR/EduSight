@@ -89,6 +89,10 @@
                                 <a class="nav-item-hold" href="#"><i class="nav-icon i-Open-Book"></i><span class="nav-text">Homework</span></a>
                                 <div class="triangle"></div>
                             </li>
+                            <li class="nav-item @(action.Contains("Event") ? "active" : "")">
+                                <a class="nav-item-hold" href="/Teacher/AddEvent"><i class="nav-icon i-Calendar"></i><span class="nav-text">Add Event</span></a>
+                                <div class="triangle"></div>
+                            </li>
                             <li class="nav-item @(action.Contains("Behaviour") ? "active" : "")" data-item="behaviourkits">
                                 <a class="nav-item-hold" href="#"><i class="nav-icon i-Speach-Bubble"></i><span class="nav-text">Behaviour</span></a>
                                 <div class="triangle"></div>
@@ -115,6 +119,10 @@
                                 <a class="nav-item-hold" href="#"><i class="nav-icon i-Financial"></i><span class="nav-text">Counselors</span></a>
                                 <div class="triangle"></div>
                             </li>
+                            <li class="nav-item @(action.Contains("Event") ? "active" : "")">
+                                <a class="nav-item-hold" href="/Admin/AddEvent"><i class="nav-icon i-Calendar"></i><span class="nav-text">Add Event</span></a>
+                                <div class="triangle"></div>
+                            </li>
                         }
                         @if (isStudent) {
                             <li class="nav-item @(action == "ViewMarks" ? "active" : "")">
@@ -131,6 +139,10 @@
                             </li>
                             <li class="nav-item @(action == "ViewHomework" ? "active" : "")">
                                 <a class="nav-item-hold" href="/Student/ViewHomework"><i class="nav-icon i-Open-Book"></i><span class="nav-text">View Homework</span></a>
+                                <div class="triangle"></div>
+                            </li>
+                            <li class="nav-item @(action.Contains("Events") ? "active" : "")">
+                                <a class="nav-item-hold" href="/Student/ViewEvents"><i class="nav-icon i-Calendar"></i><span class="nav-text">Events</span></a>
                                 <div class="triangle"></div>
                             </li>
                         } else if (isParent) {

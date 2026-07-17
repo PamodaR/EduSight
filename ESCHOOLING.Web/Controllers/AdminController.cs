@@ -1,6 +1,7 @@
 using ECOMSYSTEM.Shared;
 using ECOMSYSTEM.Shared.Enum;
 using ECOMSYSTEM.Shared.Models;
+using ESCHOOLING.Shared;
 using ESCHOOLING.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -33,18 +34,23 @@ namespace ESCHOOLING.Web.Controllers
         /// </summary>
         private readonly ICounselorService _counselorService;
         /// <summary>
+        /// The events service
+        /// </summary>
+        private readonly IEventsService _eventsService;
+        /// <summary>
         /// Initializes a new instance of the <see cref="AdminController"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="applicatioUserService">The applicatio user service.</param>
         /// <param name="config">The configuration.</param>
-        public AdminController(ILogger<AdminController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, ICounselorService counselorService)
+        public AdminController(ILogger<AdminController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, ICounselorService counselorService, IEventsService eventsService)
         {
             _logger = logger;
             _applicationUserService = applicatioUserService;
             _config = config;
             _webHostEnvironment = webHostEnvironment;
             _counselorService = counselorService;
+            _eventsService = eventsService;
         }
 
         public async Task<IActionResult> AdminHome()
@@ -220,6 +226,48 @@ namespace ESCHOOLING.Web.Controllers
             var result = await _applicationUserService.DeactivateUserAsync(id);
             TempData["Message"] = result ? "Deactivated successfully." : "Deactivation failed.";
             return RedirectToAction(redirectAction);
+        }
+
+        #endregion
+
+        #region Events
+
+        public IActionResult AddEvent()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveEvent(string eventName, string description, DateTime date, string time, string place, int? grade)
+        {
+            var eventObject = new Events
+            {
+                EventName = eventName,
+                Description = description,
+                Date = date,
+                Time = time,
+                Place = place,
+                Grade = grade,
+                IsActive = true
+            };
+
+            try
+            {
+                var result = await _eventsService.SaveEventAsync(eventObject);
+
+                if (result.Id != 0)
+                {
+                    return Json(new { success = true });
+                }
+
+                _logger.LogError("SaveEvent: save reported no rows affected for eventName {EventName}", eventName);
+                return Json(new { success = false, message = "Save failed. No rows were written; see server logs for details." });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "SaveEvent: failed to save event {EventName}", eventName);
+                return Json(new { success = false, message = $"Save failed: {ex.Message}" });
+            }
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ESCHOOLING.Shared.Models.Events>
+@using System.Linq
 @{
     Layout = "_TeacherLayout";
 }
@@ -38,13 +39,20 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">EventName</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Time</th>
                                 <th scope="col">Place</th>
- 
+
                             </tr>
                         </thead>
                         <tbody>
+                            @if (!Model.Any())
+                            {
+                                <tr>
+                                    <td colspan="6" class="text-center">No upcoming events.</td>
+                                </tr>
+                            }
                             @foreach (var item in Model)
                             {
                                 <tr>
@@ -55,12 +63,15 @@
                                         @Html.DisplayFor(modelItem => item.EventName)
                                     </td>
                                     <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
                                         @Html.DisplayFor(modelItem => item.Date)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Time)
                                     </td>
-                                 
+
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Place)
                                     </td>

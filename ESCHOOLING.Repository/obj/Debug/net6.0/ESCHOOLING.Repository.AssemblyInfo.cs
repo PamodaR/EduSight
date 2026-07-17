@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ESCHOOLING.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e4726168d056cf69f3c8e9cea3d9aeea0432f5f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fece928fbda1b4e44ce55861ca3c52f3f33b3a9e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ESCHOOLING.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ESCHOOLING.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

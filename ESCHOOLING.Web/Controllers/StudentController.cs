@@ -48,12 +48,16 @@ namespace ESCHOOLING.Web.Controllers
         /// </summary>
         private readonly IStudentMarksEntryService _studentMarksEntryService;
         /// <summary>
+        /// The events service
+        /// </summary>
+        private readonly IEventsService _eventsService;
+        /// <summary>
         /// Initializes a new instance of the <see cref="AdminController"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="applicatioUserService">The applicatio user service.</param>
         /// <param name="config">The configuration.</param>
-        public StudentController(ILogger<TeacherController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, IMarksService marksService, IHomeworkService homeworkService, IOnnxMarkPredictionService onnxMarkPredictionService, IStudentMarksEntryService studentMarksEntryService)
+        public StudentController(ILogger<TeacherController> logger, IApplicatioUser applicatioUserService, IConfiguration config, IWebHostEnvironment webHostEnvironment, IMarksService marksService, IHomeworkService homeworkService, IOnnxMarkPredictionService onnxMarkPredictionService, IStudentMarksEntryService studentMarksEntryService, IEventsService eventsService)
         {
             _logger = logger;
             _applicationUserService = applicatioUserService;
@@ -63,6 +67,7 @@ namespace ESCHOOLING.Web.Controllers
             _homeworkService = homeworkService;
             _onnxMarkPredictionService = onnxMarkPredictionService;
             _studentMarksEntryService = studentMarksEntryService;
+            _eventsService = eventsService;
         }
 
         public IActionResult Index()
@@ -117,9 +122,18 @@ namespace ESCHOOLING.Web.Controllers
             return View();
         }
 
-        public IActionResult ViewEvents()
+        public async Task<IActionResult> ViewEvents()
         {
-            return View();
+            var studentId = ApplicationSession.applicationUserId;
+            var student = await _applicationUserService.GetUserByIdAsync(studentId);
+
+            var allEvents = await _eventsService.GetAllEventsAsync();
+            var visibleEvents = allEvents
+                .Where(e => e.Grade == null || e.Grade == student.Grade)
+                .OrderBy(e => e.Date)
+                .ToList();
+
+            return View(visibleEvents);
         }
 
         /// <summary>

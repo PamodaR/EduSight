@@ -147,6 +147,8 @@ namespace ESCHOOLING.DataAccess.EntityModel
 
                 entity.Property(e => e.EventName).HasMaxLength(50);
 
+                entity.Property(e => e.Description).HasMaxLength(500);
+
                 entity.Property(e => e.Place).HasMaxLength(50);
 
                 entity.Property(e => e.Time).HasMaxLength(50);
