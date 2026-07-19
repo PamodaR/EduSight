@@ -12,7 +12,6 @@ namespace ESCHOOLING.Repository.StudentHomework
     {
         private readonly ECOM_WebContext _dbContext;
         private readonly IMapper _mapper;
-        private static readonly Random _random = new Random();
 
         public HomeworkRepository(ECOM_WebContext dbContext, IMapper mapper)
         {
@@ -25,7 +24,6 @@ namespace ESCHOOLING.Repository.StudentHomework
             try
             {
                 var mappedObject = _mapper.Map<TblHomework>(homeworkObject);
-                mappedObject.Id = _random.Next(1, int.MaxValue);
 
                 _dbContext.TblHomeworks.Add(mappedObject);
                 var result = await _dbContext.SaveChangesAsync();

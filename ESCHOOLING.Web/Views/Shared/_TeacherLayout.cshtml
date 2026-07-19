@@ -49,7 +49,7 @@
                                 <div class="dropdown-header">
                                     <i class="i-Lock-User mr-1"></i> @userRoleName
                                 </div>
-                                <a class="dropdown-item" href="/Auth/Login">Sign out</a>
+                                <a class="dropdown-item" href="@Url.Action("Logout", "Auth")">Sign out</a>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                                 <div class="triangle"></div>
                             </li>
                             <li class="nav-item @(action.Contains("Event") ? "active" : "")">
-                                <a class="nav-item-hold" href="/Teacher/AddEvent"><i class="nav-icon i-Calendar"></i><span class="nav-text">Add Event</span></a>
+                                <a class="nav-item-hold" href="/Teacher/ViewEvents"><i class="nav-icon i-Calendar"></i><span class="nav-text">Events</span></a>
                                 <div class="triangle"></div>
                             </li>
                             <li class="nav-item @(action.Contains("Behaviour") ? "active" : "")" data-item="behaviourkits">
@@ -119,8 +119,8 @@
                                 <a class="nav-item-hold" href="#"><i class="nav-icon i-Financial"></i><span class="nav-text">Counselors</span></a>
                                 <div class="triangle"></div>
                             </li>
-                            <li class="nav-item @(action.Contains("Event") ? "active" : "")">
-                                <a class="nav-item-hold" href="/Admin/AddEvent"><i class="nav-icon i-Calendar"></i><span class="nav-text">Add Event</span></a>
+                            <li class="nav-item @(action.Contains("Event") ? "active" : "")" data-item="events">
+                                <a class="nav-item-hold" href="#"><i class="nav-icon i-Calendar"></i><span class="nav-text">Events</span></a>
                                 <div class="triangle"></div>
                             </li>
                         }
@@ -222,6 +222,10 @@
                         <ul class="childNav" data-parent="counselors">
                             <li class="nav-item"><a class="@(action == "Create" ? "active" : "")" href="/Counselor/Create"><i class="nav-icon i-Add-User"></i><span class="item-name">Add Counselor</span></a></li>
                             <li class="nav-item"><a class="@(action == "Index" ? "active" : "")" href="/Counselor/Index"><i class="nav-icon i-Eye"></i><span class="item-name">View Counselors</span></a></li>
+                        </ul>
+                        <ul class="childNav" data-parent="events">
+                            <li class="nav-item"><a class="@(action == "AddEvent" ? "active" : "")" href="/Admin/AddEvent"><i class="nav-icon i-Calendar"></i><span class="item-name">Add Event</span></a></li>
+                            <li class="nav-item"><a class="@(action == "EventsList" ? "active" : "")" href="/Admin/EventsList"><i class="nav-icon i-Eye"></i><span class="item-name">Manage Events</span></a></li>
                         </ul>
                     }
                 </div>

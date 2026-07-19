@@ -1,0 +1,74 @@
+@model ESCHOOLING.Shared.Models.Events
+@{
+    Layout = "_TeacherLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Event | EduSight</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet">
+</head>
+
+<body class="text-left">
+
+    <div class="main-content">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="">Edit Event</a></li>
+                <li>Admin</li>
+            </ul>
+        </div>
+        <div class="col-lg-8">
+            <form asp-action="EditEvent" method="post" class="form-panel">
+                <input type="hidden" asp-for="Id" />
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label asp-for="EventName">Title</label>
+                        <input class="form-control form-control-rounded" asp-for="EventName" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Grade">Audience</label>
+                        <select class="form-control form-control-rounded" asp-for="Grade">
+                            <option value="">All grades</option>
+                            <option value="9">Grade 9</option>
+                            <option value="10">Grade 10</option>
+                            <option value="11">Grade 11</option>
+                            <option value="12">Grade 12</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description">Description</label>
+                    <textarea class="form-control form-control-rounded" asp-for="Description" rows="4" required></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label asp-for="Date">Date</label>
+                        <input class="form-control form-control-rounded" asp-for="Date" type="date" required>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label asp-for="Time">Time</label>
+                        <input class="form-control form-control-rounded" asp-for="Time" type="time" required>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label asp-for="Place">Place</label>
+                        <input class="form-control form-control-rounded" asp-for="Place" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-rounded" type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+        <!-- end of main-content -->
+    </div>
+
+</body>
+
+</html>

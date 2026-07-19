@@ -2,6 +2,7 @@
 using ECOMSYSTEM.Shared.Enum;
 using ECOMSYSTEM.Shared.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -62,9 +63,17 @@ namespace ECOMSYSTEM.Web.Controllers
                 });
             }
 
-            ApplicationSession.applicationUserId = result.UserId;
-
             var role = ((RoleEnums)result.UserType).ToString();
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, result.UserId.ToString()),
+                new Claim(ClaimTypes.Name, result.Username ?? string.Empty),
+                new Claim(ClaimTypes.Email, result.Email ?? string.Empty),
+                new Claim(ClaimTypes.Role, role)
+            };
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
 
             if (role == "Admin")
             {
@@ -99,6 +108,13 @@ namespace ECOMSYSTEM.Web.Controllers
                 });
             }
 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("login", "Auth");
         }
     }
 }

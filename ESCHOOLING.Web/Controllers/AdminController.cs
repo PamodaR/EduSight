@@ -3,11 +3,13 @@ using ECOMSYSTEM.Shared.Enum;
 using ECOMSYSTEM.Shared.Models;
 using ESCHOOLING.Shared;
 using ESCHOOLING.Shared.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
 namespace ESCHOOLING.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         /// <summary>
@@ -268,6 +270,37 @@ namespace ESCHOOLING.Web.Controllers
                 _logger.LogError(ex, "SaveEvent: failed to save event {EventName}", eventName);
                 return Json(new { success = false, message = $"Save failed: {ex.Message}" });
             }
+        }
+
+        public async Task<IActionResult> EventsList()
+        {
+            var results = await _eventsService.GetAllEventsAsync();
+            return View(results);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditEvent(int id)
+        {
+            var eventInfo = await _eventsService.GetEventByIdAsync(id);
+            return View(eventInfo);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditEvent(Events eventInfo)
+        {
+            var result = await _eventsService.UpdateEventAsync(eventInfo);
+            TempData["Message"] = (result.Id != 0) ? "Event updated successfully." : "Update failed.";
+
+            return RedirectToAction(nameof(EventsList));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteEvent(int id)
+        {
+            var result = await _eventsService.DeleteEventAsync(id);
+            TempData["Message"] = result ? "Event deleted successfully." : "Delete failed.";
+
+            return RedirectToAction(nameof(EventsList));
         }
 
         #endregion

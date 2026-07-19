@@ -12,7 +12,6 @@ namespace ESCHOOLING.Repository.SchoolEvents
     {
         private readonly ECOM_WebContext _dbContext;
         private readonly IMapper _mapper;
-        private static readonly Random _random = new Random();
 
         public EventsRepository(ECOM_WebContext dbContext, IMapper mapper)
         {
@@ -25,7 +24,6 @@ namespace ESCHOOLING.Repository.SchoolEvents
             try
             {
                 var mappedObject = _mapper.Map<TblEvent>(eventObject);
-                mappedObject.Id = _random.Next(1, int.MaxValue);
 
                 _dbContext.TblEvents.Add(mappedObject);
                 var result = await _dbContext.SaveChangesAsync();
@@ -55,6 +53,66 @@ namespace ESCHOOLING.Repository.SchoolEvents
             catch (Exception)
             {
                 return new List<ESCHOOLING.Shared.Models.Events>();
+            }
+        }
+
+        public async Task<ESCHOOLING.Shared.Models.Events?> GetEventByIdAsync(int id)
+        {
+            try
+            {
+                var eventEntity = await _dbContext.TblEvents.AsNoTracking().Where(e => e.Id == id).FirstOrDefaultAsync();
+                return eventEntity == null ? null : _mapper.Map<ESCHOOLING.Shared.Models.Events>(eventEntity);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<ESCHOOLING.Shared.Models.Events> UpdateEventAsync(ESCHOOLING.Shared.Models.Events eventObject)
+        {
+            try
+            {
+                var result = await _dbContext.TblEvents.Where(e => e.Id == eventObject.Id).FirstOrDefaultAsync();
+                if (result == null)
+                {
+                    return new ESCHOOLING.Shared.Models.Events();
+                }
+
+                result.EventName = eventObject.EventName;
+                result.Description = eventObject.Description;
+                result.Date = eventObject.Date;
+                result.Time = eventObject.Time;
+                result.Place = eventObject.Place;
+                result.Grade = eventObject.Grade;
+
+                await _dbContext.SaveChangesAsync();
+
+                return _mapper.Map<ESCHOOLING.Shared.Models.Events>(result);
+            }
+            catch (Exception)
+            {
+                return new ESCHOOLING.Shared.Models.Events();
+            }
+        }
+
+        public async Task<bool> DeleteEventAsync(int id)
+        {
+            try
+            {
+                var result = await _dbContext.TblEvents.Where(e => e.Id == id).FirstOrDefaultAsync();
+                if (result == null)
+                {
+                    return false;
+                }
+
+                _dbContext.TblEvents.Remove(result);
+                var saved = await _dbContext.SaveChangesAsync();
+                return saved > 0;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

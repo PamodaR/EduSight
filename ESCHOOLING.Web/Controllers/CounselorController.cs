@@ -1,9 +1,11 @@
 using ECOMSYSTEM.Shared;
 using ECOMSYSTEM.Shared.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESCHOOLING.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CounselorController : Controller
     {
         /// <summary>
@@ -39,9 +41,13 @@ namespace ESCHOOLING.Web.Controllers
             counselorInfo.IsActive = true;
 
             var result = await _counselorService.CreateAsync(counselorInfo);
-            TempData["Message"] = (result.CounselorId != 0) ? "Counselor registered successfully." : "Registration failed.";
 
-            return RedirectToAction(nameof(Index));
+            if (result.CounselorId != 0)
+            {
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false });
         }
 
         [HttpGet]

@@ -14,6 +14,15 @@ namespace ECOMSYSTEM.Shared.Models
         public string? Address { get; set; }
         public string? Specialization { get; set; }
         public bool? IsActive { get; set; }
+        /// <summary>
+        /// Non-nullable view of <see cref="IsActive"/> for checkbox binding — asp-for's CheckBoxTagHelper
+        /// only supports bool/string, not bool?.
+        /// </summary>
+        public bool IsActiveChecked
+        {
+            get => IsActive ?? false;
+            set => IsActive = value;
+        }
         public DateTime? CreatedDate { get; set; }
     }
 }

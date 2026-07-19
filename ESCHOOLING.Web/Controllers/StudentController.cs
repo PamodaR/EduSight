@@ -2,12 +2,15 @@
 using ECOMSYSTEM.Shared.Models;
 using ESCHOOLING.Shared;
 using ESCHOOLING.Shared.Models;
+using ESCHOOLING.Web.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using System.Linq;
 
 namespace ESCHOOLING.Web.Controllers
 {
+    [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
         /// <summary>
@@ -78,7 +81,7 @@ namespace ESCHOOLING.Web.Controllers
         public async Task<IActionResult> StudentHome()
         {
             const int months = 6;
-            var studentId = ApplicationSession.applicationUserId;
+            var studentId = User.GetUserId();
             var model = new StudentDashboardModel();
 
             var attendanceRates = await _applicationUserService.GetAttendanceRateByMonthForStudentAsync(studentId, months);
@@ -124,7 +127,7 @@ namespace ESCHOOLING.Web.Controllers
 
         public async Task<IActionResult> ViewEvents()
         {
-            var studentId = ApplicationSession.applicationUserId;
+            var studentId = User.GetUserId();
             var student = await _applicationUserService.GetUserByIdAsync(studentId);
 
             var allEvents = await _eventsService.GetAllEventsAsync();
@@ -141,7 +144,7 @@ namespace ESCHOOLING.Web.Controllers
         /// </summary>
         public async Task<IActionResult> ViewMarks()
         {
-            var studentId = ApplicationSession.applicationUserId;
+            var studentId = User.GetUserId();
             var allEntries = await _studentMarksEntryService.GetAllMarksEntriesAsync();
             var studentEntries = allEntries.Where(e => e.StudentId == studentId).ToList();
 
@@ -153,7 +156,7 @@ namespace ESCHOOLING.Web.Controllers
         /// </summary>
         public async Task<IActionResult> PredictedMarks()
         {
-            var studentId = ApplicationSession.applicationUserId;
+            var studentId = User.GetUserId();
             var allMarks = await _marksService.GetAllMarksAsync();
             var studentMarks = allMarks.Where(m => m.StudentId == studentId).ToList();
 
@@ -175,7 +178,7 @@ namespace ESCHOOLING.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> PredictMark(double mark1, double mark2, double mark3)
         {
-            var studentId = ApplicationSession.applicationUserId;
+            var studentId = User.GetUserId();
             _logger.LogInformation("PredictMark (Student): request received for studentId {StudentId}", studentId);
 
             try
@@ -227,7 +230,7 @@ namespace ESCHOOLING.Web.Controllers
         /// </summary>
         public async Task<IActionResult> ViewHomework()
         {
-            var studentId = ApplicationSession.applicationUserId;
+            var studentId = User.GetUserId();
             var student = await _applicationUserService.GetUserByIdAsync(studentId);
 
             var allHomework = await _homeworkService.GetAllHomeworkAsync();

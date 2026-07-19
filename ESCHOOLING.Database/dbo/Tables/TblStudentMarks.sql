@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[TblStudentMarks]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [StudentId] BIGINT NULL, 
     [Subject] NVARCHAR(50) NULL, 
     [PredictedMark] NVARCHAR(50) NULL, 

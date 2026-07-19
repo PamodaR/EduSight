@@ -43,5 +43,41 @@ namespace ECOMSYSTEM.Web.Services
                 return new List<ESCHOOLING.Shared.Models.Events>();
             }
         }
+
+        public async Task<ESCHOOLING.Shared.Models.Events?> GetEventByIdAsync(int id)
+        {
+            try
+            {
+                return await _eventsRepository.GetEventByIdAsync(id);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<ESCHOOLING.Shared.Models.Events> UpdateEventAsync(ESCHOOLING.Shared.Models.Events eventObject)
+        {
+            try
+            {
+                return await _eventsRepository.UpdateEventAsync(eventObject);
+            }
+            catch (Exception)
+            {
+                return new ESCHOOLING.Shared.Models.Events();
+            }
+        }
+
+        public async Task<bool> DeleteEventAsync(int id)
+        {
+            try
+            {
+                return await _eventsRepository.DeleteEventAsync(id);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

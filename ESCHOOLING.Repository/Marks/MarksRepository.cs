@@ -12,7 +12,6 @@ namespace ESCHOOLING.Repository.StudentMarks
     {
         private readonly ECOM_WebContext _dbContext;
         private readonly IMapper _mapper;
-        private static readonly Random _random = new Random();
 
         public MarksRepository(ECOM_WebContext dbContext, IMapper mapper)
         {
@@ -23,7 +22,6 @@ namespace ESCHOOLING.Repository.StudentMarks
         public async Task<ESCHOOLING.Shared.Models.Marks> AddMarkAsync(ESCHOOLING.Shared.Models.Marks markObject)
         {
             var mappedObject = _mapper.Map<TblStudentMark>(markObject);
-            mappedObject.Id = _random.Next(1, int.MaxValue);
 
             _dbContext.TblStudentMarks.Add(mappedObject);
             var result = await _dbContext.SaveChangesAsync();

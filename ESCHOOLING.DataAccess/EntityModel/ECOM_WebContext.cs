@@ -141,8 +141,6 @@ namespace ESCHOOLING.DataAccess.EntityModel
 
             modelBuilder.Entity<TblEvent>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Date).HasColumnType("datetime");
 
                 entity.Property(e => e.EventName).HasMaxLength(50);
@@ -156,8 +154,6 @@ namespace ESCHOOLING.DataAccess.EntityModel
 
             modelBuilder.Entity<TblStudentMark>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.PredictedMark).HasMaxLength(50);
@@ -207,8 +203,6 @@ namespace ESCHOOLING.DataAccess.EntityModel
             modelBuilder.Entity<TblHomework>(entity =>
             {
                 entity.ToTable("TblHomework");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 

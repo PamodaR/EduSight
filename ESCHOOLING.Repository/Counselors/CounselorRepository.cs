@@ -121,7 +121,7 @@ namespace ECOMSYSTEM.Repository.Counselors
                     return false;
                 }
 
-                _dbContext.TblCounselors.Remove(result);
+                result.IsActive = false;
                 var saved = await _dbContext.SaveChangesAsync();
                 return saved > 0;
             }

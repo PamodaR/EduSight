@@ -2,12 +2,15 @@
 using ECOMSYSTEM.Shared.Models;
 using ESCHOOLING.Shared;
 using ESCHOOLING.Shared.Models;
+using ESCHOOLING.Web.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using System.Linq;
 
 namespace ESCHOOLING.Web.Controllers
 {
+    [Authorize(Roles = "Parent")]
     public class ParentController : Controller
     {
         /// <summary>
@@ -85,7 +88,7 @@ namespace ESCHOOLING.Web.Controllers
             const int months = 6;
             var model = new ParentDashboardModel();
 
-            var parentId = ApplicationSession.applicationUserId;
+            var parentId = User.GetUserId();
             var parent = await _applicationUserService.GetUserByIdAsync(parentId);
 
             if (parent.ChildStudentId == null)
@@ -142,7 +145,7 @@ namespace ESCHOOLING.Web.Controllers
 
             ViewBag.Date = date;
 
-            var parentId = ApplicationSession.applicationUserId;
+            var parentId = User.GetUserId();
             var parent = await _applicationUserService.GetUserByIdAsync(parentId);
 
             if (parent.ChildStudentId == null)
@@ -157,7 +160,7 @@ namespace ESCHOOLING.Web.Controllers
 
         public async Task<IActionResult> ViewEvents()
         {
-            var parentId = ApplicationSession.applicationUserId;
+            var parentId = User.GetUserId();
             var parent = await _applicationUserService.GetUserByIdAsync(parentId);
 
             if (parent.ChildStudentId == null)
@@ -181,7 +184,7 @@ namespace ESCHOOLING.Web.Controllers
         /// </summary>
         public async Task<IActionResult> ViewMarks()
         {
-            var parentId = ApplicationSession.applicationUserId;
+            var parentId = User.GetUserId();
             var parent = await _applicationUserService.GetUserByIdAsync(parentId);
 
             if (parent.ChildStudentId == null)
@@ -207,7 +210,7 @@ namespace ESCHOOLING.Web.Controllers
 
             ViewBag.Month = month;
 
-            var parentId = ApplicationSession.applicationUserId;
+            var parentId = User.GetUserId();
             var parent = await _applicationUserService.GetUserByIdAsync(parentId);
 
             if (parent.ChildStudentId == null)
@@ -229,7 +232,7 @@ namespace ESCHOOLING.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> SendNote(string noteText)
         {
-            var parentId = ApplicationSession.applicationUserId;
+            var parentId = User.GetUserId();
             var parent = await _applicationUserService.GetUserByIdAsync(parentId);
 
             if (parent.ChildStudentId == null)
@@ -280,7 +283,7 @@ namespace ESCHOOLING.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> PredictMark(double mark1, double mark2, double mark3)
         {
-            var parentId = ApplicationSession.applicationUserId;
+            var parentId = User.GetUserId();
             _logger.LogInformation("PredictMark (Parent): request received for parentId {ParentId}", parentId);
 
             try

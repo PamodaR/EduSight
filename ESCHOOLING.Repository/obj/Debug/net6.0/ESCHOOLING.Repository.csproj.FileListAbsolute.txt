@@ -33,6 +33,9 @@ E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Repository\obj\D
 E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Repository\obj\Debug\net6.0\refint\ESCHOOLING.Repository.dll
 E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Repository\obj\Debug\net6.0\ESCHOOLING.Repository.pdb
 E:\Final Project\2023\2114769 -  Artefact\ESCHOOLING\ESCHOOLING.Repository\obj\Debug\net6.0\ref\ESCHOOLING.Repository.dll
+C:\Users\Pamoda Madushan\AppData\Local\Temp\claude\E--EduSight-EduSight\cb207fd8-6615-4bb9-be5c-f1c352c919c5\scratchpad\webbuild\ESCHOOLING.Repository.deps.json
+C:\Users\Pamoda Madushan\AppData\Local\Temp\claude\E--EduSight-EduSight\cb207fd8-6615-4bb9-be5c-f1c352c919c5\scratchpad\webbuild\ESCHOOLING.Repository.dll
+C:\Users\Pamoda Madushan\AppData\Local\Temp\claude\E--EduSight-EduSight\cb207fd8-6615-4bb9-be5c-f1c352c919c5\scratchpad\webbuild\ESCHOOLING.Repository.pdb
 E:\EduSight\EduSight\ESCHOOLING.Repository\bin\Debug\net6.0\ESCHOOLING.Repository.deps.json
 E:\EduSight\EduSight\ESCHOOLING.Repository\bin\Debug\net6.0\ESCHOOLING.Repository.dll
 E:\EduSight\EduSight\ESCHOOLING.Repository\bin\Debug\net6.0\ESCHOOLING.Repository.pdb
@@ -51,6 +54,3 @@ E:\EduSight\EduSight\ESCHOOLING.Repository\obj\Debug\net6.0\ESCHOOLING.Repositor
 E:\EduSight\EduSight\ESCHOOLING.Repository\obj\Debug\net6.0\refint\ESCHOOLING.Repository.dll
 E:\EduSight\EduSight\ESCHOOLING.Repository\obj\Debug\net6.0\ESCHOOLING.Repository.pdb
 E:\EduSight\EduSight\ESCHOOLING.Repository\obj\Debug\net6.0\ref\ESCHOOLING.Repository.dll
-C:\Users\Pamoda Madushan\AppData\Local\Temp\claude\E--EduSight-EduSight\cb207fd8-6615-4bb9-be5c-f1c352c919c5\scratchpad\webbuild\ESCHOOLING.Repository.deps.json
-C:\Users\Pamoda Madushan\AppData\Local\Temp\claude\E--EduSight-EduSight\cb207fd8-6615-4bb9-be5c-f1c352c919c5\scratchpad\webbuild\ESCHOOLING.Repository.dll
-C:\Users\Pamoda Madushan\AppData\Local\Temp\claude\E--EduSight-EduSight\cb207fd8-6615-4bb9-be5c-f1c352c919c5\scratchpad\webbuild\ESCHOOLING.Repository.pdb

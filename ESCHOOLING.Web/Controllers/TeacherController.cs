@@ -4,6 +4,8 @@ using ECOMSYSTEM.Shared.Models;
 using ECOMSYSTEM.Web.Services;
 using ESCHOOLING.Shared;
 using ESCHOOLING.Shared.Models;
+using ESCHOOLING.Web.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +19,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ESCHOOLING.Web.Controllers
 {
+    [Authorize(Roles = "Teacher")]
     public class TeacherController : Controller
     {
         /// <summary>
@@ -591,7 +594,7 @@ namespace ESCHOOLING.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ReferToCounselling(long studentId, long counselorId, string reason)
         {
-            var teacherId = ApplicationSession.applicationUserId;
+            var teacherId = User.GetUserId();
 
             var referral = new CounsellingReferral
             {
@@ -669,7 +672,7 @@ namespace ESCHOOLING.Web.Controllers
         {
             var homeworkObject = new Homework
             {
-                TeacherId = ApplicationSession.applicationUserId,
+                TeacherId = User.GetUserId(),
                 Grade = grade,
                 Subject = subject,
                 Description = description,
@@ -688,42 +691,13 @@ namespace ESCHOOLING.Web.Controllers
             return Json(new { success = false });
         }
 
-        public IActionResult AddEvent()
+        /// <summary>
+        /// Read-only view of all events. Teachers cannot add, edit, or delete events — that's Admin-only.
+        /// </summary>
+        public async Task<IActionResult> ViewEvents()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> SaveEvent(string eventName, string description, DateTime date, string time, string place, int? grade)
-        {
-            var eventObject = new Events
-            {
-                EventName = eventName,
-                Description = description,
-                Date = date,
-                Time = time,
-                Place = place,
-                Grade = grade,
-                IsActive = true
-            };
-
-            try
-            {
-                var result = await _eventsService.SaveEventAsync(eventObject);
-
-                if (result.Id != 0)
-                {
-                    return Json(new { success = true });
-                }
-
-                _logger.LogError("SaveEvent: save reported no rows affected for eventName {EventName}", eventName);
-                return Json(new { success = false, message = "Save failed. No rows were written; see server logs for details." });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "SaveEvent: failed to save event {EventName}", eventName);
-                return Json(new { success = false, message = $"Save failed: {ex.Message}" });
-            }
+            var events = await _eventsService.GetAllEventsAsync();
+            return View(events);
         }
     }
 }
