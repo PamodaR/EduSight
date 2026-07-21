@@ -85,5 +85,15 @@ namespace ECOMSYSTEM.Repository.ApplicationUsers
         /// Soft-deletes a user by setting IsActive to false.
         /// </summary>
         Task<bool> DeactivateUserAsync(long userId);
+
+        /// <summary>
+        /// Updates only the user's stored profile picture path (narrow write, unlike UpdateUserAsync).
+        /// </summary>
+        Task<bool> UpdateProfilePictureAsync(long userId, string relativePath);
+
+        /// <summary>
+        /// Resets only the user's password (narrow write, unlike UpdateUserAsync).
+        /// </summary>
+        Task<bool> ResetPasswordAsync(long userId, string newPassword);
     }
 }

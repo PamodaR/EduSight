@@ -1,0 +1,70 @@
+@model ECOMSYSTEM.Shared.Models.ApplicationUser
+@{
+    Layout = "_TeacherLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Profile | EduSight</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet">
+</head>
+
+<body class="text-left">
+
+    <div class="main-content">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="">My Profile</a></li>
+                <li>Admin</li>
+            </ul>
+        </div>
+        <div class="col-lg-8">
+            <div class="form-panel">
+                <div class="form-group text-center">
+                    <img id="profilePicturePreview" src="@(string.IsNullOrEmpty(Model.ProfilePicturePath) ? "/dist-assets/images/User.png" : Model.ProfilePicturePath)" alt="Profile picture" style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
+                </div>
+                <div class="row">
+                    <div class="col-md-8 form-group">
+                        <label for="profilePictureInput">Change profile picture</label>
+                        <input type="file" class="form-control-file" id="profilePictureInput" accept=".jpg,.jpeg,.png,.gif">
+                        <small class="text-muted">JPG, PNG, or GIF — max 2MB</small>
+                    </div>
+                    <div class="col-md-4 form-group d-flex align-items-end">
+                        <button type="button" class="btn btn-primary btn-rounded" onclick="UploadProfilePictureBtn_Click('@Url.Action("UploadProfilePicture", "Admin")')">Upload</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Name</label>
+                        <input class="form-control form-control-rounded" value="@Model.Username" placeholder="Not set" readonly>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Email address</label>
+                        <input class="form-control form-control-rounded" value="@Model.Email" placeholder="Not set" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>Mobile No</label>
+                        <input class="form-control form-control-rounded" value="@Model.MobileNo" placeholder="Not set" readonly>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Address</label>
+                        <input class="form-control form-control-rounded" value="@Model.Address" placeholder="Not set" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of main-content -->
+    </div>
+
+</body>
+
+</html>

@@ -14,6 +14,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet" />
     <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet" />
     <link href="../../dist-assets/css/plugins/perfect-scrollbar.min.css" rel="stylesheet" />
+
+    <!-- Sweet alert -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="~/js/ViewParentNotes.js"></script>
 </head>
 
 <body class="text-left">
@@ -40,7 +47,13 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
+                                var noteText = item.NoteText ?? string.Empty;
+                                var truncatedNote = noteText.Length > 60 ? noteText.Substring(0, 60) + "..." : noteText;
+                                <tr class="parent-note-row" style="cursor:pointer" title="Click to view full note"
+                                    data-student="@item.StudentName"
+                                    data-parent="@item.ParentName"
+                                    data-note="@noteText"
+                                    data-date="@item.CreatedDate">
                                     <td>
                                         @Html.DisplayFor(modelItem => item.StudentName)
                                     </td>
@@ -48,7 +61,7 @@
                                         @Html.DisplayFor(modelItem => item.ParentName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.NoteText)
+                                        @truncatedNote
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CreatedDate)

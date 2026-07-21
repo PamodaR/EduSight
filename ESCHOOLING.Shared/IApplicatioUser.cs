@@ -1,5 +1,6 @@
 using ECOMSYSTEM.Shared.Models;
 using ESCHOOLING.Shared.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,5 +87,17 @@ namespace ECOMSYSTEM.Shared
         /// Soft-deletes a user by setting IsActive to false.
         /// </summary>
         Task<bool> DeactivateUserAsync(long userId);
+
+        /// <summary>
+        /// Validates and saves an uploaded profile picture to disk (under wwwroot/uploads/profile-pictures),
+        /// then persists the relative path on the user's record. Max 2MB; JPG/PNG/GIF only.
+        /// </summary>
+        Task<ProfilePictureUploadResult> UploadProfilePictureAsync(long userId, IFormFile? file, string webRootPath);
+
+        /// <summary>
+        /// Resets a user's password directly (Admin action). Plain-text, matching this app's existing
+        /// login/registration behavior.
+        /// </summary>
+        Task<bool> ResetPasswordAsync(long userId, string newPassword);
     }
 }

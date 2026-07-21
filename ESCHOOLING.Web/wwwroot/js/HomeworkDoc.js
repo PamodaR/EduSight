@@ -1,3 +1,10 @@
+function GetTodayDateString() {
+    var d = new Date();
+    var mm = String(d.getMonth() + 1).padStart(2, '0');
+    var dd = String(d.getDate()).padStart(2, '0');
+    return d.getFullYear() + '-' + mm + '-' + dd;
+}
+
 function ValidateHomeworkInputs() {
     let grade = document.getElementById('grade').value;
     if (grade == "") {
@@ -20,6 +27,11 @@ function ValidateHomeworkInputs() {
     let dueDate = document.getElementById('dueDate').value;
     if (dueDate == "") {
         Swal.fire('Error!', 'Due date must be filled out!', 'error');
+        return false;
+    }
+
+    if (dueDate < GetTodayDateString()) {
+        Swal.fire('Error!', 'Due date cannot be in the past!', 'error');
         return false;
     }
 
@@ -48,7 +60,7 @@ function SaveHomeworkBtn_Click() {
                 Swal.fire('Good job!', 'Homework posted successfully!', 'success');
                 ClearHomeworkForm();
             } else {
-                Swal.fire('Error!', 'Failed to post homework!', 'error');
+                Swal.fire('Error!', result.message || 'Failed to post homework!', 'error');
             }
         },
         error: function () {
@@ -63,3 +75,29 @@ function ClearHomeworkForm() {
     document.getElementById('description').value = "";
     document.getElementById('dueDate').value = "";
 }
+
+$(document).ready(function () {
+    var dueDateInput = document.getElementById('dueDate');
+    dueDateInput.min = GetTodayDateString();
+
+    function RejectPastDate() {
+        if (dueDateInput.value !== "" && dueDateInput.value < GetTodayDateString()) {
+            Swal.fire('Error!', 'Due date cannot be in the past!', 'error');
+            dueDateInput.value = "";
+        }
+    }
+
+    // Catches a value the browser silently restores on page reload/back-forward
+    // navigation, which sets .value directly without firing input/change.
+    RejectPastDate();
+
+    dueDateInput.addEventListener('input', RejectPastDate);
+    dueDateInput.addEventListener('change', RejectPastDate);
+
+    // Re-checks when the page is restored from the back-forward cache (e.g. browser
+    // Back button), where DOMContentLoaded does not fire again but a stale value can persist.
+    window.addEventListener('pageshow', function () {
+        dueDateInput.min = GetTodayDateString();
+        RejectPastDate();
+    });
+});

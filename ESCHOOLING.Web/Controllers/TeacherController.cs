@@ -670,6 +670,11 @@ namespace ESCHOOLING.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveHomework(int grade, string subject, string description, DateTime dueDate)
         {
+            if (dueDate.Date < DateTime.Today)
+            {
+                return Json(new { success = false, message = "Due date cannot be in the past." });
+            }
+
             var homeworkObject = new Homework
             {
                 TeacherId = User.GetUserId(),
@@ -699,5 +704,23 @@ namespace ESCHOOLING.Web.Controllers
             var events = await _eventsService.GetAllEventsAsync();
             return View(events);
         }
+
+        #region My Profile
+
+        [HttpGet]
+        public async Task<IActionResult> MyProfile()
+        {
+            var user = await _applicationUserService.GetUserByIdAsync(User.GetUserId());
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfilePicture(IFormFile? profilePicture)
+        {
+            var result = await _applicationUserService.UploadProfilePictureAsync(User.GetUserId(), profilePicture, _webHostEnvironment.WebRootPath);
+            return Json(result);
+        }
+
+        #endregion
     }
 }

@@ -295,5 +295,94 @@ namespace ECOMSYSTEM.Web.Services
                 return false;
             }
         }
+
+        private static readonly Dictionary<string, string> AllowedProfilePictureTypes = new(StringComparer.OrdinalIgnoreCase)
+        {
+            { ".jpg", "image/jpeg" },
+            { ".jpeg", "image/jpeg" },
+            { ".png", "image/png" },
+            { ".gif", "image/gif" }
+        };
+        private const long MaxProfilePictureBytes = 2 * 1024 * 1024; // 2MB
+
+        /// <summary>
+        /// Validates and saves an uploaded profile picture to disk (under wwwroot/uploads/profile-pictures),
+        /// then persists the relative path on the user's record. Max 2MB; JPG/PNG/GIF only.
+        /// </summary>
+        public async Task<ProfilePictureUploadResult> UploadProfilePictureAsync(long userId, IFormFile? file, string webRootPath)
+        {
+            try
+            {
+                if (file == null || file.Length == 0)
+                {
+                    return new ProfilePictureUploadResult { Success = false, ErrorMessage = "No file was selected." };
+                }
+
+                if (file.Length > MaxProfilePictureBytes)
+                {
+                    return new ProfilePictureUploadResult { Success = false, ErrorMessage = "File exceeds the 2MB size limit." };
+                }
+
+                var extension = Path.GetExtension(file.FileName);
+                if (string.IsNullOrEmpty(extension) || !AllowedProfilePictureTypes.TryGetValue(extension, out var expectedContentType)
+                    || !string.Equals(file.ContentType, expectedContentType, StringComparison.OrdinalIgnoreCase))
+                {
+                    return new ProfilePictureUploadResult { Success = false, ErrorMessage = "Only JPG, PNG, and GIF files are allowed." };
+                }
+
+                var folderOnDisk = Path.Combine(webRootPath, "uploads", "profile-pictures");
+                Directory.CreateDirectory(folderOnDisk);
+
+                var fileName = $"{userId}_{Guid.NewGuid():N}{extension.ToLowerInvariant()}";
+                var fullPath = Path.Combine(folderOnDisk, fileName);
+
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                var relativeUrl = $"/uploads/profile-pictures/{fileName}";
+                var existingUser = await _applicationUserRepository.GetUserByIdAsync(userId);
+                var previousPath = existingUser?.ProfilePicturePath;
+
+                var updated = await _applicationUserRepository.UpdateProfilePictureAsync(userId, relativeUrl);
+                if (!updated)
+                {
+                    return new ProfilePictureUploadResult { Success = false, ErrorMessage = "Failed to save the profile picture." };
+                }
+
+                if (!string.IsNullOrEmpty(previousPath) && previousPath.StartsWith("/uploads/profile-pictures/", StringComparison.OrdinalIgnoreCase))
+                {
+                    var previousFullPath = Path.Combine(webRootPath, previousPath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
+                    if (File.Exists(previousFullPath))
+                    {
+                        try { File.Delete(previousFullPath); } catch { /* best-effort cleanup, non-fatal */ }
+                    }
+                }
+
+                return new ProfilePictureUploadResult { Success = true, ImageUrl = relativeUrl };
+            }
+            catch (Exception)
+            {
+                return new ProfilePictureUploadResult { Success = false, ErrorMessage = "An unexpected error occurred." };
+            }
+        }
+
+        /// <summary>
+        /// Resets a user's password directly (Admin action). Plain-text, matching this app's existing
+        /// login/registration behavior.
+        /// </summary>
+        public async Task<bool> ResetPasswordAsync(long userId, string newPassword)
+        {
+            try
+            {
+                var result = await _applicationUserRepository.ResetPasswordAsync(userId, newPassword);
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -465,6 +465,55 @@ namespace ECOMSYSTEM.Repository.ApplicationUsers
             }
         }
 
+        /// <summary>
+        /// Updates only the user's stored profile picture path (narrow write, unlike UpdateUserAsync).
+        /// </summary>
+        public async Task<bool> UpdateProfilePictureAsync(long userId, string relativePath)
+        {
+            try
+            {
+                var result = await _dbContext.TblUserRegistrations.Where(data => data.UserId.Equals(userId)).FirstOrDefaultAsync();
+                if (result == null)
+                {
+                    return false;
+                }
+
+                result.ProfilePicturePath = relativePath;
+                var saved = await _dbContext.SaveChangesAsync();
+                return saved > 0;
+            }
+            catch (Exception eX)
+            {
+                _logger.LogError(eX, "UpdateProfilePictureAsync failed for UserId={UserId}", userId);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Resets only the user's password (narrow write, unlike UpdateUserAsync). Plain-text, matching
+        /// this app's existing login/registration behavior — hashing is explicitly out of scope here.
+        /// </summary>
+        public async Task<bool> ResetPasswordAsync(long userId, string newPassword)
+        {
+            try
+            {
+                var result = await _dbContext.TblUserRegistrations.Where(data => data.UserId.Equals(userId)).FirstOrDefaultAsync();
+                if (result == null)
+                {
+                    return false;
+                }
+
+                result.Password = newPassword;
+                var saved = await _dbContext.SaveChangesAsync();
+                return saved > 0;
+            }
+            catch (Exception eX)
+            {
+                _logger.LogError(eX, "ResetPasswordAsync failed for UserId={UserId}", userId);
+                return false;
+            }
+        }
+
         private static Random random = new Random();
 
         public static long GenerateId()

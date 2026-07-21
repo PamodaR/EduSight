@@ -89,5 +89,12 @@ namespace ECOMSYSTEM.Shared.Models
         /// For Parent-type users only: the linked child's (Student's) UserId.
         /// </summary>
         public long? ChildStudentId { get; set; }
+        /// <summary>
+        /// Gets or sets the relative web path (rooted at wwwroot) of the user's uploaded profile picture.
+        /// </summary>
+        /// <value>
+        /// The profile picture path, e.g. "/uploads/profile-pictures/12_a1b2c3d4e5f6.jpg", or null if the user has never uploaded one.
+        /// </value>
+        public string? ProfilePicturePath { get; set; }
     }
 }

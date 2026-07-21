@@ -330,5 +330,23 @@ namespace ESCHOOLING.Web.Controllers
             }
         }
 
+        #region My Profile
+
+        [HttpGet]
+        public async Task<IActionResult> MyProfile()
+        {
+            var user = await _applicationUserService.GetUserByIdAsync(User.GetUserId());
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfilePicture(IFormFile? profilePicture)
+        {
+            var result = await _applicationUserService.UploadProfilePictureAsync(User.GetUserId(), profilePicture, _webHostEnvironment.WebRootPath);
+            return Json(result);
+        }
+
+        #endregion
+
     }
 }

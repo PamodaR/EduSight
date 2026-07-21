@@ -30,6 +30,10 @@ namespace ESCHOOLING.DataAccess.EntityModel
         /// For Parent-type rows only: the linked child's (Student's) UserId.
         /// </summary>
         public long? ChildStudentId { get; set; }
+        /// <summary>
+        /// Relative web path (rooted at wwwroot) to the user's uploaded profile picture. Null if none uploaded.
+        /// </summary>
+        public string? ProfilePicturePath { get; set; }
 
         public virtual ICollection<TblAttendance> TblAttendances { get; set; }
         public virtual ICollection<TblBehaviour> TblBehaviours { get; set; }

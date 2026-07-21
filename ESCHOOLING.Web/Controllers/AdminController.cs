@@ -3,6 +3,7 @@ using ECOMSYSTEM.Shared.Enum;
 using ECOMSYSTEM.Shared.Models;
 using ESCHOOLING.Shared;
 using ESCHOOLING.Shared.Models;
+using ESCHOOLING.Web.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -203,6 +204,57 @@ namespace ESCHOOLING.Web.Controllers
 
         #endregion
 
+        #region Reset Password
+
+        [HttpPost]
+        public async Task<IActionResult> ResetTeacherPassword(long id, string newPassword)
+        {
+            return await ResetPasswordActionAsync(id, newPassword);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetParentPassword(long id, string newPassword)
+        {
+            return await ResetPasswordActionAsync(id, newPassword);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetStudentPassword(long id, string newPassword)
+        {
+            return await ResetPasswordActionAsync(id, newPassword);
+        }
+
+        private async Task<IActionResult> ResetPasswordActionAsync(long userId, string newPassword)
+        {
+            if (string.IsNullOrWhiteSpace(newPassword))
+            {
+                return Json(new { success = false });
+            }
+
+            var result = await _applicationUserService.ResetPasswordAsync(userId, newPassword);
+            return Json(new { success = result });
+        }
+
+        #endregion
+
+        #region My Profile
+
+        [HttpGet]
+        public async Task<IActionResult> MyProfile()
+        {
+            var user = await _applicationUserService.GetUserByIdAsync(User.GetUserId());
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfilePicture(IFormFile? profilePicture)
+        {
+            var result = await _applicationUserService.UploadProfilePictureAsync(User.GetUserId(), profilePicture, _webHostEnvironment.WebRootPath);
+            return Json(result);
+        }
+
+        #endregion
+
         #region Delete (soft delete)
 
         [HttpPost]
@@ -242,6 +294,11 @@ namespace ESCHOOLING.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveEvent(string eventName, string description, DateTime date, string time, string place, int? grade)
         {
+            if (date.Date < DateTime.Today)
+            {
+                return Json(new { success = false, message = "Event date cannot be in the past." });
+            }
+
             var eventObject = new Events
             {
                 EventName = eventName,

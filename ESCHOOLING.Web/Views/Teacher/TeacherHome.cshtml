@@ -14,6 +14,48 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet" />
     <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet" />
     <link href="../../dist-assets/css/plugins/perfect-scrollbar.min.css" rel="stylesheet" />
+    <style>
+        .stat-card {
+            border: none;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(20, 15, 30, .07);
+        }
+
+        .stat-card .card-body {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .stat-icon-badge {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+        }
+
+        .stat-icon-badge i {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .stat-label {
+            color: #70657b;
+            margin: 0 0 2px;
+            font-size: 13px;
+        }
+
+        .stat-value {
+            color: #262129;
+            margin: 0;
+            font-size: 26px;
+            font-weight: 700;
+        }
+    </style>
 </head>
 
 <body class="text-left">
@@ -26,27 +68,33 @@
                 <li>Teacher</li>
             </ul>
         </div>
+        <div class="alert alert-light border mt-2 mb-3">
+            <strong>Welcome back, @User.Identity?.Name!</strong>
+        </div>
         <div class="col-lg-12">
             <div class="row">
-                <!-- ICON BG-->
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <div class="card-body text-center">
-                            <i class="i-Checked-User"></i>
-                            <div class="content">
-                                <p class="text-muted mt-2 mb-0">Students Managed</p>
-                                <p class="lead text-primary text-24 mb-2">@Model.TotalStudentsManaged</p>
+                    <div class="card stat-card mb-4">
+                        <div class="card-body">
+                            <div class="stat-icon-badge" style="background-color:#663399;">
+                                <i class="i-Checked-User"></i>
+                            </div>
+                            <div>
+                                <p class="stat-label">Students Managed</p>
+                                <p class="stat-value">@Model.TotalStudentsManaged</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="card card-icon-bg card-icon-bg-success o-hidden mb-4">
-                        <div class="card-body text-center">
-                            <i class="i-Calendar-4"></i>
-                            <div class="content">
-                                <p class="text-muted mt-2 mb-0">Today's Attendance</p>
-                                <p class="lead text-success text-24 mb-2">@Model.TodayAttendanceRate%</p>
+                    <div class="card stat-card mb-4">
+                        <div class="card-body">
+                            <div class="stat-icon-badge" style="background-color:#0f9670;">
+                                <i class="i-Calendar-4"></i>
+                            </div>
+                            <div>
+                                <p class="stat-label">Today's Attendance</p>
+                                <p class="stat-value">@Model.TodayAttendanceRate%</p>
                                 <p class="text-muted mb-0" style="font-size:12px">@Model.TodayPresentCount / @Model.TodayTotalMarkedCount marked present</p>
                             </div>
                         </div>
@@ -90,23 +138,28 @@
             var marksBuckets = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.MarksDistributionBuckets));
             var marksCounts = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.MarksDistributionCounts));
 
+            var gridlineStyle = { lineStyle: { color: '#e1e0d9', type: 'solid' } };
+            var axisTextColor = '#70657b';
+
             var attendanceEl = document.getElementById('attendanceTrendChart');
             if (attendanceEl) {
                 var attendanceChart = echarts.init(attendanceEl);
                 attendanceChart.setOption({
-                    color: ['#4caf50'],
-                    grid: { left: '3%', right: '5%', bottom: '3%', top: '10%', containLabel: true },
+                    color: ['#0f9670'],
+                    grid: { left: '3%', right: '8%', bottom: '3%', top: '10%', containLabel: true },
                     tooltip: { trigger: 'axis', backgroundColor: 'rgba(0, 0, 0, .8)', valueFormatter: function (value) { return value + '%'; } },
-                    xAxis: { type: 'category', data: attendanceMonths, boundaryGap: false },
-                    yAxis: { type: 'value', min: 0, max: 100, axisLabel: { formatter: '{value}%' } },
+                    xAxis: { type: 'category', data: attendanceMonths, boundaryGap: false, axisLabel: { color: axisTextColor }, axisLine: { lineStyle: { color: '#c3c2b7' } } },
+                    yAxis: { type: 'value', min: 0, max: 100, axisLabel: { formatter: '{value}%', color: axisTextColor }, splitLine: gridlineStyle },
                     series: [{
                         name: 'Attendance Rate',
                         type: 'line',
                         smooth: true,
                         data: attendanceRates,
-                        areaStyle: { color: 'rgba(76, 175, 80, .2)' },
-                        lineStyle: { color: '#4caf50' },
-                        itemStyle: { color: '#4caf50' }
+                        symbolSize: 8,
+                        endLabel: { show: true, formatter: '{c}%', color: '#52514e', fontWeight: 600 },
+                        areaStyle: { color: 'rgba(15, 150, 112, .1)' },
+                        lineStyle: { color: '#0f9670', width: 2 },
+                        itemStyle: { color: '#0f9670' }
                     }]
                 });
                 $(window).on('resize', function () {
@@ -119,10 +172,10 @@
                 var marksChart = echarts.init(marksEl);
                 marksChart.setOption({
                     color: ['#663399'],
-                    grid: { left: '3%', right: '5%', bottom: '3%', top: '10%', containLabel: true },
+                    grid: { left: '3%', right: '8%', bottom: '3%', top: '10%', containLabel: true },
                     tooltip: { trigger: 'axis', backgroundColor: 'rgba(0, 0, 0, .8)' },
-                    xAxis: { type: 'category', data: marksBuckets },
-                    yAxis: { type: 'value', minInterval: 1 },
+                    xAxis: { type: 'category', data: marksBuckets, axisLabel: { color: axisTextColor }, axisLine: { lineStyle: { color: '#c3c2b7' } } },
+                    yAxis: { type: 'value', minInterval: 1, axisLabel: { color: axisTextColor }, splitLine: gridlineStyle },
                     series: [{
                         name: 'Students',
                         type: 'bar',

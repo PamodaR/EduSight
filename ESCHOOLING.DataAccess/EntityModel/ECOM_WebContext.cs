@@ -263,6 +263,10 @@ namespace ESCHOOLING.DataAccess.EntityModel
                 entity.Property(e => e.Username)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.ProfilePicturePath)
+                    .HasMaxLength(260)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);

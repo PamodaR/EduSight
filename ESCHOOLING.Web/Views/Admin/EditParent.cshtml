@@ -44,6 +44,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <button type="button" class="btn btn-warning btn-rounded btn-sm" onclick="ResetPasswordBtn_Click(@Model.UserId, '@Url.Action("ResetParentPassword", "Admin")')"><i class="i-Lock-User mr-1"></i>Reset Password</button>
+                    <small class="text-muted d-block mt-1">Sets a new password immediately, without changing anything else on this form.</small>
+                </div>
+                <div class="form-group">
                     <label asp-for="MobileNo">Mobile No</label>
                     <input class="form-control form-control-rounded" asp-for="MobileNo" required>
                 </div>
